@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crystal Products - Home</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style>
+    body {
+      background: radial-gradient(circle at top left, #2f3d4f 0%, #1c2431 80%);
+      color: #fff;
+      font-family: 'Poppins', 'Playfair Display', serif;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      background: linear-gradient(90deg, #0f131a 0%, #1a1f29 100%);
+      box-shadow: 0 2px 12px rgba(245, 200, 106, 0.2);
+      padding: 12px 0;
+    }
+
+    .navbar .brand {
+      font-weight: 700;
+      font-family: 'Poppins','Playfair Display', serif;
+      color: #f5c86a !important;
+      font-size: 1.4rem;
+      letter-spacing: 1px;
+      text-shadow: 0 0 10px rgba(245, 200, 106, 0.6);
+      transition: 0.3s;
+    }
+
+    .navbar .brand:hover {
+      color: #ffd36a !important;
+      text-shadow: 0 0 15px rgba(245, 200, 106, 0.8);
+    }
+
+    .nav-link {
+      color: #e5e5e5 !important;
+      font-weight: 500;
+      margin: 0 8px;
+      text-transform: capitalize;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #f5c86a !important;
+      text-shadow: 0 0 10px rgba(245, 200, 106, 0.8);
+    }
+
+    /* ===== CAROUSEL ===== */
+    .carousel-item img {
+      height: 550px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(245, 200, 106, 0.3);
+    }
+
+    /* ===== SECTION HEADINGS ===== */
+    h2.section-heading {
+      color: #f5c86a;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-align: center;
+      margin: 60px 0 30px;
+      text-shadow: 0 0 15px rgba(245, 200, 106, 0.7);
+    }
+
+    /* ===== SHOP BY CRYSTAL ===== */
+    .crystal-card {
+      background-color: #1a1f29;
+      border: 1px solid rgba(245, 200, 106, 0.2);
+      border-radius: 15px;
+      transition: 0.3s;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .crystal-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 20px rgba(245, 200, 106, 0.2);
+    }
+
+    .crystal-card img {
+      height: 160px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .crystal-card h5 {
+      color: #f5c86a;
+      font-weight: 600;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: radial-gradient(circle at top left, #2f3d4f 0%, #1c2431 80%);
+      color: #f5c86a;
+      text-align: center;
+      padding: 18px 10px;
+      margin-top: 50px;
+      animation: goldGlow 3s ease-in-out infinite alternate;
+    }
+
+    footer:hover {
+      color: #ffe17b;
+      text-shadow: 0 0 12px #f5c86a, 0 0 20px #f5c86a, 0 0 30px #f5c86a;
+    }
+
+    @keyframes goldGlow {
+      from { text-shadow: 0 0 5px #f5c86a; }
+      to { text-shadow: 0 0 20px #f5c86a; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand brand" href="#">Crystal Products</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navmenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="newarrival.html">New Collection</a></li>
+        <li class="nav-item"><a class="nav-link" href="specialoffers.html">Special Offers</a></li>
+        <li class="nav-item"><a class="nav-link" href="product.html">Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HEADER CAROUSEL ===== -->
+<section id="header" class="container mt-5 pt-5">
+  <div id="homeCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="images/diamond.jpg" class="d-block w-100" alt="Diamond Jewelry">
+      </div>
+      <div class="carousel-item">
+        <img src="images/ruby.jpg" class="d-block w-100" alt="Ruby Jewelry">
+      </div>
+      <div class="carousel-item">
+        <img src="images/opal.jpg" class="d-block w-100" alt="Opal Jewelry">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#homeCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#homeCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+</section>
+
+<!-- ===== ABOUT SECTION ===== -->
+<section class="container mt-5">
+  <h2 class="section-heading">About Crystal Products</h2>
+  <p class="text-center mx-auto" style="max-width: 800px;">
+    Welcome to <strong>Crystal Products</strong> — a world of elegance and energy. We offer
+    handcrafted jewelry and artifacts made from natural crystals like Diamond, Ruby,
+    Amethyst, Sapphire, Pearl, Opal, and Zircon. Each crystal holds unique energy and
+    beauty to enhance your life with style and positivity.
+  </p>
+</section>
+
+<!-- ===== SHOP BY CRYSTAL ===== -->
+<section class="container mt-5">
+  <h2 class="section-heading">Shop by Crystal</h2>
+  <div class="row g-4">
+    <div class="col-md-3 col-sm-6">
+      <div class="crystal-card">
+        <img src="images/diamond.jpg" class="w-100" alt="Diamond">
+        <h5>Diamond</h5>
+        <a href="diamond.html" class="btn btn-outline-warning btn-sm mt-2">View Products</a>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6">
+      <div class="crystal-card">
+        <img src="images/ruby.jpg" class="w-100" alt="Ruby">
+        <h5>Ruby</h5>
+        <a href="ruby.html" class="btn btn-outline-warning btn-sm mt-2">View Products</a>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6">
+      <div class="crystal-card">
+        <img src="images/opal.jpg" class="w-100" alt="Opal">
+        <h5>Opal</h5>
+        <a href="opal.html" class="btn btn-outline-warning btn-sm mt-2">View Products</a>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6">
+      <div class="crystal-card">
+        <img src="images/zircon.jpg" class="w-100" alt="Zircon">
+        <h5>Zircon</h5>
+        <a href="zircon.html" class="btn btn-outline-warning btn-sm mt-2">View Products</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  © 2025 Crystal Products | Crafted with Love & Energy
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
