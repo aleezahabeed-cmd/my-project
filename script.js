@@ -158,3 +158,22 @@ searchInput.oninput = () => {
 };
 
 
+  // URL se crystal name nikalna
+  const params = new URLSearchParams(window.location.search);
+  const selectedCrystal = params.get("crystal");
+
+  // Saare crystal sections hide karna
+  const section = document.querySelectorAll(".stone-section");
+  sections.forEach(section => section.style.display = "none");
+
+  // Sirf selected crystal ka section show karna
+  if (selectedCrystal) {
+    const crystalSection = document.getElementById(selectedCrystal.toLowerCase());
+    if (crystalSection) {
+      crystalSection.style.display = "block";
+    }
+  } else {
+    // Agar koi parameter nahi diya gaya toh sab show kar do
+    sections.forEach(section => section.style.display = "block");
+  }
+
