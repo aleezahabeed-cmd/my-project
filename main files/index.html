@@ -149,7 +149,7 @@
  /* ===== Chakra Carousel Styling ===== */
 #chakraCarousel img {
   width: 100%;
-  height: 380px;
+  height: 400px;
   object-fit: cover;
   border-radius: 12px;
   filter: brightness(82%);
@@ -228,6 +228,45 @@
   text-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
 }
 
+.carousel-caption {
+  background: rgba(255, 255, 255, 0.15); /* light transparent white */
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  border-radius: 20px;
+  padding: 30px 40px;
+  box-shadow: 0 8px 32px rgba(255, 182, 193, 0.25);
+  display: inline-block;
+  max-width: 700px;
+  margin: auto;
+}
+
+.hero-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.hero-sub {
+  color: #f9e9ef;
+  font-size: 1.1rem;
+  margin-top: 10px;
+}
+
+.hero-cta {
+  background: linear-gradient(90deg, #ff91ae, #ffb4c7);
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.hero-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 182, 193, 0.3);
+}
 
 
     /* ================= CHAKRA CARDS (4+3) ================= */
@@ -300,6 +339,152 @@
       .product-card img{ height:180px; }
       .reviews-row{ gap:12px; }
     }
+   
+/* ================= ABOUT CHAKRAS PAGE ================= */
+#about-chakras-page {
+  padding: 60px 0;
+  background: linear-gradient(180deg, #fff0f5 0%, #ffe5ed 100%);
+}
+
+/* Hero Section */
+.about-hero {
+  text-align: center;
+  padding: 60px 20px 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.about-hero h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-shadow: 0 2px 8px rgba(216, 107, 147, 0.15);
+  margin-bottom: 14px;
+}
+
+.about-hero p {
+  font-size: 1.1rem;
+  color: #6b3f4a;
+  line-height: 1.8;
+}
+
+/* Main About Content (same structure as your about section) */
+.about-wrap {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 40px 0;
+}
+
+.about-image {
+  flex: 1;
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+}
+
+.about-image img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.05) contrast(1.03);
+  border-radius: 14px;
+}
+
+.about-text {
+  flex: 1;
+  background: linear-gradient(180deg, rgba(255, 240, 245, 0.8), rgba(255, 255, 255, 0.85));
+  padding: 36px;
+  border-radius: 14px;
+  box-shadow: 0 14px 40px rgba(211, 107, 138, 0.08);
+}
+
+/* Headings & Text */
+.about-text h3 {
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.about-text p {
+  color: #5a2f3e;
+  line-height: 1.8;
+}
+
+/* Chakra Creative Block (7 chakra details) */
+.about-creative {
+  border-left: 3px dashed rgba(198, 78, 120, 0.12);
+  padding-left: 18px;
+  margin-top: 18px;
+}
+
+.chakra-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.chakra-item {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow: 0 8px 24px rgba(216, 107, 147, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chakra-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(216, 107, 147, 0.18);
+}
+
+.chakra-item h4 {
+  font-size: 1.1rem;
+  color: #b34d7a;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.chakra-item span {
+  color: #e6728b;
+  font-weight: 700;
+}
+
+.chakra-item p {
+  color: #6b3f4a;
+  margin: 0;
+}
+
+/* Button */
+.btn-glow {
+  display: inline-block;
+  background: linear-gradient(90deg, #ff91ae, #ffb4c7);
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(255, 182, 193, 0.3);
+}
+
+.btn-glow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(255, 182, 193, 0.45);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  color: #a65d76;
+  padding: 40px 20px;
+  font-size: 0.95rem;
+}
+
   </style>
 </head>
 <body>
@@ -445,7 +630,7 @@
       
       <!-- 1 Root Chakra -->
       <div class="carousel-item active">
-        <img src="../assets/New folder/chakra1.png" class="d-block w-100" alt="Root Chakra - Red Jasper">
+        <img src="../assets/chakra/chakra1.png" class="d-block w-100" alt="Root Chakra - Red Jasper">
         <div class="carousel-caption d-none d-md-block">
           <h5>Root Chakra — Red Jasper</h5>
           <p>Grounding • Stability • Strength</p>
@@ -454,7 +639,7 @@
 
       <!-- 2 Sacral Chakra -->
       <div class="carousel-item">
-        <img src="../assets/New folder/chakra2.png" class="d-block w-100" alt="Sacral Chakra - Carnelian">
+        <img src="../assets/chakra/chakra2.png" class="d-block w-100" alt="Sacral Chakra - Carnelian">
         <div class="carousel-caption d-none d-md-block">
           <h5>Sacral Chakra — Carnelian</h5>
           <p>Creativity • Passion • Emotional Flow</p>
@@ -463,7 +648,7 @@
 
       <!-- 3 Solar Plexus Chakra -->
       <div class="carousel-item">
-        <img src="../assets/New folder/chakra3.png" class="d-block w-100" alt="Solar Plexus Chakra - Citrine">
+        <img src="../assets/chakra/chakra3.png" class="d-block w-100" alt="Solar Plexus Chakra - Citrine">
         <div class="carousel-caption d-none d-md-block">
           <h5>Solar Plexus Chakra — Citrine</h5>
           <p>Confidence • Empowerment • Personal Will</p>
@@ -472,7 +657,7 @@
 
       <!-- 4 Heart Chakra -->
       <div class="carousel-item">
-        <img src="../assets/New folder/chakra4.png" class="d-block w-100" alt="Heart Chakra - Rose Quartz">
+        <img src="../assets/chakra/chakra4.png" class="d-block w-100" alt="Heart Chakra - Rose Quartz">
         <div class="carousel-caption d-none d-md-block">
           <h5>Heart Chakra — Rose Quartz</h5>
           <p>Love • Compassion • Emotional Healing</p>
@@ -481,7 +666,7 @@
 
       <!-- 5 Throat Chakra -->
       <div class="carousel-item">
-        <img src="../assets/New folder/chakra5.png" class="d-block w-100" alt="Throat Chakra - Blue Lace Agate">
+        <img src="../assets/chakra/chakra5.png" class="d-block w-100" alt="Throat Chakra - Blue Lace Agate">
         <div class="carousel-caption d-none d-md-block">
           <h5>Throat Chakra — Blue Lace Agate</h5>
           <p>Truth • Expression • Clear Communication</p>
@@ -490,7 +675,7 @@
 
       <!-- 6 Third Eye Chakra -->
       <div class="carousel-item">
-        <img src="../assets/New folder/chakra6.png" class="d-block w-100" alt="Third Eye Chakra - Amethyst">
+        <img src="../assets/chakra/chakra6.png" class="d-block w-100" alt="Third Eye Chakra - Amethyst">
         <div class="carousel-caption d-none d-md-block">
           <h5>Third Eye Chakra — Amethyst</h5>
           <p>Intuition • Wisdom • Inner Vision</p>
@@ -499,7 +684,7 @@
 
       <!-- 7 Crown Chakra -->
       <div class="carousel-item">
-        <img src="../assets/New folder/chakra7.png" class="d-block w-100" alt="Crown Chakra - Clear Quartz">
+        <img src="../assets//chakra7.png" class="d-block w-100" alt="Crown Chakra - Clear Quartz">
         <div class="carousel-caption d-none d-md-block">
           <h5>Crown Chakra — Clear Quartz</h5>
           <p>Divine Connection • Enlightenment • Clarity</p>
@@ -605,6 +790,18 @@
         <a class="btn-gold" href="newarrival.html#crown">See Details</a>
       </div>
     </div>
+  </div>
+</section>
+<br>
+<section id="about-chakras" class="container" style="margin:60px auto; max-width:1000px;">
+  <div class="about-wrap" style="display:flex; gap:30px; align-items:center; flex-wrap:wrap;">
+    <!-- RIGHT: Short Description -->
+    <div class="about-text" style="flex:1; background:linear-gradient(180deg, rgba(255,240,245,0.8), rgba(255,255,255,0.85)); padding:36px; border-radius:14px; box-shadow:0 14px 40px rgba(211,107,138,0.06);">
+      <h3>About the 7 Chakras & Their Stones</h3>
+      <p>The seven chakras are energy centers within the body, each associated with a specific color, vibration, and healing stone. From grounding and stability at the Root Chakra to spiritual awareness at the Crown Chakra, these centers balance mind, body, and spirit. Stones such as Red Jasper, Carnelian, Citrine, Rose Quartz, Blue Lace Agate, Amethyst, and Clear Quartz help amplify and align these energies.</p>
+      <p>Working with these stones can enhance emotional balance, clarity, intuition, and spiritual growth. Incorporating them into daily life through meditation, jewelry, or decor promotes harmony and well-being, supporting both inner peace and vibrant energy throughout the body.</p>
+    </div>
+
   </div>
 </section>
 
