@@ -10,7 +10,8 @@
   
  /* BODY */
 body {
-  background: radial-gradient(circle at top left, #2f3d4f 0%, #1c2431 80%);
+
+  background: radial-gradient(circle at top left, #ffd5e4 0%, #ffbbce 60%, #ff91ae 100%);
   color: #fff;
   font-family: 'Poppins', 'Playfair Display', serif;
    background-attachment: fixed;
@@ -18,7 +19,7 @@ body {
   html, body {
   height: 100%;
   min-height: 100vh;
-  background: radial-gradient(circle at top left, #2f3d4f 0%, #1c2431 80%);
+ background: radial-gradient(circle at top left, #ffd5e4 0%, #ffbbce 60%, #ff91ae 100%);
   background-attachment: fixed; /* ensures gradient stays in view  BACKGROUND COLOUR DIDN'T CHANGE  ON SMALL VIEWPORT */
   background-size: cover;
   color: #f5c86a;
@@ -30,8 +31,9 @@ body {
 
 /*  NAVBAR= */
 .navbar {
-  background: linear-gradient(90deg, #0f131a 0%, #1a1f29 100%);
-  box-shadow: 0 2px 12px rgba(245, 200, 106, 0.2);
+   background: linear-gradient(90deg, #ffd5e4 0%, #f19db5 60%, #ff91ae 100%);
+  box-shadow: 0 2px 25px rgba(211, 107, 138, 0.6);
+
   padding: 12px 0;
 }
 
@@ -39,17 +41,18 @@ body {
 .navbar .brand {
   font-weight: 700;
   font-family: 'Poppins','Playfair Display', serif;
-  color: #f5c86a !important;
+  color: #c65384   !important;
   font-size: 1.4rem;
   letter-spacing: 1px;
-  text-shadow: 0 0 10px rgba(245, 200, 106, 0.6);
+  
   transition: 0.3s;
 }
 
 .navbar .brand:hover {
-  color: #ffd36a !important;
-  text-shadow: 0 0 15px rgba(245, 200, 106, 0.8);
+ 
+  text-shadow: 0 0 10px rgba(211, 107, 138, 0.6);
 }
+
 
 /* Nav links */
 .nav-link {
@@ -62,42 +65,58 @@ body {
 
 .nav-link:hover,
 .nav-link.active {
-  color: #f5c86a !important;
-  text-shadow: 0 0 10px rgba(245, 200, 106, 0.8);
+  color: rgba(231, 9, 75, 0.6) !important;
+  text-shadow: 0 0 10px rgba(211, 107, 138, 0.6);
 }
 
 /* ===== HEADING ===== */
 h1.text-center {
-  color: #f5c86a;
+  color: #5e3a42;
   font-family: 'Playfair Display', serif;
   font-weight: 700;
   letter-spacing: 1px;
   text-shadow: 0 0 15px rgba(245, 200, 106, 0.7);
 }
-/* ===== Dropdown Styling ===== */
+
+/* ===== DROPDOWN MENU ===== */
 .dropdown-menu {
-  background-color: #1a1f29;
-  border: 1px solid rgba(245, 200, 106, 0.3);
-  box-shadow: 0 4px 12px rgba(245, 200, 106, 0.15);
+  background: radial-gradient(circle at top left, #ffe6ee 0%, #ffc4d6 50%, #ff9ab3 100%);
+  border: 1px solid rgba(196, 155, 122, 0.35);
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(255, 182, 193, 0.35);
+  padding: 10px;
+  backdrop-filter: blur(10px);
 }
 
+/* ===== DROPDOWN ITEM ===== */
 .dropdown-item {
-  color: #e5e5e5;
+  color: #7a4b58;
+  font-weight: 500;
+  border-radius: 10px;
   transition: all 0.3s ease;
+  padding: 10px 16px;
 }
 
 .dropdown-item:hover {
-  background-color: rgba(245, 200, 106, 0.1);
-  color: #f5c86a;
-  text-shadow: 0 0 8px rgba(245, 200, 106, 0.6);
+  background: linear-gradient(90deg, #ffdce7, #ffe4ec);
+  color: #d63384;
+  text-shadow: 0 0 6px rgba(255, 185, 200, 0.9);
+  box-shadow: 0 0 10px rgba(255, 192, 203, 0.4);
+  transform: translateX(3px);
 }
+
+/* Optional subtle divider styling */
+.dropdown-divider {
+  border-top: 1px solid rgba(255, 192, 203, 0.4);
+}
+
 
 /* ===== SEARCH BAR ===== */
 #searchInput {
   background: rgba(255, 255, 255, 0.08);
-  border: 1.5px solid #f5c86a;
+  border: 1.5px solid  #5e3a42;;
   border-radius: 30px;
-  color: #fff;
+  color:  #d45b75ff;
   padding: 10px 20px;
   font-weight: 500;
   transition: all 0.3s ease;
@@ -106,7 +125,7 @@ h1.text-center {
 
 /* Placeholder color */
 #searchInput::placeholder {
-  color: #d4af37;
+  color: rgb(219, 78, 108)  ;
   opacity: 0.8;
 }
 
@@ -121,7 +140,7 @@ h1.text-center {
 
 /* ===== SECTION HEADINGS ===== */
 .section-heading {
-  color: #f5c86a;
+  color: #b97a57;
   text-align: center;
   margin-top: 60px;
   margin-bottom: 18px;
@@ -132,15 +151,19 @@ h1.text-center {
 }
 
   .card { 
-  background: linear-gradient(160deg, #1e242c, #212936);
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-  padding: 20px;
   width: 300px;
   margin: 20px auto;
   text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
+  background: linear-gradient(145deg, #fff4f6, #f5c2d3);
+  border: 1px solid rgba(255, 182, 193, 0.5);
+  border-radius: 18px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 20px rgba(211, 107, 138, 0.35);
 }
+
+
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
@@ -149,8 +172,17 @@ h1.text-center {
 color: #f5c86a;
 }
  
-  .card img { height:220px; object-fit:cover; display:block; width:100%; cursor:pointer; }
-  .price { color: #f5c86a; font-weight:700; }
+  .card img { 
+      height:220px;
+      object-fit:cover; 
+      display:block;
+       width:100%;
+       cursor:pointer;
+       }
+  .price { 
+    color: #c65384;
+     font-weight:700; }
+
  /* Gold card text */
 .card-body {
   color: #f5c86a;
@@ -158,21 +190,22 @@ color: #f5c86a;
 
 /*add to cart and save info buttton*/
 .add-to-cart {
-  background: linear-gradient(135deg, #f5c86a, #d4af37);
-  color: #1e1e1e;
+  background: linear-gradient(90deg, #ff7aa4, #fcb795);
+  color: #fff;
   border: none;
-  padding: 10px 18px;
-  border-radius: 30px;
+  border-radius: 25px;
+  padding: 8px 25px;
   font-weight: 600;
-  cursor: pointer;
+  text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: 0 3px 10px rgba(245, 200, 106, 0.4);
+  margin-top: 10px;
+  box-shadow: 0 0 20px rgba(211, 107, 138, 0.4);
 }
 
+
 .add-to-cart:hover {
-  background: linear-gradient(135deg, #ffd36a, #f5c86a);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(245, 200, 106, 0.6);
+  background: linear-gradient(90deg, #d36b8a, #e28e91);
+  box-shadow: 0 4px 25px rgba(211, 107, 138, 0.8);
 }
 
 
@@ -232,7 +265,7 @@ footer:hover {
 
 /* Product Title */
 .card-body .card-title {
-  color: #f5c86a;
+  color: #c65384;
   font-size: 1.2rem;
   font-weight: 600;
   text-transform: capitalize;
@@ -243,7 +276,7 @@ footer:hover {
 
 /* Product Description */
 .card .card-body .card-text {
-  color: #e9c56f !important; 
+  color:#5e3a42 !important; 
   font-style: italic;
   font-size: 1rem;
   font-weight: 500;
@@ -256,7 +289,7 @@ footer:hover {
 
 /* Price */
 .card-body .price {
-  color: #ffdd87;
+  color: #c65384;
   font-weight: 700;
   font-size: 1.1rem;
   text-align: center;          
@@ -409,79 +442,7 @@ footer:hover {
           </div>
         </div>
       </div>
-      <!-- 7 -->
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card h-100">
-          <img src="../assets/diamonds/diamond7.png" alt="Diamond Brooch Fleur" onclick="selectProduct('diamond',7)">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Diamond Brooch Fleur</h5>
-            <p class="card-text text-muted">Floral brooch showcasing intricate diamond design.</p>
-            <p class="price mt-auto">Rs. 1.40 Lakh</p>
-            <button class="add-to-cart mt-2" onclick="addToCart('Diamond Brooch Fleur')">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-      <!-- 8 -->
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card h-100">
-          <img src="../assets/diamonds/diamond8.png" alt="Diamond Ankle Chain" onclick="selectProduct('diamond',8)">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Diamond Ankle Chain</h5>
-            <p class="card-text text-muted">Delicate chain adorned with tiny sparkling diamonds.</p>
-            <p class="price mt-auto">Rs. 0.85 Lakh</p>
-            <button class="add-to-cart mt-2" onclick="addToCart('Diamond Ankle Chain')">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-      <!-- 9 -->
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card h-100">
-          <img src="../assets/diamonds/diamond9.png" alt="Diamond Bangle Classic" onclick="selectProduct('diamond',9)">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Diamond Bangle Classic</h5>
-            <p class="card-text text-muted">Classic bangle featuring luminous diamonds.</p>
-            <p class="price mt-auto">Rs. 2.20 Lakh</p>
-            <button class="add-to-cart mt-2" onclick="addToCart('Diamond Bangle Classic')">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-      <!-- 10 -->
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card h-100">
-          <img src="../assets/diamonds/diamond10.png" alt="Diamond Tiara Royale" onclick="selectProduct('diamond',10)">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Diamond Tiara Royale</h5>
-            <p class="card-text text-muted">Royal tiara with scintillating diamond arrangement.</p>
-            <p class="price mt-auto">Rs. 9.50 Lakh</p>
-            <button class="add-to-cart mt-2" onclick="addToCart('Diamond Tiara Royale')">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-      <!-- 11 -->
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card h-100">
-          <img src="../assets/diamonds/diamond11.png" alt="Diamond Hairpin Set" onclick="selectProduct('diamond',11)">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Diamond Hairpin Set</h5>
-            <p class="card-text text-muted">Subtle hairpins bringing diamond elegance to style.</p>
-            <p class="price mt-auto">Rs. 0.55 Lakh</p>
-            <button class="add-to-cart mt-2" onclick="addToCart('Diamond Hairpin Set')">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-      <!-- 12 -->
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card h-100">
-          <img src="../assets/diamonds/diamond12.png" alt="Diamond Charm Bracelet" onclick="selectProduct('diamond',12)">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Diamond Charm Bracelet</h5>
-            <p class="card-text text-muted">Bracelet with petite diamond charms for shimmer.</p>
-            <p class="price mt-auto">Rs. 1.10 Lakh</p>
-            <button class="add-to-cart mt-2" onclick="addToCart('Diamond Charm Bracelet')">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    
   </section>
 
   <!-- ====== RUBY SECTION ====== -->
@@ -555,60 +516,7 @@ footer:hover {
           <button class="add-to-cart mt-2" onclick="addToCart('Ruby Heart Pendant')">Add to Cart</button>
         </div></div></div>
 
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="../assets/" alt="Ruby Vintage Brooch" onclick="selectProduct('ruby',7)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Ruby Vintage Brooch</h5>
-          <p class="card-text text-muted">Vintage brooch accented with deep red rubies.</p>
-          <p class="price mt-auto">Rs. 1.60 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Ruby Vintage Brooch')">Add to Cart</button>
-        </div></div></div>
 
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="ruby8.png" alt="Ruby Filigree Anklet" onclick="selectProduct('ruby',8)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Ruby Filigree Butterfly Anklet</h5>
-          <p class="card-text text-muted">Anklet with intricate ruby filigree design.</p>
-          <p class="price mt-auto">Rs. 0.95 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Ruby Filigree Anklet')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="ruby9.png" alt="Ruby Link Bangle" onclick="selectProduct('ruby',9)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Ruby Link Bangle</h5>
-          <p class="card-text text-muted">Linked bangle showcasing ruby radiance.</p>
-          <p class="price mt-auto">Rs. 1.80 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Ruby Link Bangle')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="ruby10.png" alt="Ruby Coronation Tiara" onclick="selectProduct('ruby',10)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Ruby Coronation Tiara</h5>
-          <p class="card-text text-muted">Tiara fit for royal ceremonies with rubies.</p>
-          <p class="price mt-auto">Rs. 6.50 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Ruby Coronation Tiara')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="ruby11.png" alt="Ruby Enamel Hairpin" onclick="selectProduct('ruby',11)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Ruby Enamel Hairpin</h5>
-          <p class="card-text text-muted">Hairpin combining ruby and enamel artistry.</p>
-          <p class="price mt-auto">Rs. 0.65 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Ruby Enamel Hairpin')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="ruby12.png" alt="Ruby Charm Lariat" onclick="selectProduct('ruby',12)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Ruby Charm Lariat</h5>
-          <p class="card-text text-muted">Delicate lariat charm adorned with rubies.</p>
-          <p class="price mt-auto">Rs. 0.90 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Ruby Charm Lariat')">Add to Cart</button>
-        </div></div></div>
-    </div>
   </section>
 
   <!-- ====== OPAL SECTION ====== -->
@@ -679,60 +587,7 @@ footer:hover {
           <button class="add-to-cart mt-2" onclick="addToCart('Opal Pendant Sphere')">Add to Cart</button>
         </div></div></div>
 
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="opal7.png" alt="Opal Mosaic Brooch" onclick="selectProduct('opal',7)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Opal Mosaic Brooch</h5>
-          <p class="card-text text-muted">Brooch with mosaic of iridescent opals.</p>
-          <p class="price mt-auto">Rs. 1.20 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Opal Mosaic Brooch')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="opal8.png" alt="Opal Ankle Ribbon" onclick="selectProduct('opal',8)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Opal Bangle encrusted with diamond.</h5>
-          <p class="card-text text-muted">Bangle inspired by opal’s flowing colors captured by diamond.</p>
-          <p class="price mt-auto">Rs. 0.60 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Opal Ankle Ribbon')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="opal9.png" alt="Opal Wave Bangle" onclick="selectProduct('opal',9)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Opal Ankle Ribbon. </h5>
-          <p class="card-text text-muted">Ribbon anklet decorated with opals.</p>
-          <p class="price mt-auto">Rs. 1.10 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Opal Wave Bangle')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="opal10.png" alt="Opal Star Tiara" onclick="selectProduct('opal',10)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Opal Star Tiara</h5>
-          <p class="card-text text-muted">Starry tiara adorned with opal gems.</p>
-          <p class="price mt-auto">Rs. 3.30 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Opal Star Tiara')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="opal11.png" alt="Opal Hair Slide" onclick="selectProduct('opal',11)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Opal Hair Slide</h5>
-          <p class="card-text text-muted">Hair slide reflecting opal’s radiant play.</p>
-          <p class="price mt-auto">Rs. 0.55 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Opal Hair Slide')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="opal12.png" alt="Opal Charm Pendant" onclick="selectProduct('opal',12)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Opal Charm Pendant</h5>
-          <p class="card-text text-muted">Pendant charm featuring playful opal glow.</p>
-          <p class="price mt-auto">Rs. 0.70 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Opal Charm Pendant')">Add to Cart</button>
-        </div></div></div>
-    </div>
+     
   </section>
 
  
@@ -805,60 +660,7 @@ footer:hover {
           <button class="add-to-cart mt-2" onclick="addToCart('Zircon Teardrop Pendant')">Add to Cart</button>
         </div></div></div>
 
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="zircon7.png" alt="Zircon Pin Brooch" onclick="selectProduct('zircon',7)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Zircon Pin Brooch</h5>
-          <p class="card-text text-muted">Brooch featuring precise zircon cuts.</p>
-          <p class="price mt-auto">Rs. 0.90 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Zircon Pin Brooch')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="zircon8.png" alt="Zircon Foot Chain" onclick="selectProduct('zircon',8)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Zircon Foot Chain</h5>
-          <p class="card-text text-muted">Foot chain decorated with tiny zircons.</p>
-          <p class="price mt-auto">Rs. 0.50 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Zircon Foot Chain')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="zircon9.png" alt="Zircon Open Bangle" onclick="selectProduct('zircon',9)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Zircon Open Bangle</h5>
-          <p class="card-text text-muted">Open bangle highlighting zircon stones.</p>
-          <p class="price mt-auto">Rs. 1.05 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Zircon Open Bangle')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="zircon10.png" alt="Zircon Mini Tiara" onclick="selectProduct('zircon',10)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Zircon Mini Tiara</h5>
-          <p class="card-text text-muted">Mini tiara featuring delicate zircon gems.</p>
-          <p class="price mt-auto">Rs. 1.60 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Zircon Mini Tiara')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="zircon11.png" alt="Zircon Hair Pin" onclick="selectProduct('zircon',11)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Zircon Hair Pin</h5>
-          <p class="card-text text-muted">Hair pin sparkling with zircon facets.</p>
-          <p class="price mt-auto">Rs. 0.45 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Zircon Hair Pin')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="zircon12.png" alt="Zircon Charm Anklet" onclick="selectProduct('zircon',12)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Zircon Charm Anklet</h5>
-          <p class="card-text text-muted">Charm anklet with zircon accents.</p>
-          <p class="price mt-auto">Rs. 0.65 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Zircon Charm Anklet')">Add to Cart</button>
-        </div></div></div>
-    </div>
+    
   </section>
 
   <!-- ====== EMERALD SECTION ====== -->
@@ -929,60 +731,7 @@ footer:hover {
           <button class="add-to-cart mt-2" onclick="addToCart('Emerald Teardrop Pendant')">Add to Cart</button>
         </div></div></div>
 
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="emerald7.png" alt="Emerald Filigree Brooch" onclick="selectProduct('emerald',7)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Emerald Filigree Brooch</h5>
-          <p class="card-text text-muted">Brooch combining metalwork with emeralds.</p>
-          <p class="price mt-auto">Rs. 1.80 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Emerald Filigree Brooch')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="emerald8.png" alt="Emerald Leaf Anklet" onclick="selectProduct('emerald',8)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Emerald Leaf Anklet</h5>
-          <p class="card-text text-muted">Leaf-inspired anklet with emerald accents.</p>
-          <p class="price mt-auto">Rs. 0.90 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Emerald Leaf Anklet')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="emerald9.png" alt="Emerald Hinged Bangle" onclick="selectProduct('emerald',9)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Emerald Hinged Bangle</h5>
-          <p class="card-text text-muted">Hinged bangle adorned with emeralds.</p>
-          <p class="price mt-auto">Rs. 1.40 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Emerald Hinged Bangle')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="emerald10.png" alt="Emerald Laurel Tiara" onclick="selectProduct('emerald',10)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Emerald Laurel Tiara</h5>
-          <p class="card-text text-muted">Tiara symbolizing growth and nobility.</p>
-          <p class="price mt-auto">Rs. 5.50 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Emerald Laurel Tiara')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="emerald11.png" alt="Emerald Hair Vine" onclick="selectProduct('emerald',11)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Emerald Hair Vine</h5>
-          <p class="card-text text-muted">Hair vine interlaced with tiny emeralds.</p>
-          <p class="price mt-auto">Rs. 0.70 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Emerald Hair Vine')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="emerald12.png" alt="Emerald Charm Bracelet" onclick="selectProduct('emerald',12)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Emerald Charm Bracelet</h5>
-          <p class="card-text text-muted">Charm bracelet dotted with emerald tokens.</p>
-          <p class="price mt-auto">Rs. 0.95 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Emerald Charm Bracelet')">Add to Cart</button>
-        </div></div></div>
-    </div>
+     
   </section>
 
   
@@ -1055,60 +804,7 @@ footer:hover {
           <button class="add-to-cart mt-2" onclick="addToCart('Amethyst Pendant Orb')">Add to Cart</button>
         </div></div></div>
 
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="amethyst7.png" alt="Amethyst Floral Brooch" onclick="selectProduct('amethyst',7)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Amethyst Floral Brooch</h5>
-          <p class="card-text text-muted">Brooch sculpted with amethyst floral design.</p>
-          <p class="price mt-auto">Rs. 1.30 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Amethyst Floral Brooch')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="amethyst8.png" alt="Amethyst Ankle Chain" onclick="selectProduct('amethyst',8)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Amethyst Ankle Chain</h5>
-          <p class="card-text text-muted">Delicate ankle chain with amethyst touches.</p>
-          <p class="price mt-auto">Rs. 0.55 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Amethyst Ankle Chain')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="amethyst9.png" alt="Amethyst Open Bangle" onclick="selectProduct('amethyst',9)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Amethyst Open Bangle</h5>
-          <p class="card-text text-muted">Open bangle featuring violet amethyst.</p>
-          <p class="price mt-auto">Rs. 1.00 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Amethyst Open Bangle')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="amethyst10.png" alt="Amethyst Crownlet" onclick="selectProduct('amethyst',10)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Amethyst Crownlet</h5>
-          <p class="card-text text-muted">Small crownlet adorned with amethyst gems.</p>
-          <p class="price mt-auto">Rs. 1.80 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Amethyst Crownlet')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="amethyst11.png" alt="Amethyst Hair Stick" onclick="selectProduct('amethyst',11)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Amethyst Hair Stick</h5>
-          <p class="card-text text-muted">Hair stick with subtle amethyst highlights.</p>
-          <p class="price mt-auto">Rs. 0.45 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Amethyst Hair Stick')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="amethyst12.png" alt="Amethyst Charm Necklace" onclick="selectProduct('amethyst',12)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Amethyst Charm Necklace</h5>
-          <p class="card-text text-muted">Charm necklace with amethyst pendants.</p>
-          <p class="price mt-auto">Rs. 0.85 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Amethyst Charm Necklace')">Add to Cart</button>
-        </div></div></div>
-    </div>
+      
   </section>
 
 </main>
