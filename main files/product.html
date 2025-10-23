@@ -1,825 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Crystal Jewelry Catalog</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gemstone Collection</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css">
-<style >
-  
- /* BODY */
-body {
-
-  background: radial-gradient(circle at top left, #ffd5e4 0%, #ffbbce 60%, #ff91ae 100%);
-  color: #fff;
-  font-family: 'Poppins', 'Playfair Display', serif;
-   background-attachment: fixed;
-}
-  html, body {
-  height: 100%;
-  min-height: 100vh;
- background: radial-gradient(circle at top left, #ffd5e4 0%, #ffbbce 60%, #ff91ae 100%);
-  background-attachment: fixed; /* ensures gradient stays in view  BACKGROUND COLOUR DIDN'T CHANGE  ON SMALL VIEWPORT */
-  background-size: cover;
-  color: #f5c86a;
-  margin: 0;
-  padding: 0;
-}
-
-
-
-/*  NAVBAR= */
-.navbar {
-   background: linear-gradient(90deg, #ffd5e4 0%, #f19db5 60%, #ff91ae 100%);
-  box-shadow: 0 2px 25px rgba(211, 107, 138, 0.6);
-
-  padding: 12px 0;
-}
-
-
-.navbar .brand {
-  font-weight: 700;
-  font-family: 'Poppins','Playfair Display', serif;
-  color: #c65384   !important;
-  font-size: 1.4rem;
-  letter-spacing: 1px;
-  
-  transition: 0.3s;
-}
-
-.navbar .brand:hover {
- 
-  text-shadow: 0 0 10px rgba(211, 107, 138, 0.6);
-}
-
-
-/* Nav links */
-.nav-link {
-  color: #e5e5e5 !important;
-  font-weight: 500;
-  margin: 0 8px;
-  text-transform: capitalize;
-  transition: all 0.3s ease;
-}
-
-.nav-link:hover,
-.nav-link.active {
-  color: rgba(231, 9, 75, 0.6) !important;
-  text-shadow: 0 0 10px rgba(211, 107, 138, 0.6);
-}
-
-/* ===== HEADING ===== */
-h1.text-center {
-  color: #5e3a42;
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-shadow: 0 0 15px rgba(245, 200, 106, 0.7);
-}
-
-/* ===== DROPDOWN MENU ===== */
-.dropdown-menu {
-  background: radial-gradient(circle at top left, #ffe6ee 0%, #ffc4d6 50%, #ff9ab3 100%);
-  border: 1px solid rgba(196, 155, 122, 0.35);
-  border-radius: 14px;
-  box-shadow: 0 8px 25px rgba(255, 182, 193, 0.35);
-  padding: 10px;
-  backdrop-filter: blur(10px);
-}
-
-/* ===== DROPDOWN ITEM ===== */
-.dropdown-item {
-  color: #7a4b58;
-  font-weight: 500;
-  border-radius: 10px;
-  transition: all 0.3s ease;
-  padding: 10px 16px;
-}
-
-.dropdown-item:hover {
-  background: linear-gradient(90deg, #ffdce7, #ffe4ec);
-  color: #d63384;
-  text-shadow: 0 0 6px rgba(255, 185, 200, 0.9);
-  box-shadow: 0 0 10px rgba(255, 192, 203, 0.4);
-  transform: translateX(3px);
-}
-
-/* Optional subtle divider styling */
-.dropdown-divider {
-  border-top: 1px solid rgba(255, 192, 203, 0.4);
-}
-
-
-/* ===== SEARCH BAR ===== */
-#searchInput {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1.5px solid  #5e3a42;;
-  border-radius: 30px;
-  color:  #d45b75ff;
-  padding: 10px 20px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 8px rgba(245, 200, 106, 0.2);
-}
-
-/* Placeholder color */
-#searchInput::placeholder {
-  color: rgb(219, 78, 108)  ;
-  opacity: 0.8;
-}
-
-/* Hover + focus effect */
-#searchInput:hover,
-#searchInput:focus {
-  border-color: #ffd36a;
-  box-shadow: 0 0 15px rgba(245, 200, 106, 0.4);
-  background: rgba(255, 255, 255, 0.1);
-  outline: none;
-}
-
-/* ===== SECTION HEADINGS ===== */
-.section-heading {
-  color: #b97a57;
-  text-align: center;
-  margin-top: 60px;
-  margin-bottom: 18px;
-  font-weight: 700;
-  text-transform: capitalize;
-  letter-spacing: 0.5px;
-  text-shadow: 0 0 10px rgba(245, 200, 106, 0.5);
-}
-
-  .card { 
-  width: 300px;
-  margin: 20px auto;
-  text-align: center;
-  background: linear-gradient(145deg, #fff4f6, #f5c2d3);
-  border: 1px solid rgba(255, 182, 193, 0.5);
-  border-radius: 18px;
-  padding: 20px;
-  text-align: center;
-  transition: all 0.4s ease;
-  box-shadow: 0 0 20px rgba(211, 107, 138, 0.35);
-}
-
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
-}
-.card div p {
-color: #f5c86a;
-}
- 
-  .card img { 
-      height:220px;
-      object-fit:cover; 
-      display:block;
-       width:100%;
-       cursor:pointer;
-       }
-  .price { 
-    color: #c65384;
-     font-weight:700; }
-
- /* Gold card text */
-.card-body {
-  color: #f5c86a;
-}
-
-/*add to cart and save info buttton*/
-.add-to-cart {
-  background: linear-gradient(90deg, #ff7aa4, #fcb795);
-  color: #fff;
-  border: none;
-  border-radius: 25px;
-  padding: 8px 25px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  margin-top: 10px;
-  box-shadow: 0 0 20px rgba(211, 107, 138, 0.4);
-}
-
-
-.add-to-cart:hover {
-  background: linear-gradient(90deg, #d36b8a, #e28e91);
-  box-shadow: 0 4px 25px rgba(211, 107, 138, 0.8);
-}
-
-
-.card:hover {
-  box-shadow: 0 0 15px rgba(245, 200, 106, 0.4);
-  transform: translateY(-4px);
-  transition: 0.3s ease;
-}
-/*footer*/
- footer {
-  background: radial-gradient(circle at top left, #2f3d4f  0%,  #1c2431 80%);
-  color: #f5c86a;
-  font-family: 'Poppins', 'Playfair Display', serif;
-  text-align: center;
-  padding: 18px 10px;
-  margin-top: 50px;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-
-/* Glowy gold text on hover */
-footer:hover {
-  color: #ffe17b; /* brighter gold */
-  text-shadow: 0 0 8px #f5c86a, 0 0 15px #f5c86a, 0 0 25px #f5c86a;
-}
-
-
-  .carousel .carousel-item img { 
-    
-    height: 710px;
-  
-     object-fit:cover;
-     border-radius:8px;
-     
-   }
-  @media (max-width: 992px) {
-    .card img { 
-      height:400px;
-     
-     }
+<style>
+  /* ===== VARIABLES ===== */
+  :root {
+    --pink-1: #ffd5e4;
+    --pink-2: #ff91ae;
+    --pink-3: #ffb4c7;
+    --rose-deep: #e24b7a;
+    --card-shadow: rgba(204, 45, 93, 0.35);
   }
-  @media (max-width: 768px) {
-    .carousel .carousel-item img {
-       height:500px; 
- 
+
+  /* ===== BODY ===== */
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(145deg, #fff0f5, #ffb4c7, #e791ab);
+    color: #1a1a1a;
+    padding-top: 100px;
+  }
+
+  /* ===== NAVBAR ===== */
+  .navbar {
+    background: linear-gradient(90deg, var(--pink-1), var(--pink-2));
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+
+  .navbar-brand {
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .navbar-nav .nav-link {
+    color: #fff;
+    font-weight: 500;
+  }
+
+  .navbar-nav .nav-link:hover {
+    color: var(--rose-deep);
+  }
+
+  /* ===== PAGE HEADING ===== */
+  .page-heading {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 50px;
+    color: var(--rose-deep);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+  }
+
+  /* ===== SEARCH BAR ===== */
+  .search-bar {
+    max-width: 400px;
+    margin: 0 auto 50px auto;
+  }
+
+  /* ===== CARDS ===== */
+  .card {
+    border-radius: 25px;
+    box-shadow: 0 10px 25px var(--card-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: linear-gradient(145deg, var(--pink-1), var(--pink-2));
+  }
+
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px var(--card-shadow);
+  }
+
+  .card img {
+    border-radius: 25px 25px 0 0;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .card-title {
+    font-weight: 600;
+    color: var(--rose-deep);
+  }
+
+  .card-text {
+    font-size: 0.9rem;
+  }
+
+  .btn-detail {
+    background: var(--rose-deep);
+    color: #fff;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: 0.3s;
+  }
+
+  .btn-detail:hover {
+    background: #ffd700;
+    color: #1a1a1a;
+  }
+
+  /* ===== SECTION TITLES ===== */
+  .gemstone-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 50px 0 30px 0;
+    color: var(--rose-deep);
+  }
+
+  @media (max-width: 768px){
+    .card img {
+      height: 180px;
     }
-    .card img{ 
-      height:220px;
-     } 
-
   }
- /*  gold text for product cards */
-
- .card-body {
-  font-family: 'Poppins', 'Playfair Display', serif;
-  text-align: center;
-}
-
-/* Product Title */
-.card-body .card-title {
-  color: #c65384;
-  font-size: 1.2rem;
-  font-weight: 600;
-  text-transform: capitalize;
-  letter-spacing: 0.5px;
-  text-shadow: 0 0 10px rgba(245, 200, 106, 0.4);
-  margin-bottom: 6px;
-}
-
-/* Product Description */
-.card .card-body .card-text {
-  color:#5e3a42 !important; 
-  font-style: italic;
-  font-size: 1rem;
-  font-weight: 500;
-  text-align: center;         /* center between title & price */
-  line-height: 1.5;
-  margin-bottom: 10px;
-  text-shadow: 0 0 6px rgba(245, 200, 106, 0.3);
-  display: block;
-}
-
-/* Price */
-.card-body .price {
-  color: #c65384;
-  font-weight: 700;
-  font-size: 1.1rem;
-  text-align: center;          
-  text-shadow: 0 0 8px rgba(245, 200, 106, 0.6);
-  margin-top: 6px;
-}
-
-
-
-
 </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-  <div class="container">
-    <a class="navbar-brand brand" href="#">Crystal Products</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navmenu">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="newarrival.html">New Collection</a></li>
-        <li class="nav-item"><a class="nav-link" href="specialoffers.html">Special Offers</a></li>
-
-        <!-- Products Dropdown -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle active" href="product.html" id="productDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Products
-          </a>
-          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="productDropdown">
-            <li><a class="dropdown-item" href=""></a>Diamond products</li>
-            <li><a class="dropdown-item" href=""></a></li>
-            <li><a class="dropdown-item" href=""></a></li>
-            <li><a class="dropdown-item" href=""></a></li>
-            <li><a class="dropdown-item" href=""></a></li>
-            <li><a class="dropdown-item" href=""></a></li>
-            <li><a class="dropdown-item" href=""></a></li>
-            <li><a class="dropdown-item" href=""></a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="allproducts.html">View All</a></li>
-          </ul>
-        </li>
-
-        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-      </ul>
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Gemstone Collection</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Collection</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
-<!-- MAIN -->
-<main class="container" style="padding-top:90px; padding-bottom:40px;">
-  <h1 class="text-center" style="color: #f5c86a; margin-bottom:14px">Crystal Jewelry Collection</h1>
+  <!-- ===== PAGE HEADING ===== -->
+  <h1 class="page-heading">Gemstone Collection</h1>
 
-  <!-- Search bar -->
-  <div class="text-center mb-4">
-    <input type="text" id="searchInput" class="form-control w-75 mx-auto" placeholder="Search stone name (e.g., diamond, ruby, opal)">
+  <!-- ===== SEARCH BAR ===== -->
+  <div class="search-bar mb-5">
+    <input type="text" class="form-control" id="searchInput" placeholder="Search gemstone or jewelry type...">
   </div>
 
-  <!-- ====== DIAMOND SECTION ====== -->
-  <section id="diamond" class="stone-section mb-5">
-    <h2 class="section-heading">Diamond Collection</h2>
-
-    <!-- Carousel -->
-    <div id="diamondCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active"><img src="diamond6.png" class="d-block w-100" alt="diamond1"></div>
-        <div class="carousel-item"><img src="diamond9.png" class="d-block w-100" alt="diamond2"></div>
-        <div class="carousel-item"><img src="diamond12.png" class="d-block w-100" alt="diamond3"></div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#diamondCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
-      <button class="carousel-control-next" type="button" data-bs-target="#diamondCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
-    </div>
-
-    <!-- 12 product cards -->
-    <div class="row g-3">
-      <!-- 1 -->
-      <div class="col-12 col-md-6 col-lg-4" >
-        <div class="card h-100">
-          <img src="../assets/diamonds/diamond1.png" alt="Diamond Solitaire Necklace" onclick="selectProduct('diamond',1)">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Diamond Solitaire Necklace</h5>
-            <p class="card-text text-muted "  >A radiant solitaire pendant exuding timeless brilliance.</p>
-            <p class="price mt-auto">Rs. 4.06 Lakh</p>
-            <button class="add-to-cart mt-2" onclick="addToCart('Diamond Solitaire Necklace')">Add to Cart</button>
-            
-          </div>
-        </div>
-      </div>
-      <!-- 2 -->
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card h-100">
-          <img src="../assets/diamonds/diamond2.png"alt="Diamond Halo Ring" onclick="selectProduct('diamond',2)">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Diamond Halo Ring</h5>
-            <p class="card-text text-muted">Ring encircled by halo diamonds enhancing sparkle.</p>
-            <p class="price mt-auto">Rs. 2.80 Lakh</p>
-            <button class="add-to-cart mt-2" onclick="addToCart('Diamond Halo Ring')">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-      <!-- 3 -->
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card h-100">
-          <img src="../assets/diamonds/diamond3.png" alt="Diamond Drop Earrings" onclick="selectProduct('diamond',3)">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Diamond Drop Earrings</h5>
-            <p class="card-text text-muted">Elegant drops reflecting exquisite light and grace.</p>
-            <p class="price mt-auto">Rs. 2.40 Lakh</p>
-            <button class="add-to-cart mt-2" onclick="addToCart('Diamond Drop Earrings')">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-      <!-- 4 -->
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card h-100">
-          <img src="../assets/diamonds/diamond4.png" alt="Diamond Tennis Bracelet" onclick="selectProduct('diamond',4)">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Diamond Tennis Bracelet</h5>
-            <p class="card-text text-muted">Seamless row of perfectly matched diamonds.</p>
-            <p class="price mt-auto">$2,000,000 USD</p>
-            <button class="add-to-cart mt-2" onclick="addToCart('Diamond Tennis Bracelet')">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-      <!-- 5 -->
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card h-100">
-          <img src="../assets/diamonds/diamond5.png" alt="Diamond Crown" onclick="selectProduct('diamond',5)">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Diamond locekt with dazzling pandent</h5>
-            <p class="card-text text-muted">A regal pandent encrusted with dazzling diamonds.</p>
-            <p class="price mt-auto">Rs. 12.00 Lakh</p>
-            <button class="add-to-cart mt-2" onclick="addToCart('Diamond Crown')">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-      <!-- 6 -->
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card h-100">
-          <img src="../assets/diamonds/diamond6.png" alt="Diamond Pendant Locket" onclick="selectProduct('diamond',6)">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Diamond Pendant Locket</h5>
-            <p class="card-text text-muted">Locket accented with shimmering diamond facets.</p>
-            <p class="price mt-auto">Rs. 1.95 Lakh</p>
-            <button class="add-to-cart mt-2" onclick="addToCart('Diamond Pendant Locket')">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-    
-  </section>
-
-  <!-- ====== RUBY SECTION ====== -->
-  <section id="ruby" class="stone-section mb-5">
-    <h2 class="section-heading">Ruby Collection</h2>
-
-    <!-- Carousel -->
-    <div id="rubyCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active"><img src="ruby1.png" class="d-block w-100" alt="ruby1"></div>
-        <div class="carousel-item"><img src="ruby2.png" class="d-block w-100" alt="ruby2"></div>
-        <div class="carousel-item"><img src="ruby12.png" class="d-block w-100" alt="ruby3"></div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#rubyCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
-      <button class="carousel-control-next" type="button" data-bs-target="#rubyCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
-    </div>
-
-    <!-- 12 Ruby cards -->
-    <div class="row g-3">
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="../assets/ruby/ruby1.png" alt="Ruby Statement Necklace" onclick="selectProduct('ruby',1)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Ruby Statement Necklace</h5>
-          <p class="card-text text-muted">Bold red rubies forming a dramatic centerpiece.</p>
-          <p class="price mt-auto">Rs. 3.20 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Ruby Statement Necklace')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="../assets/ruby/ruby2.png" alt="Ruby Cabochon Ring" onclick="selectProduct('ruby',2)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Ruby Cabochon Ring</h5>
-          <p class="card-text text-muted">Smooth cabochon ruby exuding warm elegance.</p>
-          <p class="price mt-auto">Rs. 2.75 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Ruby Cabochon Ring')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="../assets/ruby/ruby3.png" alt="Ruby Cluster Earrings" onclick="selectProduct('ruby',3)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Ruby Cluster Earrings</h5>
-          <p class="card-text text-muted">Clusters of rubies for vibrant brilliance.</p>
-          <p class="price mt-auto">Rs. 2.90 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Ruby Cluster Earrings')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="../assets/ruby/ruby4.png" alt="Ruby Cuff Bracelet" onclick="selectProduct('ruby',4)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Ruby Cuff Bracelet</h5>
-          <p class="card-text text-muted">Elegant ruby cuff showcasing luxury.</p>
-          <p class="price mt-auto">Rs. 2.60 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Ruby Cuff Bracelet')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="../assets/ruby/ruby5.png" alt="Ruby Sovereign Crown" onclick="selectProduct('ruby',5)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Ruby Charm Bracelet</h5>
-          <p class="card-text text-muted">Gracefully draped rubies evoke a symphony of luxury and sophistication.</p>
-          <p class="price mt-auto">Rs. 8.80 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Ruby Sovereign Crown')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="../assets/ruby/ruby6.png" alt="Ruby Heart Pendant" onclick="selectProduct('ruby',6)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Ruby Heart Pendant</h5>
-          <p class="card-text text-muted">Heart-shaped pendant highlighting ruby glow.</p>
-          <p class="price mt-auto">Rs. 1.95 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Ruby Heart Pendant')">Add to Cart</button>
-        </div></div></div>
-
-
-  </section>
-
-  <!-- ====== OPAL SECTION ====== -->
-  <section id="opal" class="stone-section mb-5">
-    <h2 class="section-heading">Opal Collection</h2>
-    <div id="opalCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active"><img src="opal1.png" class="d-block w-100" alt="opal1"></div>
-        <div class="carousel-item"><img src="opal8.png" class="d-block w-100" alt="opal2"></div>
-        <div class="carousel-item"><img src="opal2.png" class="d-block w-100" alt="opal3"></div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#opalCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
-      <button class="carousel-control-next" type="button" data-bs-target="#opalCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
-    </div>
-
-    <div class="row g-3">
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="opal1.png" alt="Opal Aurora Necklace" onclick="selectProduct('opal',1)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Opal Aurora Necklace</h5>
-          <p class="card-text text-muted">Necklace reflecting opal’s magical hues.</p>
-          <p class="price mt-auto">Rs. 2.60 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Opal Aurora Necklace')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="opal2.png" alt="Opal Cluster Ring" onclick="selectProduct('opal',2)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Aurora Dreams Opal Bracelet.</h5>
-          <p class="card-text text-muted"> Bathed in golden warmth, this opal bracelet reflects the celestial hues of dawn and dream..</p>
-          <p class="price mt-auto">Rs. 1.95 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Opal Cluster Ring')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="opal3.png" alt="Opal Halo Earrings" onclick="selectProduct('opal',3)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Opal Halo Earrings</h5>
-          <p class="card-text text-muted">Halo earrings capturing opal’s play-of-color.</p>
-          <p class="price mt-auto">Rs. 1.80 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Opal Halo Earrings')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="opal4.png" alt="Opal Bead Bracelet" onclick="selectProduct('opal',4)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title"> Opal Cluster Earrings</h5>
-          <p class="card-text text-muted">Earrings highlighting opal’s iridescent. </p>
-          <p class="price mt-auto">Rs. 1.30 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Opal Bead Bracelet')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="opal5.png" alt="Opal Dream Crown" onclick="selectProduct('opal',5)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Opal Tennis Bracelet.</h5>
-          <p class="card-text text-muted">Opal tennis bracelet — an exquisite symphony of iridescent elegance.</p>
-          <p class="price mt-auto">Rs. 5.50 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Opal Dream Crown')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="opal6.png" alt="Opal Pendant Sphere" onclick="selectProduct('opal',6)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Opal Pendant Sphere</h5>
-          <p class="card-text text-muted">Sphere pendant displaying opal’s mystique.</p>
-          <p class="price mt-auto">Rs. 0.95 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Opal Pendant Sphere')">Add to Cart</button>
-        </div></div></div>
-
-     
-  </section>
-
- 
-
-  <!-- ====== ZIRCON SECTION ====== -->
-  <section id="zircon" class="stone-section mb-5">
-    <h2 class="section-heading">Zircon Collection</h2>
-    <div id="zirconCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active"><img src="zircon1.png" class="d-block w-100" alt="zircon1"></div>
-        <div class="carousel-item"><img src="zircon2.png" class="d-block w-100" alt="zircon2"></div>
-        <div class="carousel-item"><img src="zircon3.png" class="d-block w-100" alt="zircon3"></div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#zirconCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
-      <button class="carousel-control-next" type="button" data-bs-target="#zirconCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
-    </div>
-
-    <div class="row g-3">
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="zircon1.png" alt="Zircon Radiance Necklace" onclick="selectProduct('zircon',1)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Zircon Radiance Necklace</h5>
-          <p class="card-text text-muted">Necklace featuring zircon’s clear sparkle.</p>
-          <p class="price mt-auto">Rs. 1.90 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Zircon Radiance Necklace')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="zircon2.png" alt="Zircon Solitaire Ring" onclick="selectProduct('zircon',2)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Zircon Solitaire Ring</h5>
-          <p class="card-text text-muted">Solitary zircon set for brilliance.</p>
-          <p class="price mt-auto">Rs. 1.50 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Zircon Solitaire Ring')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="zircon3.png" alt="Zircon Stud Earrings" onclick="selectProduct('zircon',3)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Zircon Stud Earrings</h5>
-          <p class="card-text text-muted">Classic studs with zircon clarity.</p>
-          <p class="price mt-auto">Rs. 0.85 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Zircon Stud Earrings')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="zircon4.png" alt="Zircon Chain Bracelet" onclick="selectProduct('zircon',4)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Zircon Chain Bracelet</h5>
-          <p class="card-text text-muted">Chain bracelet with delicate zircons.</p>
-          <p class="price mt-auto">Rs. 0.95 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Zircon Chain Bracelet')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="zircon5.png" alt="Zircon Ceremony Crown" onclick="selectProduct('zircon',5)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Zircon Ceremony Crown</h5>
-          <p class="card-text text-muted">Crown adorned with shimmering zircons.</p>
-          <p class="price mt-auto">Rs. 4.50 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Zircon Ceremony Crown')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="zircon6.png" alt="Zircon Teardrop Pendant" onclick="selectProduct('zircon',6)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Zircon Teardrop Pendant</h5>
-          <p class="card-text text-muted">Teardrop pendant showcasing zircon sparkle.</p>
-          <p class="price mt-auto">Rs. 1.10 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Zircon Teardrop Pendant')">Add to Cart</button>
-        </div></div></div>
-
-    
-  </section>
-
-  <!-- ====== EMERALD SECTION ====== -->
-  <section id="emerald" class="stone-section mb-5">
-    <h2 class="section-heading">Emerald Collection</h2>
-    <div id="emeraldCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active"><img src="emerald1.png" class="d-block w-100" alt="emerald1"></div>
-        <div class="carousel-item"><img src="emerald2.png" class="d-block w-100" alt="emerald2"></div>
-        <div class="carousel-item"><img src="emerald3.png" class="d-block w-100" alt="emerald3"></div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#emeraldCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
-      <button class="carousel-control-next" type="button" data-bs-target="#emeraldCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
-    </div>
-
-    <div class="row g-3">
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="emerald1.png" alt="Emerald Cascade Necklace" onclick="selectProduct('emerald',1)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Emerald Cascade Necklace</h5>
-          <p class="card-text text-muted">Necklace showcasing vivid emerald green.</p>
-          <p class="price mt-auto">Rs. 4.10 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Emerald Cascade Necklace')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="emerald2.png" alt="Emerald Cushion Ring" onclick="selectProduct('emerald',2)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Emerald Cushion Ring</h5>
-          <p class="card-text text-muted">Cushion cut ring with emerald brilliance.</p>
-          <p class="price mt-auto">Rs. 3.90 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Emerald Cushion Ring')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="emerald3.png" alt="Emerald Drop Earrings" onclick="selectProduct('emerald',3)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Emerald Drop Earrings</h5>
-          <p class="card-text text-muted">Earrings swaying with emerald grace.</p>
-          <p class="price mt-auto">Rs. 2.60 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Emerald Drop Earrings')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="emerald4.png" alt="Emerald Woven Bracelet" onclick="selectProduct('emerald',4)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Emerald Woven Bracelet</h5>
-          <p class="card-text text-muted">Bracelet with woven emeralds for luxury.</p>
-          <p class="price mt-auto">Rs. 2.40 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Emerald Woven Bracelet')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="emerald5.png" alt="Emerald Verdant Crown" onclick="selectProduct('emerald',5)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Emerald Verdant Crown</h5>
-          <p class="card-text text-muted">Crown reflecting rich emerald tones.</p>
-          <p class="price mt-auto">Rs. 7.20 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Emerald Verdant Crown')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="emerald6.png" alt="Emerald Teardrop Pendant" onclick="selectProduct('emerald',6)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Emerald Teardrop Pendant</h5>
-          <p class="card-text text-muted">Pendant emphasizing emerald’s depth.</p>
-          <p class="price mt-auto">Rs. 1.60 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Emerald Teardrop Pendant')">Add to Cart</button>
-        </div></div></div>
-
-     
-  </section>
-
-  
-
-  <!-- ====== AMETHYST SECTION ====== -->
-  <section id="amethyst" class="stone-section mb-5">
-    <h2 class="section-heading">Amethyst Collection</h2>
-    <div id="amethystCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active"><img src="amethyst1.png" class="d-block w-100" alt="amethyst1"></div>
-        <div class="carousel-item"><img src="amethyst2.png" class="d-block w-100" alt="amethyst2"></div>
-        <div class="carousel-item"><img src="amethyst3.png" class="d-block w-100" alt="amethyst3"></div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#amethystCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
-      <button class="carousel-control-next" type="button" data-bs-target="#amethystCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
-    </div>
-
-    <div class="row g-3">
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="amethyst1.png" alt="Amethyst Royale Necklace" onclick="selectProduct('amethyst',1)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Amethyst Royale Necklace</h5>
-          <p class="card-text text-muted">Necklace woven from violet amethyst facets.</p>
-          <p class="price mt-auto">Rs. 2.50 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Amethyst Royale Necklace')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="amethyst2.png" alt="Amethyst Cocktail Ring" onclick="selectProduct('amethyst',2)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Amethyst Cocktail Ring</h5>
-          <p class="card-text text-muted">Cocktail ring with deep purple amethyst.</p>
-          <p class="price mt-auto">Rs. 2.20 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Amethyst Cocktail Ring')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="amethyst3.png" alt="Amethyst Dangle Earrings" onclick="selectProduct('amethyst',3)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Amethyst Dangle Earrings</h5>
-          <p class="card-text text-muted">Dangle earrings reflecting amethyst glow.</p>
-          <p class="price mt-auto">Rs. 1.80 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Amethyst Dangle Earrings')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="amethyst4.png" alt="Amethyst Link Bracelet" onclick="selectProduct('amethyst',4)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Amethyst Link Bracelet</h5>
-          <p class="card-text text-muted">Linked bracelet showcasing amethyst beauty.</p>
-          <p class="price mt-auto">Rs. 1.50 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Amethyst Link Bracelet')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="amethyst5.png" alt="Amethyst Heirloom Crown" onclick="selectProduct('amethyst',5)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Amethyst Heirloom Crown</h5>
-          <p class="card-text text-muted">Crown featuring regal amethyst stones.</p>
-          <p class="price mt-auto">Rs. 5.20 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Amethyst Heirloom Crown')">Add to Cart</button>
-        </div></div></div>
-
-      <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
-        <img src="amethyst6.png" alt="Amethyst Pendant Orb" onclick="selectProduct('amethyst',6)">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Amethyst Pendant Orb</h5>
-          <p class="card-text text-muted">Orb pendant highlighting amethyst brilliance.</p>
-          <p class="price mt-auto">Rs. 1.10 Lakh</p>
-          <button class="add-to-cart mt-2" onclick="addToCart('Amethyst Pendant Orb')">Add to Cart</button>
-        </div></div></div>
-
-      
-  </section>
-
-</main>
-
-<!-- FOOTER -->
-<footer>
-  <div class="container">
-    <small>© 2025 Crystal Jewelry Collection — All Rights Reserved</small>
+  <!-- ===== GEMSTONE SECTIONS ===== -->
+  <div class="container" id="gemstoneContainer">
+    <!-- Sections injected by JS -->
   </div>
-</footer>
 
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+const gemstones = [
+  {name:"Diamond", products:["Diamond Heart Pendant","Diamond Solitaire Ring","Diamond Bracelet","Diamond Earrings","Diamond Necklace","Diamond Jewelry Set"]},
+  {name:"Ruby", products:["Ruby Heart Pendant","Ruby Solitaire Ring","Ruby Bracelet","Ruby Earrings","Ruby Necklace","Ruby Jewelry Set"]},
+  {name:"Emerald", products:["Emerald Heart Pendant","Emerald Solitaire Ring","Emerald Bracelet","Emerald Earrings","Emerald Necklace","Emerald Jewelry Set"]},
+  {name:"Pearl", products:["Pearl Heart Pendant","Pearl Solitaire Ring","Pearl Bracelet","Pearl Earrings","Pearl Necklace","Pearl Jewelry Set"]},
+  {name:"Opal", products:["Opal Heart Pendant","Opal Solitaire Ring","Opal Bracelet","Opal Earrings","Opal Necklace","Opal Jewelry Set"]},
+  {name:"Zircon", products:["Zircon Heart Pendant","Zircon Solitaire Ring","Zircon Bracelet","Zircon Earrings","Zircon Necklace","Zircon Jewelry Set"]}
+];
 
-<script src="script.js"></script>
+const container = document.getElementById('gemstoneContainer');
+
+function renderSections(filter=""){
+  container.innerHTML="";
+  gemstones.forEach(gem=>{
+    if(filter && !gem.name.toLowerCase().includes(filter) && !gem.products.some(p=>p.toLowerCase().includes(filter))) return;
+    const section=document.createElement('div');
+    section.classList.add('gemstone-section');
+    section.innerHTML=`
+      <h2 class="gemstone-title">${gem.name}</h2>
+      <div class="row">
+        ${gem.products.filter(p=>!filter||p.toLowerCase().includes(filter)).map(p=>`
+          <div class="col-md-4 col-lg-4 mb-4">
+            <div class="card">
+              <img src="https://via.placeholder.com/300x200?text=${encodeURIComponent(p)}" class="card-img-top" alt="${p}">
+              <div class="card-body text-center">
+                <h5 class="card-title">${p}</h5>
+                <p class="card-text">Exquisite ${p} crafted to perfection.</p>
+                <button class="btn btn-detail">View Details</button>
+              </div>
+            </div>
+          </div>`).join('')}
+      </div>
+    `;
+    container.appendChild(section);
+  });
+}
+
+renderSections();
+document.getElementById('searchInput').addEventListener('input',(e)=>{renderSections(e.target.value.toLowerCase())});
+</script>
 
 </body>
 </html>

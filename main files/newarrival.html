@@ -1,143 +1,674 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chakra Collection - Crystal Products</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Chakra Stone Collection — Crystal Products</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
-/* ===== GLOBAL ===== */
-body {
-  background: radial-gradient(circle at top left, #ffd5e4 0%, #ffbbce 60%, #ff91ae 100%);
-  color: #5e3a42;
-  font-family: 'Poppins', 'Playfair Display', serif;
-  overflow-x: hidden;
-  padding-top: 80px;
-}
+  /* ================= THEME VARIABLES ================= */
+  :root{
+    --pink-1:#fff8fb;
+    --pink-2:#ffb8c9;
+    --pink-3:#ff91ae;
+    --accent:#e24b7a;
+    --muted:#664352;
+    --card-shadow:rgba(211,107,138,0.16);
+  }
 
-/* ===== NAVBAR ===== */
-.navbar {
-  background: linear-gradient(90deg, #ffd5e4 0%, #f19db5 60%, #ff91ae 100%);
-  box-shadow: 0 2px 25px rgba(211, 107, 138, 0.6);
-}
+  /* ================= GLOBAL ================= */
+  *{box-sizing:border-box}
+  body{
+    font-family:'Poppins',sans-serif;
+    background: radial-gradient(circle at top left,#fff8fb 0%,#ffdbe7 60%, #ffe4ec 100%);
+    color:var(--muted);
+    margin:0;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{ text-decoration:none; color:inherit; }
 
-.navbar-brand {
-  color: #b97a57 !important;
-  font-weight: 700;
-  font-size: 1.7rem;
-  text-shadow: 0 0 10px rgba(255, 215, 180, 0.6);
-}
+  /* ================= NAVBAR ================= */
+  .navbar{
+    background: linear-gradient(90deg, rgba(255,255,255,0.92), rgba(255,240,245,0.85));
+    backdrop-filter: blur(8px);
+    border-bottom:1px solid rgba(255,182,193,0.35);
+    box-shadow:0 10px 30px rgba(211,107,138,0.06);
+    padding:.6rem 1rem;
+    position:sticky; top:0; z-index:1300;
+  }
+  .brand-wrap{ display:flex; align-items:center; gap:12px; }
+  .logo-dot{ width:44px; height:44px; border-radius:12px; background: linear-gradient(135deg,var(--pink-2),var(--accent)); box-shadow:0 8px 26px rgba(198,78,120,0.22), inset 0 -4px 10px rgba(255,255,255,0.12); }
+  .navbar-brand{ font-family:'Playfair Display', serif; color:var(--accent) !important; font-weight:700; font-size:1.3rem; }
+  .nav-center{ margin:0 auto; display:flex; align-items:center; }
+  .nav-link{ color:#4b2a3a !important; padding:.6rem .9rem; font-weight:600; position:relative; }
+  .nav-link::after{ content:""; position:absolute; left:50%; transform:translateX(-50%) scaleX(0); bottom:6px; height:3px; width:60%; border-radius:6px; background:linear-gradient(90deg,var(--pink-2),var(--pink-3)); transition:transform .28s; }
+  .nav-link:hover::after{ transform:translateX(-50%) scaleX(1); }
 
-.nav-link {
-  color: #fff !important;
-  margin: 0 10px;
-  transition: all 0.3s ease;
-  font-weight: 500;
-}
+  /* ================= SEARCH BAR ================= */
+  .search-bar{ text-align:center; margin:28px auto; }
+  .search-bar input{
+    width:64%; max-width:560px;
+    padding:12px 18px;
+    border-radius:30px;
+    border:1.5px solid rgba(255,182,193,0.55);
+    background:rgba(255,255,255,0.9);
+    box-shadow:0 10px 26px rgba(211,107,138,0.06);
+    font-size:1rem;
+    outline:none;
+    transition:box-shadow .28s, transform .18s;
+  }
+  .search-bar input:focus{ box-shadow:0 12px 36px rgba(211,107,138,0.12); transform:translateY(-2px); }
 
-.nav-link:hover,
-.nav-link.active {
-  color: #fff0f5 !important;
-  text-shadow: 0 0 10px rgba(255, 215, 180, 1);
-}
+  /* ================= SECTION HEADINGS ================= */
+  h2.section-heading{
+    font-family:'Playfair Display',serif;
+    color:var(--accent);
+    text-align:center;
+    margin:64px 0 16px;
+    font-size:1.9rem;
+    font-weight:700;
+  }
+  p.subtitle{ text-align:center; color:var(--muted); font-style:italic; margin-bottom:20px; }
 
-/* ===== SECTION HEADING ===== */
-.section-heading {
-  text-align: center;
-  color: #b97a57;
-  font-family: 'Playfair Display', serif;
-  text-shadow: 0 0 8px rgba(255, 215, 180, 0.6);
-  margin: 70px 0 30px;
-}
+  /* ================= CAROUSEL ================= */
+  .chakra-carousel{ max-width:980px; margin:0 auto 28px; border-radius:16px; overflow:hidden; box-shadow:0 12px 36px rgba(211,107,138,0.08); }
+  .chakra-carousel img{ width:100%; height:380px; object-fit:cover; filter:brightness(82%); transition:transform .6s ease; }
+  .carousel-caption{ background:rgba(255,255,255,0.6); color:var(--accent); padding:14px 18px; border-radius:12px; backdrop-filter: blur(4px); }
 
-/* ===== STONE CARDS ===== */
-.stone-card {
-  background: linear-gradient(145deg, #fff4f6, #ffdbe7);
-  border: 1px solid rgba(255, 182, 193, 0.5);
-  border-radius: 18px;
-  padding: 20px;
-  text-align: center;
-  transition: all 0.4s ease;
-  box-shadow: 0 0 20px rgba(211, 107, 138, 0.35);
-}
+  /* ================= FLOATING ANIMATION ================= */
+  @keyframes floatSlow {
+    0%   { transform: translateY(0px); }
+    50%  { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+  }
 
-.stone-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 0 35px rgba(211, 107, 138, 0.6);
-}
+  /* ================= CARDS ================= */
+  .crystal-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap:24px; margin-top:18px; }
+  /* fallback/stack for small screens handled below */
+  .crystal-card{
+    background: linear-gradient(145deg,#fff4f6,#ffdbe7);
+    border-radius:18px; padding:16px; text-align:center;
+    border:1px solid rgba(255,182,193,0.45);
+    box-shadow:0 16px 46px var(--card-shadow);
+    transition: box-shadow .35s ease, transform .35s ease;
+    animation: floatSlow 6.5s ease-in-out infinite; /* slow & elegant */
+    will-change: transform;
+  }
+  .crystal-card img{ width:100%; height:260px; object-fit:cover; border-radius:12px; transition: transform .35s ease; }
+  .crystal-card h5{ color:var(--accent); margin-top:12px; font-weight:700; font-family:'Playfair Display', serif; }
+  .crystal-card p{ color:var(--muted); font-size:.95rem; margin-bottom:10px; }
+  .crystal-card .btn{ margin-top:8px; border-radius:26px; padding:.5rem 1rem; font-weight:700; background:linear-gradient(90deg,#ff7aa4,#fcb795); border:none; color:#fff; box-shadow:0 12px 28px rgba(211,107,138,0.14); transition:transform .18s, box-shadow .18s; }
+  .crystal-card .btn:hover{ transform:translateY(-3px); box-shadow:0 18px 40px rgba(211,107,138,0.22); }
 
-.stone-card img {
-  width: 100%;
-  height: 220px;
-  border-radius: 12px;
-  object-fit: cover;
-}
+  /* hover intensifies shadow & temporarily scales */
+  .crystal-card:hover{ transform: translateY(-6px) scale(1.01); box-shadow:0 36px 80px rgba(211,107,138,0.22); animation-play-state: paused; }
+  .crystal-card:hover img{ transform:scale(1.06); }
 
-.stone-card h5 {
-  color: #c65384;
-  margin-top: 12px;
-  font-weight: 600;
-}
+  /* ================= 2 ROWS OF 3 (ensured grid) - responsive handled below ================= */
+  /* If you prefer Bootstrap columns instead of CSS grid, it's fine too — grid used for precise 3x2 layout. */
 
-.stone-card p {
-  color: #5e3a42;
-  font-size: 0.9rem;
-}
+  /* ================= RESPONSIVE ================= */
+  @media (max-width:992px){
+    .chakra-carousel img{ height:300px; }
+    .crystal-card img{ height:220px; }
+    .search-bar input{ width:78%; }
+    .crystal-grid{ grid-template-columns: repeat(2, 1fr); } /* tablet: 2 per row */
+  }
+  @media (max-width:576px){
+    .chakra-carousel img{ height:220px; }
+    .search-bar input{ width:90%; }
+    h2.section-heading{ font-size:1.4rem; margin-top:36px; }
+    .crystal-grid{ grid-template-columns: 1fr; } /* mobile: 1 per row */
+  }
 
-.stone-card .btn {
-  background: linear-gradient(90deg, #ff7aa4, #fcb795);
-  color: #fff;
-  border: none;
-  border-radius: 25px;
-  padding: 8px 25px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  margin-top: 10px;
-  box-shadow: 0 0 20px rgba(211, 107, 138, 0.4);
-}
-
-.stone-card .btn:hover {
-  background: linear-gradient(90deg, #d36b8a, #e28e91);
-  box-shadow: 0 4px 25px rgba(211, 107, 138, 0.8);
-}
-
-/* ===== FOOTER ===== */
-footer {
-  background: linear-gradient(90deg, #f199ab 0%, #ffb6c1 100%);
-  color: #fff;
-  text-align: center;
-  padding: 20px;
-  margin-top: 70px;
-  font-size: 0.95rem;
-  box-shadow: 0 -3px 25px rgba(211, 107, 138, 0.6);
-}
+  /* small helper */
+  .section-wrap{ padding-bottom:14px; border-bottom: 1px solid rgba(226,75,122,0.03); margin-bottom:28px; }
   </style>
 </head>
-
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg">
     <div class="container">
-      <a class="navbar-brand" href="#">Crystal Products</a>
+      <div class="brand-wrap">
+        <span class="logo-dot" aria-hidden="true"></span>
+        <a class="navbar-brand" href="#">Crystal Products</a>
+      </div>
+
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navmenu">
-        <ul class="navbar-nav ms-auto">
+
+      <div class="collapse navbar-collapse nav-center" id="navmenu">
+        <ul class="navbar-nav mx-auto">
           <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="newarrival.html">New Collection</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Special Offers</a></li>
+          <li class="nav-item"><a class="nav-link" href="newarrival.html">New chakraCollection</a></li>
+          <li class="nav-item"><a class="nav-link" href="specialoffers.html">Specialoffers</a></li>
           <li class="nav-item"><a class="nav-link" href="product.html">Products</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
+  <!-- SEARCH -->
+  <section class="search-bar" aria-label="search stones">
+    <input id="searchInput" type="search" placeholder="Search items — type 'bracelet', 'rose', 'amethyst'..." aria-label="Search products">
+  </section>
 
-  <footer>© 2025 Crystal Products | Crafted with Light & Love</footer>
+  <main class="container">
+
+    <!-- ====== 1. ROOT CHAKRA (Red Jasper) ====== -->
+    <section id="root" class="section-wrap">
+      <h2 class="section-heading">Root Chakra — Red Jasper</h2>
+      <p class="subtitle">Grounding • Stability • Strength</p>
+
+      <div id="rootCarousel" class="carousel slide chakra-carousel" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="../assets/root1.png" alt="Red Jasper 1">
+            <div class="carousel-caption">
+              <h5>Root Chakra — Red Jasper</h5>
+              <p>Grounding • Stability • Strength</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="../assets/root2.png" alt="Red Jasper 2">
+            <div class="carousel-caption">
+              <h5>Root Chakra — Red Jasper</h5>
+              <p>Grounding • Stability • Strength</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="crystal-grid" data-chakra="redjasper">
+        <div class="crystal-card" data-tags="bracelet red jasper grounding">
+          <img src="../assets/jewelry/red_bracelet.png" alt="Red Jasper Bracelet">
+          <h5>Red Jasper Bracelet</h5>
+          <p>Grounding energy for daily balance.</p>
+          <button class="btn">View Details</button>
+        </div>
+
+        <div class="crystal-card" data-tags="pendant red jasper stability">
+          <img src="../assets/jewelry/red_pendant.png" alt="Red Jasper Pendant">
+          <h5>Red Jasper Pendant</h5>
+          <p>Connect to earth energy & inner calm.</p>
+          <button class="btn">View Details</button>
+        </div>
+
+        <div class="crystal-card" data-tags="ring red jasper strength">
+          <img src="../assets/jewelry/red_ring.png" alt="Red Jasper Ring">
+          <h5>Red Jasper Ring</h5>
+          <p>Empower your strength & stability.</p>
+          <button class="btn">View Details</button>
+        </div>
+
+        <div class="crystal-card" data-tags="necklace red jasper grounding">
+          <img src="../assets/jewelry/red_necklace.png" alt="Red Jasper Necklace">
+          <h5>Red Jasper Necklace</h5>
+          <p>Bold yet calming — perfect for daily empowerment.</p>
+          <button class="btn">View Details</button>
+        </div>
+
+        <div class="crystal-card" data-tags="earrings red jasper balance">
+          <img src="../assets/jewelry/red_earrings.png" alt="Red Jasper Earrings">
+          <h5>Red Jasper Earrings</h5>
+          <p>Elegant drops that bring grounding and balance.</p>
+          <button class="btn">View Details</button>
+        </div>
+
+        <div class="crystal-card" data-tags="set red jasper gift">
+          <img src="../assets/jewelry/red_set.png" alt="Red Jasper Set">
+          <h5>Red Jasper Set</h5>
+          <p>Complete grounding set — bracelet + pendant.</p>
+          <button class="btn">View Details</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== 2. SACRAL (Carnelian) ====== -->
+    <section id="sacral" class="section-wrap">
+      <h2 class="section-heading">Sacral Chakra — Carnelian</h2>
+      <p class="subtitle">Creativity • Passion • Emotional Flow</p>
+
+      <div id="sacralCarousel" class="carousel slide chakra-carousel" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="../assets/sacral1.png" alt="Carnelian 1">
+            <div class="carousel-caption">
+              <h5>Sacral Chakra — Carnelian</h5>
+              <p>Creativity • Passion • Emotional Flow</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="../assets/sacral2.png" alt="Carnelian 2">
+            <div class="carousel-caption">
+              <h5>Sacral Chakra — Carnelian</h5>
+              <p>Creativity • Passion • Emotional Flow</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="crystal-grid" data-chakra="carnelian">
+        <div class="crystal-card" data-tags="bracelet carnelian passion">
+          <img src="../assets/jewelry/car_bracelet.png" alt="Carnelian Bracelet">
+          <h5>Carnelian Bracelet</h5>
+          <p>Ignites passion and vitality.</p>
+          <button class="btn">View Details</button>
+        </div>
+        <div class="crystal-card" data-tags="pendant carnelian creativity">
+          <img src="../assets/jewelry/car_pendant.png" alt="Carnelian Pendant">
+          <h5>Carnelian Pendant</h5>
+          <p>Inspires creativity and joy.</p>
+          <button class="btn">View Details</button>
+        </div>
+        <div class="crystal-card" data-tags="ring carnelian flow">
+          <img src="../assets/jewelry/car_ring.png" alt="Carnelian Ring">
+          <h5>Carnelian Ring</h5>
+          <p>Encourages emotional flow.</p>
+          <button class="btn">View Details</button>
+        </div>
+        <div class="crystal-card" data-tags="necklace carnelian sensuality">
+          <img src="../assets/jewelry/car_necklace.png" alt="Carnelian Necklace">
+          <h5>Carnelian Necklace</h5>
+          <p>Brings warmth and energy.</p>
+          <button class="btn">View Details</button>
+        </div>
+        <div class="crystal-card" data-tags="earrings carnelian expression">
+          <img src="../assets/jewelry/car_earrings.png" alt="Carnelian Earrings">
+          <h5>Carnelian Earrings</h5>
+          <p>Enhances passion and drive.</p>
+          <button class="btn">View Details</button>
+        </div>
+        <div class="crystal-card" data-tags="set carnelian gift">
+          <img src="../assets/jewelry/car_set.png" alt="Carnelian Set">
+          <h5>Carnelian Set</h5>
+          <p>Complete sacral balance.</p>
+          <button class="btn">View Details</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== 3. SOLAR PLEXUS (Citrine) ====== -->
+    <section id="solar" class="section-wrap">
+      <h2 class="section-heading">Solar Plexus Chakra — Citrine</h2>
+      <p class="subtitle">Confidence • Empowerment • Personal Will</p>
+
+      <div id="solarCarousel" class="carousel slide chakra-carousel" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="../assets/solar1.png" alt="Citrine 1">
+            <div class="carousel-caption">
+              <h5>Solar Plexus — Citrine</h5>
+              <p>Confidence • Empowerment • Personal Will</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="../assets/solar2.png" alt="Citrine 2">
+            <div class="carousel-caption">
+              <h5>Solar Plexus — Citrine</h5>
+              <p>Confidence • Empowerment • Personal Will</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="crystal-grid" data-chakra="citrine">
+        <div class="crystal-card" data-tags="bracelet citrine confidence">
+          <img src="../assets/jewelry/cit_bracelet.png" alt="Citrine Bracelet">
+          <h5>Citrine Bracelet</h5>
+          <p>Boosts confidence and personal power.</p>
+          <button class="btn">View Details</button>
+        </div>
+        <div class="crystal-card" data-tags="pendant citrine success">
+          <img src="../assets/jewelry/cit_pendant.png" alt="Citrine Pendant">
+          <h5>Citrine Pendant</h5>
+          <p>Manifest abundance and clarity.</p>
+          <button class="btn">View Details</button>
+        </div>
+        <div class="crystal-card" data-tags="ring citrine empowerment">
+          <img src="../assets/jewelry/cit_ring.png" alt="Citrine Ring">
+          <h5>Citrine Ring</h5>
+          <p>Empowers your inner will.</p>
+          <button class="btn">View Details</button>
+        </div>
+        <div class="crystal-card" data-tags="necklace citrine joy">
+          <img src="../assets/jewelry/cit_necklace.png" alt="Citrine Necklace">
+          <h5>Citrine Necklace</h5>
+          <p>Encourages willpower and joy.</p>
+          <button class="btn">View Details</button>
+        </div>
+        <div class="crystal-card" data-tags="earrings citrine light">
+          <img src="../assets/jewelry/cit_earrings.png" alt="Citrine Earrings">
+          <h5>Citrine Earrings</h5>
+          <p>Radiant energy and motivation.</p>
+          <button class="btn">View Details</button>
+        </div>
+        <div class="crystal-card" data-tags="set citrine gift">
+          <img src="../assets/jewelry/cit_set.png" alt="Citrine Set">
+          <h5>Citrine Set</h5>
+          <p>Complete confidence set.</p>
+          <button class="btn">View Details</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== 4. HEART (Rose Quartz) ====== -->
+    <section id="heart" class="section-wrap">
+      <h2 class="section-heading">Heart Chakra — Rose Quartz</h2>
+      <p class="subtitle">Love • Compassion • Emotional Healing</p>
+
+      <div id="heartCarousel" class="carousel slide chakra-carousel" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="../assets/heart1.png" alt="Rose Quartz 1">
+            <div class="carousel-caption">
+              <h5>Heart — Rose Quartz</h5>
+              <p>Love • Compassion • Emotional Healing</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="../assets/heart2.png" alt="Rose Quartz 2">
+            <div class="carousel-caption">
+              <h5>Heart — Rose Quartz</h5>
+              <p>Love • Compassion • Emotional Healing</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="crystal-grid" data-chakra="rosequartz">
+        <div class="crystal-card" data-tags="bracelet rose quartz love">
+          <img src="../assets/jewelry/rose_bracelet.png" alt="Rose Quartz Bracelet">
+          <h5>Rose Quartz Bracelet</h5>
+          <p>Opens your heart to love and compassion.</p>
+          <button class="btn">View Details</button>
+        </div>
+        <div class="crystal-card" data-tags="pendant rose quartz compassion">
+          <img src="../assets/jewelry/rose_pendant.png" alt="Rose Quartz Pendant">
+          <h5>Rose Quartz Pendant</h5>
+          <p>Comforting energy for emotional healing.</p>
+          <button class="btn">View Details</button>
+        </div>
+        <div class="crystal-card" data-tags="ring rose quartz self-love">
+          <img src="../assets/jewelry/rose_ring.png" alt="Rose Quartz Ring">
+          <h5>Rose Quartz Ring</h5>
+          <p>Promotes self-love and tenderness.</p>
+          <button class="btn">View Details</button>
+        </div>
+        <div class="crystal-card" data-tags="necklace rose quartz harmony">
+          <img src="../assets/jewelry/rose_necklace.png" alt="Rose Quartz Necklace">
+          <h5>Rose Quartz Necklace</h5>
+          <p>Symbol of unconditional love.</p>
+          <button class="btn">View Details</button>
+        </div>
+        <div class="crystal-card" data-tags="earrings rose quartz calm">
+          <img src="../assets/jewelry/rose_earrings.png" alt="Rose Quartz Earrings">
+          <h5>Rose Quartz Earrings</h5>
+          <p>Inspires peace and emotional balance.</p>
+          <button class="btn">View Details</button>
+        </div>
+        <div class="crystal-card" data-tags="set rose quartz gift">
+          <img src="../assets/jewelry/rose_set.png" alt="Rose Quartz Set">
+          <h5>Rose Quartz Set</h5>
+          <p>Complete heart-healing collection.</p>
+          <button class="btn">View Details</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== 5. THROAT (Blue Lace Agate) ====== -->
+    <section id="throat" class="section-wrap">
+      <h2 class="section-heading">Throat Chakra — Blue Lace Agate</h2>
+      <p class="subtitle">Truth • Expression • Clear Communication</p>
+
+      <div id="throatCarousel" class="carousel slide chakra-carousel" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="../assets/throat1.png" alt="Blue Lace Agate 1">
+            <div class="carousel-caption">
+              <h5>Throat — Blue Lace Agate</h5>
+              <p>Truth • Expression • Clear Communication</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="../assets/throat2.png" alt="Blue Lace Agate 2">
+            <div class="carousel-caption">
+              <h5>Throat — Blue Lace Agate</h5>
+              <p>Truth • Expression • Clear Communication</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="crystal-grid" data-chakra="bluelaceagate">
+        <div class="crystal-card" data-tags="bracelet blue lace agate expression">
+          <img src="../assets/jewelry/blue_bracelet.png" alt="Blue Lace Bracelet">
+          <h5>Blue Lace Bracelet</h5>
+          <p>Encourages calm communication and clarity.</p>
+          <button class="btn">View Details</button>
+        </div>
+        <div class="crystal-card" data-tags="pendant blue lace truth">
+          <img src="../assets/jewelry/blue_pendant.png" alt="Blue Lace Pendant">
+          <h5>Blue Lace Pendant</h5>
+          <p>Supports truthful self-expression.</p>
+          <button class="btn">View Details</button>
+        </div>
+        <div class="crystal-card" data-tags="ring blue lace clarity">
+          <img src="../assets/jewelry/blue_ring.png" alt="Blue Lace Ring">
+          <h5>Blue Lace Ring</h5>
+          <p>Helps speak your truth with ease.</p>
+          <button class="btn">View Details</button>
+        </div>
+        <div class="crystal-card" data-tags="necklace blue lace calm">
+          <img src="../assets/jewelry/blue_necklace.png" alt="Blue Lace Necklace">
+          <h5>Blue Lace Necklace</h5>
+          <p>Gentle calming energy for expression.</p>
+          <button class="btn">View Details</button>
+        </div>
+        <div class="crystal-card" data-tags="earrings blue lace clarity">
+          <img src="../assets/jewelry/blue_earrings.png" alt="Blue Lace Earrings">
+          <h5>Blue Lace Earrings</h5>
+          <p>Promotes clarity in conversation.</p>
+          <button class="btn">View Details</button>
+        </div>
+        <div class="crystal-card" data-tags="set blue lace gift">
+          <img src="../assets/jewelry/blue_set.png" alt="Blue Lace Set">
+          <h5>Blue Lace Set</h5>
+          <p>Complete expression collection.</p>
+          <button class="btn">View Details</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== 6. THIRD EYE (Amethyst) ====== -->
+    <section id="third-eye" class="section-wrap">
+      <h2 class="section-heading">Third Eye Chakra — Amethyst</h2>
+      <p class="subtitle">Intuition • Wisdom • Inner Vision</p>
+
+      <div id="thirdCarousel" class="carousel slide chakra-carousel" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="../assets/third1.png" alt="Amethyst 1">
+            <div class="carousel-caption">
+              <h5>Third Eye — Amethyst</h5>
+              <p>Intuition • Wisdom • Inner Vision</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="../assets/third2.png" alt="Amethyst 2">
+            <div class="carousel-caption">
+              <h5>Third Eye — Amethyst</h5>
+              <p>Intuition • Wisdom • Inner Vision</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="crystal-grid" data-chakra="amethyst">
+        <div class="crystal-card" data-tags="bracelet amethyst intuition">
+          <img src="../assets/jewelry/amy_bracelet.png" alt="Amethyst Bracelet">
+          <h5>Amethyst Bracelet</h5>
+          <p>Enhances intuition and inner calm.</p>
+          <button class="btn">View Details</button>
+        </div>
+        <div class="crystal-card" data-tags="pendant amethyst vision">
+          <img src="../assets/jewelry/amy_pendant.png" alt="Amethyst Pendant">
+          <h5>Amethyst Pendant</h5>
+          <p>Supports clarity and inner wisdom.</p>
+          <button class="btn">View Details</button>
+        </div>
+        <div class="crystal-card" data-tags="ring amethyst dream">
+          <img src="../assets/jewelry/amy_ring.png" alt="Amethyst Ring">
+          <h5>Amethyst Ring</h5>
+          <p>Helps access inner visions and insight.</p>
+          <button class="btn">View Details</button>
+        </div>
+        <div class="crystal-card" data-tags="necklace amethyst peaceful">
+          <img src="../assets/jewelry/amy_necklace.png" alt="Amethyst Necklace">
+          <h5>Amethyst Necklace</h5>
+          <p>Gentle clarity for intuition.</p>
+          <button class="btn">View Details</button>
+        </div>
+        <div class="crystal-card" data-tags="earrings amethyst clarity">
+          <img src="../assets/jewelry/amy_earrings.png" alt="Amethyst Earrings">
+          <h5>Amethyst Earrings</h5>
+          <p>Reflect inner wisdom and calm.</p>
+          <button class="btn">View Details</button>
+        </div>
+        <div class="crystal-card" data-tags="set amethyst gift">
+          <img src="../assets/jewelry/amy_set.png" alt="Amethyst Set">
+          <h5>Amethyst Set</h5>
+          <p>Complete third-eye harmony.</p>
+          <button class="btn">View Details</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== 7. CROWN (Clear Quartz) ====== -->
+    <section id="crown" class="section-wrap">
+      <h2 class="section-heading">Crown Chakra — Clear Quartz</h2>
+      <p class="subtitle">Divine Connection • Enlightenment • Clarity</p>
+
+      <div id="crownCarousel" class="carousel slide chakra-carousel" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="../assets/crown1.png" alt="Clear Quartz 1">
+            <div class="carousel-caption">
+              <h5>Crown — Clear Quartz</h5>
+              <p>Divine Connection • Enlightenment • Clarity</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="../assets/crown2.png" alt="Clear Quartz 2">
+            <div class="carousel-caption">
+              <h5>Crown — Clear Quartz</h5>
+              <p>Divine Connection • Enlightenment • Clarity</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="crystal-grid" data-chakra="clearquartz">
+        <div class="crystal-card" data-tags="bracelet clear quartz clarity">
+          <img src="../assets/jewelry/clear_bracelet.png" alt="Clear Quartz Bracelet">
+          <h5>Clear Quartz Bracelet</h5>
+          <p>Amplifies energy and clarity of mind.</p>
+          <button class="btn">View Details</button>
+        </div>
+        <div class="crystal-card" data-tags="pendant clear quartz divine">
+          <img src="../assets/jewelry/clear_pendant.png" alt="Clear Quartz Pendant">
+          <h5>Clear Quartz Pendant</h5>
+          <p>Great for meditation and connection.</p>
+          <button class="btn">View Details</button>
+        </div>
+        <div class="crystal-card" data-tags="ring clear quartz amplify">
+          <img src="../assets/jewelry/clear_ring.png" alt="Clear Quartz Ring">
+          <h5>Clear Quartz Ring</h5>
+          <p>Amplifies intentions and clarity.</p>
+          <button class="btn">View Details</button>
+        </div>
+        <div class="crystal-card" data-tags="necklace clear quartz energy">
+          <img src="../assets/jewelry/clear_necklace.png" alt="Clear Quartz Necklace">
+          <h5>Clear Quartz Necklace</h5>
+          <p>Balances energy and enhances focus.</p>
+          <button class="btn">View Details</button>
+        </div>
+        <div class="crystal-card" data-tags="earrings clear quartz sparkle">
+          <img src="../assets/jewelry/clear_earrings.png" alt="Clear Quartz Earrings">
+          <h5>Clear Quartz Earrings</h5>
+          <p>Bright, clarifying energy for daily wear.</p>
+          <button class="btn">View Details</button>
+        </div>
+        <div class="crystal-card" data-tags="set clear quartz gift">
+          <img src="../assets/jewelry/clear_set.png" alt="Clear Quartz Set">
+          <h5>Clear Quartz Set</h5>
+          <p>Complete clarity and amplification set.</p>
+          <button class="btn">View Details</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer style="background:linear-gradient(180deg,#fff,#fff0f2);padding:24px 0;text-align:center;margin-top:40px">
+    <small style="color:var(--muted)">© 2025 Crystal Products — All rights reserved</small>
+  </footer>
+
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- ========== Live Search Filter JS ========== -->
+<script>
+(function(){
+  const input = document.getElementById('searchInput');
+  const cards = Array.from(document.querySelectorAll('.crystal-card'));
+
+  function normalize(s){ 
+    return (s || '').trim().toLowerCase(); 
+  }
+
+  input.addEventListener('input', () => {
+    const q = normalize(input.value);
+
+    // If search is empty, show all cards again
+    if(!q){
+      cards.forEach(c => {
+        c.style.display = '';
+        c.parentElement.style.display = ''; // show section/grid if hidden
+      });
+      return;
+    }
+
+    // Hide all sections by default
+    const allSections = document.querySelectorAll('.section-wrap');
+    allSections.forEach(sec => sec.style.display = 'none');
+
+    // Filter cards
+    cards.forEach(card => {
+      const tags = normalize((card.getAttribute('data-tags') || '') + ' ' + (card.innerText || ''));
+      if(tags.includes(q)){
+        card.style.display = '';
+        // Make sure its parent section is visible if it has a match
+        const section = card.closest('.section-wrap');
+        if(section) section.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+})();
+</script>
+
+
 </body>
 </html>
