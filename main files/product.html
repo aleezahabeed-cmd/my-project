@@ -7,99 +7,159 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <style>
   /* ===== VARIABLES ===== */
-  :root {
+  :root{
     --pink-1: #ffd5e4;
     --pink-2: #ff91ae;
     --pink-3: #ffb4c7;
     --rose-deep: #e24b7a;
-    --card-shadow: rgba(204, 45, 93, 0.35);
+    --accent: #c65384;
+    --muted: #6b3f4a;
+    --glass: rgba(255,255,255,0.22);
+    --card-shadow: rgba(211,107,138,0.18);
+    --glow-light: rgba(255,183,201,0.85);
+    --glow-dark: rgba(226,75,122,0.85);
   }
 
-  /* ===== BODY ===== */
-  body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(145deg, #fff0f5, #ffb4c7, #e791ab);
-    color: #1a1a1a;
-    padding-top: 100px;
+  *{box-sizing:border-box;}
+  body{
+    font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    margin:0;
+    color:var(--muted);
+    background:
+      radial-gradient(900px 500px at 10% 12%, rgba(255,214,229,0.30), transparent 6%),
+      radial-gradient(700px 300px at 88% 86%, rgba(255,200,220,0.20), transparent 8%),
+      linear-gradient(120deg,#fff9fb 0%, #fff0f6 40%, #fff0f6 100%);
   }
+  a{ text-decoration:none; color:inherit; }
 
-  /* ===== NAVBAR ===== */
+  /* ================= NAVBAR ================= */
   .navbar {
-    background: linear-gradient(90deg, var(--pink-1), var(--pink-2));
-    backdrop-filter: blur(10px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    background: linear-gradient(90deg, rgba(255,255,255,0.88), rgba(255,255,255,0.75));
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255,182,193,0.35);
+    box-shadow: 0 10px 30px rgba(211,107,138,0.06);
+    padding: .6rem 1rem;
+    position: sticky; top:0; z-index:1300;
   }
-
-  .navbar-brand {
-    font-weight: bold;
-    color: #fff;
+  .brand-wrap { display:flex; align-items:center; gap:12px; }
+  .logo-dot {
+    width:44px; height:44px; border-radius:12px;
+    background: linear-gradient(135deg,var(--pink-2),var(--accent));
+    display:inline-block; box-shadow: 0 8px 26px rgba(198,78,120,0.22), inset 0 -4px 10px rgba(255,255,255,0.12);
   }
-
-  .navbar-nav .nav-link {
-    color: #fff;
-    font-weight: 500;
-  }
-
-  .navbar-nav .nav-link:hover {
-    color: var(--rose-deep);
-  }
+  .navbar-brand { font-family:"Playfair Display", serif; color:var(--accent) !important; font-weight:700; font-size:1.3rem; }
+  .nav-center { margin: 0 auto; display:flex; align-items:center; }
+  .nav-link { color:#4b2a3a !important; padding:.6rem .9rem; font-weight:600; position:relative; }
+  .nav-link::after { content:""; position:absolute; left:50%; transform:translateX(-50%) scaleX(0); bottom:6px; height:3px; width:60%; border-radius:6px; background: linear-gradient(90deg,var(--pink-2),var(--pink-3)); transition: transform .28s; }
+  .nav-link:hover::after { transform:translateX(-50%) scaleX(1); color:var(--accent) !important; }
 
   /* ===== PAGE HEADING ===== */
   .page-heading {
     text-align: center;
     font-size: 3rem;
     font-weight: bold;
-    margin-bottom: 50px;
+    margin: 50px 0 30px 0;
     color: var(--rose-deep);
     text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
   }
 
   /* ===== SEARCH BAR ===== */
   .search-bar {
-    max-width: 400px;
+    max-width: 450px;
     margin: 0 auto 50px auto;
   }
-
-  /* ===== CARDS ===== */
-  .card {
-    border-radius: 25px;
-    box-shadow: 0 10px 25px var(--card-shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background: linear-gradient(145deg, var(--pink-1), var(--pink-2));
-  }
-
-  .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px var(--card-shadow);
-  }
-
-  .card img {
-    border-radius: 25px 25px 0 0;
-    height: 200px;
-    object-fit: cover;
-  }
-
-  .card-title {
-    font-weight: 600;
-    color: var(--rose-deep);
-  }
-
-  .card-text {
-    font-size: 0.9rem;
-  }
-
-  .btn-detail {
-    background: var(--rose-deep);
-    color: #fff;
+  .search-bar input {
     border-radius: 50px;
-    font-weight: 500;
+    border: 1px solid var(--pink-3);
+    padding: 12px 20px;
+    width: 100%;
+    box-shadow: 0 6px 18px rgba(211,107,138,0.06);
     transition: 0.3s;
   }
-
-  .btn-detail:hover {
-    background: #ffd700;
-    color: #1a1a1a;
+  .search-bar input:focus {
+    outline:none;
+    border-color: var(--rose-deep);
+    box-shadow: 0 6px 20px rgba(226,75,122,0.25);
   }
+
+  /* ===== GEMSTONE CARDS ===== */
+  .card, .crystal-card {
+  background: linear-gradient(145deg,#fff4f6,#ffdbe7);
+  border-radius: 18px;
+  padding: 18px;
+  text-align: center;
+  border: 1px solid rgba(255,182,193,0.45);
+  box-shadow: 0 16px 46px var(--card-shadow);
+  transition: transform .35s ease, box-shadow .35s ease;
+  max-width: 300px;  /* medium size */
+  margin: 0 auto;    /* center */
+}
+
+.card img, .crystal-card img {
+  width: 100%;
+  aspect-ratio: 1/1;  /* keeps image square */
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+  transition: transform .35s ease;
+}
+
+.card h5, .crystal-card h5 {
+  color: var(--accent);
+  margin-top: 12px;
+  font-weight: 700;
+}
+
+.card p, .crystal-card p {
+  color: var(--muted);
+  font-size: .95rem;
+}
+
+.card .btn, .crystal-card .btn, .btn-detail {
+  margin-top: 12px;
+  border-radius: 26px;
+  padding: .55rem 1.2rem;
+  font-weight: 700;
+  background: linear-gradient(90deg,#ff7aa4,#fcb795);
+  border: none;
+  color: white;
+  box-shadow: 0 12px 28px rgba(211,107,138,0.14);
+  transition: transform .18s, background .3s;
+}
+
+.card:hover, .crystal-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 36px 80px rgba(211,107,138,0.2);
+}
+
+.card:hover img, .crystal-card:hover img {
+  transform: scale(1.06);
+}
+
+.card-body, .crystal-card-body {
+  text-align: center;
+}
+
+.card-title, .crystal-card h5 {
+  font-weight: 600;
+  color: var(--rose-deep);
+  margin-bottom: 10px;
+}
+
+.card-text, .crystal-card p {
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .card, .crystal-card {
+    max-width: 100%;
+  }
+  .card img, .crystal-card img {
+    height: auto;
+  }
+}
+
 
   /* ===== SECTION TITLES ===== */
   .gemstone-title {
@@ -110,45 +170,137 @@
     color: var(--rose-deep);
   }
 
-  @media (max-width: 768px){
-    .card img {
-      height: 180px;
-    }
+  /* ===== RESPONSIVE ===== */
+  @media(max-width:991px){
+    .card img { aspect-ratio: 1/1; }
+  }
+  @media(max-width:576px){
+    .page-heading { font-size:2rem; }
+    .gemstone-title { font-size:1.5rem; margin:30px 0 20px; }
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    text-align: center;
+    color: #a65d76;
+    padding: 40px 20px;
+    font-size: 0.95rem;
+  }
+  .footer-inner {
+    background: linear-gradient(90deg, rgba(255,214,229,0.95), rgba(255,240,245,0.95));
+    padding: 28px;
+    border-radius: 14px;
+    box-shadow: 0 18px 46px rgba(211,107,138,0.08);
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .club-left h4 {
+    margin: 0;
+    font-family: "Playfair Display", serif;
+    color: var(--accent);
+  }
+  .club-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .club-form input[type="email"] {
+    padding: 12px 16px;
+    border-radius: 30px;
+    border: 1px solid rgba(198,78,120,0.12);
+    min-width: 260px;
+    width:100%;
+    max-width:320px;
+  }
+  .club-form button {
+    padding: 12px 18px;
+    border-radius: 30px;
+    background: linear-gradient(90deg, var(--pink-2), var(--pink-3));
+    color: white;
+    border: none;
+    font-weight: 700;
+  }
+  .socials a {
+    width: 42px;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    margin-left: 8px;
   }
 </style>
 </head>
 <body>
 
-  <!-- ===== NAVBAR ===== -->
-  <nav class="navbar navbar-expand-lg fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">Gemstone Collection</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navmenu">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Collection</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-        </ul>
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <div class="brand-wrap">
+      <span class="logo-dot" aria-hidden="true"></span>
+      <a class="navbar-brand" href="#">Crystal Products</a>
+    </div>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu" aria-controls="navmenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse nav-center" id="navmenu">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="newarrival.html">New Chakra Collection</a></li>
+        <li class="nav-item"><a class="nav-link" href="specialoffers.html">Special Offers</a></li>
+        <li class="nav-item"><a class="nav-link" href="product.html">Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== PAGE HEADING ===== -->
+<h1 class="page-heading">Gemstone Collection</h1>
+
+<!-- ===== SEARCH BAR ===== -->
+<div class="search-bar mb-5">
+  <input type="text" class="form-control" id="searchInput" placeholder="Search gemstone or jewelry type...">
+</div>
+
+<!-- ===== GEMSTONE SECTIONS ===== -->
+<div class="container" id="gemstoneContainer"></div>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container footer-inner">
+    <div class="club-left">
+      <h4>Join Our Crystal Lovers Club</h4>
+      <p>Get early access to new drops, exclusive promos, and spiritual guides — delivered to your inbox.</p>
+    </div>
+
+    <form class="club-form" onsubmit="event.preventDefault(); alert('Thanks — you joined the Crystal Lovers Club!');">
+      <input type="email" placeholder="Your email address" aria-label="Email for club" required>
+      <button type="submit">Join</button>
+    </form>
+
+    <div style="display:flex; align-items:center;">
+      <div class="socials">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="Facebook">FB</a>
+        <a href="#" aria-label="WhatsApp">WA</a>
       </div>
     </div>
-  </nav>
 
-  <!-- ===== PAGE HEADING ===== -->
-  <h1 class="page-heading">Gemstone Collection</h1>
-
-  <!-- ===== SEARCH BAR ===== -->
-  <div class="search-bar mb-5">
-    <input type="text" class="form-control" id="searchInput" placeholder="Search gemstone or jewelry type...">
+    <div style="flex-basis:100%;height:0"></div>
+    <div class="footer-bottom">
+      <small>© 2025 Crystal Products · Crafted with light & love · All rights reserved</small>
+    </div>
   </div>
-
-  <!-- ===== GEMSTONE SECTIONS ===== -->
-  <div class="container" id="gemstoneContainer">
-    <!-- Sections injected by JS -->
-  </div>
+</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
@@ -173,10 +325,10 @@ function renderSections(filter=""){
       <h2 class="gemstone-title">${gem.name}</h2>
       <div class="row">
         ${gem.products.filter(p=>!filter||p.toLowerCase().includes(filter)).map(p=>`
-          <div class="col-md-4 col-lg-4 mb-4">
+          <div class="col-sm-6 col-md-4 col-lg-4 mb-4">
             <div class="card">
-              <img src="https://via.placeholder.com/300x200?text=${encodeURIComponent(p)}" class="card-img-top" alt="${p}">
-              <div class="card-body text-center">
+              <img src="https://via.placeholder.com/300?text=${encodeURIComponent(p)}" alt="${p}">
+              <div class="card-body">
                 <h5 class="card-title">${p}</h5>
                 <p class="card-text">Exquisite ${p} crafted to perfection.</p>
                 <button class="btn btn-detail">View Details</button>
@@ -192,6 +344,5 @@ function renderSections(filter=""){
 renderSections();
 document.getElementById('searchInput').addEventListener('input',(e)=>{renderSections(e.target.value.toLowerCase())});
 </script>
-
 </body>
 </html>
