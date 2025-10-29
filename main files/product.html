@@ -1,348 +1,415 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gemstone Collection</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<style>
-  /* ===== VARIABLES ===== */
-  :root{
-    --pink-1: #ffd5e4;
-    --pink-2: #ff91ae;
-    --pink-3: #ffb4c7;
-    --rose-deep: #e24b7a;
-    --accent: #c65384;
-    --muted: #6b3f4a;
-    --glass: rgba(255,255,255,0.22);
-    --card-shadow: rgba(211,107,138,0.18);
-    --glow-light: rgba(255,183,201,0.85);
-    --glow-dark: rgba(226,75,122,0.85);
-  }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Crystal Products — Products</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+     :root{
+      --pink-1: #ffd5e4;
+      --pink-2: #ff91ae;
+      --pink-3: #ffb4c7;
+      --rose-deep: #e24b7a; /* dark rosy pink accent */
+      --accent: #c65384;
+      --muted: #6b3f4a;
+      --glass: rgba(255,255,255,0.22);
+      --card-shadow: rgba(211,107,138,0.18);
+      --glow-light: rgba(255,183,201,0.85);
+      --glow-dark: rgba(226,75,122,0.85);
+    }
 
-  *{box-sizing:border-box;}
-  body{
-    font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    margin:0;
-    color:var(--muted);
-    background:
-      radial-gradient(900px 500px at 10% 12%, rgba(255,214,229,0.30), transparent 6%),
-      radial-gradient(700px 300px at 88% 86%, rgba(255,200,220,0.20), transparent 8%),
-      linear-gradient(120deg,#fff9fb 0%, #fff0f6 40%, #fff0f6 100%);
-  }
-  a{ text-decoration:none; color:inherit; }
+    *{box-sizing:border-box}
+    body{
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      margin:0;
+      color:var(--muted);
+      background:
+        radial-gradient(900px 500px at 10% 12%, rgba(255,214,229,0.30), transparent 6%),
+        radial-gradient(700px 300px at 88% 86%, rgba(255,200,220,0.20), transparent 8%),
+        linear-gradient(120deg,#fff9fb 0%, #fff0f6 40%, #fff0f6 100%);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    a{ text-decoration:none; color:inherit; }
 
-  /* ================= NAVBAR ================= */
-  .navbar {
-    background: linear-gradient(90deg, rgba(255,255,255,0.88), rgba(255,255,255,0.75));
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(255,182,193,0.35);
-    box-shadow: 0 10px 30px rgba(211,107,138,0.06);
-    padding: .6rem 1rem;
-    position: sticky; top:0; z-index:1300;
-  }
-  .brand-wrap { display:flex; align-items:center; gap:12px; }
-  .logo-dot {
-    width:44px; height:44px; border-radius:12px;
-    background: linear-gradient(135deg,var(--pink-2),var(--accent));
-    display:inline-block; box-shadow: 0 8px 26px rgba(198,78,120,0.22), inset 0 -4px 10px rgba(255,255,255,0.12);
-  }
-  .navbar-brand { font-family:"Playfair Display", serif; color:var(--accent) !important; font-weight:700; font-size:1.3rem; }
-  .nav-center { margin: 0 auto; display:flex; align-items:center; }
-  .nav-link { color:#4b2a3a !important; padding:.6rem .9rem; font-weight:600; position:relative; }
-  .nav-link::after { content:""; position:absolute; left:50%; transform:translateX(-50%) scaleX(0); bottom:6px; height:3px; width:60%; border-radius:6px; background: linear-gradient(90deg,var(--pink-2),var(--pink-3)); transition: transform .28s; }
-  .nav-link:hover::after { transform:translateX(-50%) scaleX(1); color:var(--accent) !important; }
+    /* ================= NAVBAR ================= */
+  
+.nav-buttons button:hover { transform: scale(1.05); }
 
-  /* ===== PAGE HEADING ===== */
-  .page-heading {
-    text-align: center;
-    font-size: 3rem;
-    font-weight: bold;
-    margin: 50px 0 30px 0;
-    color: var(--rose-deep);
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-  }
+    .brand-wrap { display:flex; align-items:center; gap:12px; }
+    .logo-dot {
+      width:44px; height:44px; border-radius:12px;
+      background: linear-gradient(135deg,var(--pink-2),var(--accent));
+      display:inline-block; box-shadow: 0 8px 26px rgba(198,78,120,0.22), inset 0 -4px 10px rgba(255,255,255,0.12);
+    }
+    .navbar-brand { font-family:"Playfair Display", serif; color:var(--accent) !important; font-weight:700; font-size:1.3rem; }
+    .nav-center { margin: 0 auto; display:flex; align-items:center; }
+    .nav-link { color:#4b2a3a !important; padding:.6rem .9rem; font-weight:600; position:relative; }
+    .nav-link::after { content:""; position:absolute; left:50%; transform:translateX(-50%) scaleX(0); bottom:6px; height:3px; width:60%; border-radius:6px; background: linear-gradient(90deg,var(--pink-2),var(--pink-3)); transition: transform .28s; }
+    .nav-link:hover::after { transform:translateX(-50%) scaleX(1); color:var(--accent) !important; }
 
-  /* ===== SEARCH BAR ===== */
-  .search-bar {
-    max-width: 450px;
-    margin: 0 auto 50px auto;
-  }
-  .search-bar input {
-    border-radius: 50px;
-    border: 1px solid var(--pink-3);
-    padding: 12px 20px;
-    width: 100%;
-    box-shadow: 0 6px 18px rgba(211,107,138,0.06);
-    transition: 0.3s;
-  }
-  .search-bar input:focus {
-    outline:none;
-    border-color: var(--rose-deep);
-    box-shadow: 0 6px 20px rgba(226,75,122,0.25);
-  }
+    :root{
+      --pink-1: #ffd5e4; --pink-2: #ff91ae; --pink-3: #ffb4c7; --rose-deep: #e24b7a; --accent: #c65384; --muted: #6b3f4a;
+      --glass: rgba(255,255,255,0.22); --card-shadow: rgba(211,107,138,0.18);
+    }
+    *{box-sizing:border-box}
+    body{font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin:0; color:var(--muted); background: linear-gradient(120deg,#fff9fb 0%, #fff0f6 100%);} 
 
-  /* ===== GEMSTONE CARDS ===== */
-  .card, .crystal-card {
-  background: linear-gradient(145deg,#fff4f6,#ffdbe7);
-  border-radius: 18px;
-  padding: 18px;
-  text-align: center;
-  border: 1px solid rgba(255,182,193,0.45);
-  box-shadow: 0 16px 46px var(--card-shadow);
-  transition: transform .35s ease, box-shadow .35s ease;
-  max-width: 300px;  /* medium size */
-  margin: 0 auto;    /* center */
-}
-
-.card img, .crystal-card img {
-  width: 100%;
-  aspect-ratio: 1/1;  /* keeps image square */
-  object-fit: cover;
-  border-radius: 12px 12px 0 0;
-  transition: transform .35s ease;
-}
-
-.card h5, .crystal-card h5 {
-  color: var(--accent);
-  margin-top: 12px;
+    /* NAV */
+    .navbar{background: linear-gradient(90deg, rgba(255,255,255,0.92), rgba(255,255,255,0.78));backdrop-filter: blur(6px);border-bottom:1px solid rgba(255,182,193,0.35);}
+    .brand-wrap{display:flex;align-items:center;gap:12px}
+    .logo-dot{width:44px;height:44px;border-radius:12px;background: linear-gradient(135deg,var(--pink-2),var(--accent));}
+    .navbar-brand{font-family:"Playfair Display", serif;color:var(--accent);font-weight:700;font-size:1.2rem}
+    .nav-link{color:#4b2a3a!important;font-weight:600}
+.nav-buttons button {
+  border-radius: 999px;
+  padding: .5rem 1rem;
   font-weight: 700;
-}
-
-.card p, .crystal-card p {
-  color: var(--muted);
-  font-size: .95rem;
-}
-
-.card .btn, .crystal-card .btn, .btn-detail {
-  margin-top: 12px;
-  border-radius: 26px;
-  padding: .55rem 1.2rem;
-  font-weight: 700;
-  background: linear-gradient(90deg,#ff7aa4,#fcb795);
   border: none;
-  color: white;
-  box-shadow: 0 12px 28px rgba(211,107,138,0.14);
-  transition: transform .18s, background .3s;
+  cursor: pointer;
+  transition: transform .2s;
+}
+.btn-compare {
+  background: linear-gradient(90deg,#ffb4c7,#ff91ae);
+  color:#fff;
+}
+.btn-login {
+  background: linear-gradient(90deg,#4da6ff,#1a75ff);
+  color:#fff;
+}
+.nav-buttons button:hover {
+  transform: scale(1.05);
 }
 
-.card:hover, .crystal-card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 36px 80px rgba(211,107,138,0.2);
+    /* Page heading */
+    .page-heading{ text-align:center; font-size:2.6rem; font-weight:700; color:var(--rose-deep); margin:28px 0 10px }
+    .subheading{ text-align:center; color:#7a4356; margin-bottom:20px }
+
+    /* Layout */
+    .products-wrap{max-width:1200px;margin:18px auto;padding:18px}
+
+    /* Controls */
+    .category-tabs{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:6px}
+    .category-btn{border-radius:999px;padding:.45rem .9rem;border:1px solid rgba(198,78,120,0.12);background:white;font-weight:700}
+    .category-btn.active{background:linear-gradient(90deg,var(--pink-2),var(--pink-3));color:#fff}
+
+    /* Search bar under buttons */
+    .search-row{display:flex;justify-content:center;margin:12px 0 26px}
+    #searchInput{width:360px;max-width:92%;padding:12px 16px;border-radius:28px;border:1px solid rgba(198,78,120,0.14);box-shadow:0 8px 26px rgba(198,78,120,0.04)}
+
+    /* Stone section */
+    .stone-section{margin:36px 0}
+    .stone-header{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+    .stone-title{font-size:1.4rem;font-weight:800;color:var(--rose-deep)}
+    .stone-sub{color:#8b5568}
+
+    /* Slider (single row circular cards) */
+    .slider{overflow:hidden;position:relative;padding:12px 0}
+    .slider-track{display:flex;gap:14px;align-items:center}
+    .slide{flex:0 0 auto;display:flex;align-items:center;justify-content:center}
+    .slide .img-wrap{width:140px;height:140px;border-radius:50%;overflow:hidden;display:block;box-shadow:0 12px 30px rgba(211,107,138,0.12);border:6px solid rgba(255,255,255,0.6);background:#fff}
+    .slide img{width:100%;height:100%;object-fit:cover;display:block}
+
+    /* make the track animate - duplicated content required for seamless loop */
+    .slider-track{will-change:transform}
+    @keyframes scroll-left{
+      0%{transform:translateX(0)}
+      100%{transform:translateX(-50%)}
+    }
+
+    /* Cards grid */
+    .cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:18px}
+    .product-card{background:linear-gradient(145deg,#fff4f6,#ffdbe7);border-radius:14px;padding:12px;border:1px solid rgba(255,182,193,0.45);box-shadow:0 12px 30px var(--card-shadow);text-align:center;transition:transform .28s}
+    .product-card img{width:100%;height:300px;object-fit:cover;border-radius:10px}
+    .product-card h5{margin:10px 0 6px;color:var(--accent);font-weight:700}
+    .product-price{font-weight:800;color:#7a4356;margin-bottom:8px}
+    .product-actions{display:flex;gap:8px;justify-content:center}
+    .btn-detail{border-radius:26px;padding:.5rem .9rem;font-weight:700;background:linear-gradient(90deg,#ff7aa4,#fcb795);border:none;color:#fff}
+/* Cards grid: 3 columns for large screens */
+.cards-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+  gap: 18px;
+  margin-top: 18px;
 }
 
-.card:hover img, .crystal-card:hover img {
-  transform: scale(1.06);
+/* Responsive */
+@media(max-width:900px){
+  .cards-grid{grid-template-columns: repeat(2, 1fr);} /* 2 per row */
+}
+@media(max-width:600px){
+  .cards-grid{grid-template-columns: 1fr;} /* 1 per row */
 }
 
-.card-body, .crystal-card-body {
-  text-align: center;
-}
+    /* Modal overlay / detail panel */
+    .overlay{position:fixed;inset:0;background:rgba(20,14,20,0.45);display:none;align-items:center;justify-content:center;z-index:2000}
+    .overlay.open{display:flex}
+    .detail-panel{background:#fff;border-radius:14px;max-width:920px;width:96%;display:flex;gap:18px;padding:18px;box-shadow:0 30px 80px rgba(0,0,0,0.28);backdrop-filter: blur(6px)}
+    .detail-left{flex:1}
+    .detail-left img{width:100%;height:420px;object-fit:cover;border-radius:10px}
+    .detail-right{flex:1;padding:6px 12px;display:flex;flex-direction:column;gap:12px}
+    .detail-title{font-size:1.5rem;font-weight:800;color:var(--rose-deep)}
+    .detail-desc{color:#5a3744}
 
-.card-title, .crystal-card h5 {
-  font-weight: 600;
-  color: var(--rose-deep);
-  margin-bottom: 10px;
-}
+    .detail-actions{display:flex;gap:8px;margin-top:8px}
+    .btn-ghost{background:white;border:1px solid rgba(198,78,120,0.12);padding:.6rem .95rem;border-radius:10px;font-weight:700}
 
-.card-text, .crystal-card p {
-  font-size: 0.9rem;
-  margin-bottom: 15px;
-}
+    /* Blur body when modal open */
+    body.modal-open main, body.modal-open nav, body.modal-open footer{filter:blur(6px) brightness(.95);pointer-events:none;user-select:none}
 
-/* ===== Responsive ===== */
-@media (max-width: 768px) {
-  .card, .crystal-card {
-    max-width: 100%;
-  }
-  .card img, .crystal-card img {
-    height: auto;
-  }
-}
-
-
-  /* ===== SECTION TITLES ===== */
-  .gemstone-title {
-    text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
-    margin: 50px 0 30px 0;
-    color: var(--rose-deep);
-  }
-
-  /* ===== RESPONSIVE ===== */
-  @media(max-width:991px){
-    .card img { aspect-ratio: 1/1; }
-  }
-  @media(max-width:576px){
-    .page-heading { font-size:2rem; }
-    .gemstone-title { font-size:1.5rem; margin:30px 0 20px; }
-  }
-
-  /* ===== FOOTER ===== */
-  footer {
-    text-align: center;
-    color: #a65d76;
-    padding: 40px 20px;
-    font-size: 0.95rem;
-  }
-  .footer-inner {
-    background: linear-gradient(90deg, rgba(255,214,229,0.95), rgba(255,240,245,0.95));
-    padding: 28px;
-    border-radius: 14px;
-    box-shadow: 0 18px 46px rgba(211,107,138,0.08);
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-  .club-left h4 {
-    margin: 0;
-    font-family: "Playfair Display", serif;
-    color: var(--accent);
-  }
-  .club-form {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  .club-form input[type="email"] {
-    padding: 12px 16px;
-    border-radius: 30px;
-    border: 1px solid rgba(198,78,120,0.12);
-    min-width: 260px;
-    width:100%;
-    max-width:320px;
-  }
-  .club-form button {
-    padding: 12px 18px;
-    border-radius: 30px;
-    background: linear-gradient(90deg, var(--pink-2), var(--pink-3));
-    color: white;
-    border: none;
-    font-weight: 700;
-  }
-  .socials a {
-    width: 42px;
-    height: 42px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-    background: white;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-    margin-left: 8px;
-  }
-</style>
+    /* Responsive */
+    @media(max-width:900px){.detail-panel{flex-direction:column}.detail-left img{height:320px}.slide .img-wrap{width:110px;height:110px}}
+  </style>
 </head>
 <body>
 
-<!-- ================= NAVBAR ================= -->
-<nav class="navbar navbar-expand-lg">
-  <div class="container">
-    <div class="brand-wrap">
-      <span class="logo-dot" aria-hidden="true"></span>
-      <a class="navbar-brand" href="#">Crystal Products</a>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <div class="brand-wrap">
+        <span class="logo-dot" aria-hidden="true"></span>
+        <a class="navbar-brand" href="#">Crystal Products</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu" aria-controls="navmenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse nav-center" id="navmenu">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="newarrival.html">New chakraCollection</a></li>
+          <li class="nav-item"><a class="nav-link" href="specialoffers.html">Specialoffers</a></li>
+          <li class="nav-item"><a class="nav-link" href="product.html">Products</a></li>
+           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
     </div>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu" aria-controls="navmenu" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse nav-center" id="navmenu">
-      <ul class="navbar-nav mx-auto">
-        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="newarrival.html">New Chakra Collection</a></li>
-        <li class="nav-item"><a class="nav-link" href="specialoffers.html">Special Offers</a></li>
-        <li class="nav-item"><a class="nav-link" href="product.html">Products</a></li>
-        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<!-- ===== PAGE HEADING ===== -->
-<h1 class="page-heading">Gemstone Collection</h1>
-
-<!-- ===== SEARCH BAR ===== -->
-<div class="search-bar mb-5">
-  <input type="text" class="form-control" id="searchInput" placeholder="Search gemstone or jewelry type...">
+    <div class="nav-buttons d-flex gap-2 ms-auto">
+  <button class="btn-compare" onclick="window.location.href='compare.html'">Compare</button>
+  
 </div>
 
-<!-- ===== GEMSTONE SECTIONS ===== -->
-<div class="container" id="gemstoneContainer"></div>
+  </nav>
 
-<!-- ================= FOOTER ================= -->
-<footer>
-  <div class="container footer-inner">
-    <div class="club-left">
-      <h4>Join Our Crystal Lovers Club</h4>
-      <p>Get early access to new drops, exclusive promos, and spiritual guides — delivered to your inbox.</p>
+<main>
+  <header class="products-wrap">
+    <h1 class="page-heading">Gemstone & Jewelry — Professional Collection</h1>
+    <p class="subheading">Explore curated gemstones — each stone features a carousel and six professional product cards. Click a category in the Products menu to show only that product type.</p>
+
+    <div class="category-tabs" id="categoryTabs">
+      <button class="category-btn active" data-cat="all" onclick="filterCategory('all')">All</button>
+      <button class="category-btn" data-cat="bracelets" onclick="filterCategory('bracelets')">Bracelets</button>
+      <button class="category-btn" data-cat="rings" onclick="filterCategory('rings')">Rings</button>
+      <button class="category-btn" data-cat="necklaces" onclick="filterCategory('necklaces')">Necklaces</button>
+      <button class="category-btn" data-cat="pendants" onclick="filterCategory('pendants')">Pendants</button>
+      <button class="category-btn" data-cat="earrings" onclick="filterCategory('earrings')">Earrings</button>
+      <button class="category-btn" data-cat="bangles" onclick="filterCategory('bangles')">Bangles</button>
     </div>
 
-    <form class="club-form" onsubmit="event.preventDefault(); alert('Thanks — you joined the Crystal Lovers Club!');">
-      <input type="email" placeholder="Your email address" aria-label="Email for club" required>
-      <button type="submit">Join</button>
-    </form>
+    <div class="search-row">
+      <input id="searchInput" placeholder="Search by Crystal Name" aria-label="Search by crystal name">
+    </div>
+  </header>
 
-    <div style="display:flex; align-items:center;">
-      <div class="socials">
-        <a href="#" aria-label="Instagram">IG</a>
-        <a href="#" aria-label="Facebook">FB</a>
-        <a href="#" aria-label="WhatsApp">WA</a>
+  <section class="products-wrap" id="stonesContainer"></section>
+</main>
+
+<!-- Overlay detail panel -->
+<div id="overlay" class="overlay" role="dialog" aria-hidden="true">
+  <div class="detail-panel" role="document">
+    <div class="detail-left"><img id="detailImage" src="" alt="Product image"></div>
+    <div class="detail-right">
+      <div>
+        <div id="detailTitle" class="detail-title">Product Name</div>
+        <div id="detailPrice" class="product-price">$0.00</div>
       </div>
-    </div>
+      <div id="detailDesc" class="detail-desc">Detailed description will appear here. Written in professional, clear English describing quality, materials and craftsmanship.</div>
 
-    <div style="flex-basis:100%;height:0"></div>
-    <div class="footer-bottom">
-      <small>© 2025 Crystal Products · Crafted with light & love · All rights reserved</small>
+      <div class="detail-actions">
+        <button id="btnAddCart" class="btn-detail">Add to Cart</button>
+        <button id="btnSaveInfo" class="btn-ghost">Save Info (Word)</button>
+        <button id="btnBack" class="btn-ghost">Back to Home</button>
+      </div>
     </div>
   </div>
+</div>
+
+<!-- Footer kept similar look -->
+<footer style="margin-top:36px;padding:24px;text-align:center;color:#a65d76">
+  <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:linear-gradient(90deg, rgba(255,214,229,0.95), rgba(255,240,245,0.95));padding:20px;border-radius:12px;">
+    <div style="flex:1">
+      <h4 style="margin:0;font-family:'Playfair Display',serif;color:var(--accent)">Join Our Crystal Lovers Club</h4>
+      <p style="margin:4px 0;color:#7a4356">Get early access, exclusive promos, and spiritual guides.</p>
+    </div>
+    <form onsubmit="event.preventDefault();alert('Thanks — you joined the Crystal Lovers Club!');" style="display:flex;gap:8px;align-items:center">
+      <input type="email" required placeholder="Your email" style="padding:10px;border-radius:999px;border:1px solid rgba(198,78,120,0.12);min-width:220px">
+      <button style="padding:10px 14px;border-radius:999px;background:linear-gradient(90deg,var(--pink-2),var(--pink-3));color:#fff;border:none;font-weight:700">Join</button>
+    </form>
+  </div>
+  <small style="display:block;margin-top:12px">© 2025 Crystal Products · Crafted with light & love</small>
 </footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-const gemstones = [
-  {name:"Diamond", products:["Diamond Heart Pendant","Diamond Solitaire Ring","Diamond Bracelet","Diamond Earrings","Diamond Necklace","Diamond Jewelry Set"]},
-  {name:"Ruby", products:["Ruby Heart Pendant","Ruby Solitaire Ring","Ruby Bracelet","Ruby Earrings","Ruby Necklace","Ruby Jewelry Set"]},
-  {name:"Emerald", products:["Emerald Heart Pendant","Emerald Solitaire Ring","Emerald Bracelet","Emerald Earrings","Emerald Necklace","Emerald Jewelry Set"]},
-  {name:"Pearl", products:["Pearl Heart Pendant","Pearl Solitaire Ring","Pearl Bracelet","Pearl Earrings","Pearl Necklace","Pearl Jewelry Set"]},
-  {name:"Opal", products:["Opal Heart Pendant","Opal Solitaire Ring","Opal Bracelet","Opal Earrings","Opal Necklace","Opal Jewelry Set"]},
-  {name:"Zircon", products:["Zircon Heart Pendant","Zircon Solitaire Ring","Zircon Bracelet","Zircon Earrings","Zircon Necklace","Zircon Jewelry Set"]}
-];
+ 
+// Data model: stones and product types
+const stones = ['Diamond','Ruby','Emerald','Amethyst','Zircon','Pearl'];
+const productTypes = ['bracelets','rings','necklaces','pendants','earrings','bangles'];
 
-const container = document.getElementById('gemstoneContainer');
+// Build demo products: for each stone, create 6 products with varying types
+const demoProducts = {};
+stones.forEach(stone=>{
+  demoProducts[stone]=[];
+  for(let i=0;i<6;i++){
+    const type = productTypes[i % productTypes.length];
+    const name = `${stone} ${capitalize(type.slice(0,-1))} ${i+1}`;
+    const price = (Math.random()*500 + 150).toFixed(2);
+    // Local image path
+    const img = `../assets/${stone.toLowerCase()}/${stone.toLowerCase()}${i+1}.png`;
+    const desc = `${stone} ${capitalize(type.slice(0,-1))} crafted from premium materials. Expertly finished with attention to detail, ideal as a statement piece or a meaningful gift.`;
+    demoProducts[stone].push({id:`${stone}-${i}`,stone,type,name,price,img,desc});
+  }
+});
 
-function renderSections(filter=""){
-  container.innerHTML="";
-  gemstones.forEach(gem=>{
-    if(filter && !gem.name.toLowerCase().includes(filter) && !gem.products.some(p=>p.toLowerCase().includes(filter))) return;
-    const section=document.createElement('div');
-    section.classList.add('gemstone-section');
-    section.innerHTML=`
-      <h2 class="gemstone-title">${gem.name}</h2>
-      <div class="row">
-        ${gem.products.filter(p=>!filter||p.toLowerCase().includes(filter)).map(p=>`
-          <div class="col-sm-6 col-md-4 col-lg-4 mb-4">
-            <div class="card">
-              <img src="https://via.placeholder.com/300?text=${encodeURIComponent(p)}" alt="${p}">
-              <div class="card-body">
-                <h5 class="card-title">${p}</h5>
-                <p class="card-text">Exquisite ${p} crafted to perfection.</p>
-                <button class="btn btn-detail">View Details</button>
-              </div>
-            </div>
-          </div>`).join('')}
+function capitalize(s){ return s.charAt(0).toUpperCase()+s.slice(1); }
+
+const stonesContainer = document.getElementById('stonesContainer');
+
+function createStoneSection(stone){
+  const section = document.createElement('section');
+  section.className = 'stone-section';
+  section.dataset.stone = stone;
+
+  const header = document.createElement('div'); header.className='stone-header';
+  header.innerHTML = `<div style="width:48px;height:48px;border-radius:8px;background:linear-gradient(135deg,var(--pink-2),var(--accent));display:flex;align-items:center;justify-content:center;color:white;font-weight:800">${stone.charAt(0)}</div>`;
+  const hwrap = document.createElement('div');
+  hwrap.innerHTML = `<div class="stone-title">${stone}</div><div class="stone-sub">Exquisite ${stone} jewelry — curated selection of bracelets, rings, necklaces, pendants, earrings and bangles.</div>`;
+  header.appendChild(hwrap);
+  section.appendChild(header);
+
+  // Slider (single row circular cards)
+  const slider = document.createElement('div'); slider.className = 'slider';
+  const track = document.createElement('div'); track.className = 'slider-track';
+
+  demoProducts[stone].forEach(p=>{
+    const s = document.createElement('div'); s.className='slide';
+    s.innerHTML = `<div class="img-wrap"><img src="${p.img}" alt="${p.name}"></div>`;
+    track.appendChild(s);
+  });
+  demoProducts[stone].forEach(p=>{
+    const s = document.createElement('div'); s.className='slide';
+    s.innerHTML = `<div class="img-wrap"><img src="${p.img}" alt="${p.name}"></div>`;
+    track.appendChild(s);
+  });
+
+  slider.appendChild(track);
+  section.appendChild(slider);
+
+  // Cards grid
+  const grid = document.createElement('div'); grid.className='cards-grid';
+  demoProducts[stone].forEach(p=>{
+    const card = document.createElement('article'); card.className='product-card'; card.dataset.type = p.type; card.dataset.stone = stone;
+    card.innerHTML = `
+      <img src="${p.img}" alt="${p.name}">
+      <h5>${p.name}</h5>
+      <div class="product-price">$${p.price}</div>
+      <div class="product-actions">
+        <button class="btn-detail" onclick='openDetail(${JSON.stringify(JSON.stringify(p))})'>See details</button>
       </div>
     `;
-    container.appendChild(section);
+    grid.appendChild(card);
+  });
+  section.appendChild(grid);
+
+  // Slider animation
+  const itemCount = demoProducts[stone].length;
+  const duration = Math.max(16, itemCount * 5);
+  track.style.animation = `scroll-left ${duration}s linear infinite`;
+  slider.addEventListener('mouseenter', ()=>{ track.style.animationPlayState = 'paused'; });
+  slider.addEventListener('mouseleave', ()=>{ track.style.animationPlayState = 'running'; });
+  slider.addEventListener('touchstart', ()=>{ track.style.animationPlayState = 'paused'; }, {passive:true});
+  slider.addEventListener('touchend', ()=>{ track.style.animationPlayState = 'running'; });
+
+  return section;
+}
+
+function renderAll(){
+  stonesContainer.innerHTML='';
+  stones.forEach(s=>stonesContainer.appendChild(createStoneSection(s)));
+}
+
+renderAll();
+
+// SEARCH: only stone name
+const searchInput = document.getElementById('searchInput');
+searchInput.addEventListener('input', (e)=>{
+  const q = (e.target.value || '').trim().toLowerCase();
+  document.querySelectorAll('.stone-section').forEach(sec=>{
+    const stone = (sec.dataset.stone || '').toLowerCase();
+    sec.style.display = (!q || stone.includes(q)) ? '' : 'none';
+  });
+});
+
+// Filter by product type
+function filterCategory(cat){
+  document.querySelectorAll('.category-btn').forEach(b=>b.classList.toggle('active', b.dataset.cat===cat));
+  document.querySelectorAll('.product-card').forEach(card=>{
+    card.style.display = (cat==='all' || card.dataset.type === cat) ? 'block' : 'none';
   });
 }
 
-renderSections();
-document.getElementById('searchInput').addEventListener('input',(e)=>{renderSections(e.target.value.toLowerCase())});
+function goHome(){ window.scrollTo({top:0,behavior:'smooth'}); }
+
+// Detail overlay
+const overlay = document.getElementById('overlay');
+const detailImage = document.getElementById('detailImage');
+const detailTitle = document.getElementById('detailTitle');
+const detailDesc = document.getElementById('detailDesc');
+const detailPrice = document.getElementById('detailPrice');
+let currentProduct = null;
+
+function openDetail(productJson){
+  const p = JSON.parse(productJson);
+  currentProduct = p;
+  detailImage.src = p.img;
+  detailTitle.textContent = p.name;
+  detailDesc.textContent = p.desc + '\n\nMaterials: Genuine gemstone, premium metal finish. Quality guaranteed.';
+  detailPrice.textContent = `$${p.price}`;
+  overlay.classList.add('open'); document.body.classList.add('modal-open'); overlay.setAttribute('aria-hidden','false');
+}
+
+overlay.addEventListener('click',(e)=>{ if(e.target===overlay) closeDetail(); });
+function closeDetail(){ overlay.classList.remove('open'); document.body.classList.remove('modal-open'); overlay.setAttribute('aria-hidden','true'); currentProduct=null; }
+
+const btnAddCart = document.getElementById('btnAddCart');
+if(btnAddCart) btnAddCart.addEventListener('click',()=>{ if(!currentProduct) return; alert(`${currentProduct.name} has been saved to your cart.`); });
+
+async function saveProductToWord(){
+  if(!currentProduct) return;
+  let imgData = currentProduct.img;
+  try{
+    const resp = await fetch(currentProduct.img);
+    const blob = await resp.blob();
+    const reader = new FileReader();
+    const base64 = await new Promise((res,rej)=>{ reader.onloadend = ()=>res(reader.result); reader.onerror=rej; reader.readAsDataURL(blob); });
+    imgData = base64;
+  }catch(err){ console.warn('Could not embed image, using remote URL'); }
+
+  const html = `<!doctype html><html><head><meta charset="utf-8"><title>${currentProduct.name}</title></head><body><h1>${currentProduct.name}</h1><p><strong>Price:</strong> $${currentProduct.price}</p><p><strong>Description:</strong> ${currentProduct.desc}</p><div><img src="${imgData}" style="max-width:400px"></div></body></html>`;
+  const blob = new Blob([html],{type:'application/msword'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = `${currentProduct.name.replace(/\s+/g,'_')}.doc`;
+  document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+}
+
+document.getElementById('btnSaveInfo').addEventListener('click', async ()=>{ await saveProductToWord(); alert('Product information downloaded as a Word file.'); });
+
+const btnBack = document.getElementById('btnBack');
+if(btnBack) btnBack.addEventListener('click', ()=>{ closeDetail(); window.scrollTo({top:0,behavior:'smooth'}); });
+
+window.filterCategory = filterCategory; window.goHome = goHome; window.openDetail = openDetail;
 </script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

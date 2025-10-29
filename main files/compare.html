@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Compare Products — Crystal Products</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root{
+      --pink-1: #ffd5e4;
+      --pink-2: #ff91ae;
+      --pink-3: #ffb4c7;
+      --rose-deep: #e24b7a;
+      --accent: #c65384;
+      --muted: #6b3f4a;
+      --card-shadow: rgba(211,107,138,0.18);
+    }
+    *{box-sizing:border-box}
+    body{
+      font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      margin:0;color:var(--muted);
+      background: radial-gradient(900px 500px at 10% 12%, rgba(255,214,229,0.30), transparent 6%),
+                  radial-gradient(700px 300px at 88% 86%, rgba(255,200,220,0.20), transparent 8%),
+                  linear-gradient(120deg,#fff9fb 0%, #fff0f6 40%, #fff0f6 100%);
+    }
+    a{text-decoration:none;color:inherit;}
+    .navbar{background:linear-gradient(90deg, rgba(255,255,255,0.88), rgba(255,255,255,0.75));backdrop-filter: blur(8px);border-bottom:1px solid rgba(255,182,193,0.35);box-shadow:0 10px 30px rgba(211,107,138,0.06);padding:.6rem 1rem;position: sticky; top:0; z-index:1300;}
+    .brand-wrap{display:flex;align-items:center;gap:12px;}
+    .logo-dot{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--pink-2),var(--accent));display:inline-block;box-shadow:0 8px 26px rgba(198,78,120,0.22), inset 0 -4px 10px rgba(255,255,255,0.12);}
+    .navbar-brand{font-family:"Playfair Display", serif;color:var(--accent) !important;font-weight:700;font-size:1.3rem;}
+    .nav-center{margin:0 auto;display:flex;align-items:center;}
+    .nav-link{color:#4b2a3a !important;padding:.6rem .9rem;font-weight:600;position:relative;}
+    .nav-link::after{content:"";position:absolute;left:50%;transform:translateX(-50%) scaleX(0);bottom:6px;height:3px;width:60%;border-radius:6px;background: linear-gradient(90deg,var(--pink-2),var(--pink-3));transition: transform .28s;}
+    .nav-link:hover::after{transform:translateX(-50%) scaleX(1);color:var(--accent) !important;}
+    .container-narrow{max-width:1200px;margin:28px auto;padding:18px}
+    h1{color:var(--rose-deep);margin:0 0 8px}
+    .intro{color:#7a4356;margin-bottom:14px}
+    .controls{background:linear-gradient(90deg,#fff,#fff6f9);padding:16px;border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,0.04);display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+    .controls .form-select, .controls .btn{min-width:180px}
+    .btn-detail{background:linear-gradient(90deg,#ff7aa4,#fcb795);color:white;border:none;padding:.45rem .7rem;border-radius:8px;font-weight:700}
+    .btn-ghost{background:white;border:1px solid rgba(198,78,120,0.12);padding:.45rem .7rem;border-radius:8px}
+    .compare-results{margin-top:22px}
+    .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    @media(max-width:900px){.compare-grid{grid-template-columns:1fr}}
+    .compare-column{background:linear-gradient(145deg,#fff4f6,#ffdbe7);padding:12px;border-radius:12px;border:1px solid rgba(255,182,193,0.45);box-shadow:0 12px 30px var(--card-shadow)}
+    .compare-column h4{margin-top:0;color:var(--accent);font-weight:800}
+    .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    @media(max-width:600px){.cards{grid-template-columns:1fr}}
+    .card{background:white;border-radius:10px;overflow:hidden;border:1px solid rgba(0,0,0,0.04);box-shadow:0 8px 20px rgba(0,0,0,0.06)}
+    .card img{width:100%;height:160px;object-fit:cover;display:block}
+    .card-body{padding:10px}
+    .card-title{font-size:14px;font-weight:800;color:var(--rose-deep);margin:0 0 6px}
+    .card-meta{font-size:13px;color:#7a4356;margin-bottom:8px}
+    .card-foot{display:flex;justify-content:space-between;align-items:center;padding:0 10px 10px}
+    .empty{padding:24px;text-align:center;color:#86515f}
+    .summary{margin-top:18px;background:#fff;padding:12px;border-radius:12px;border:1px solid rgba(198,78,120,0.06);display:flex;gap:12px;align-items:center}
+    .summary .pill{background:linear-gradient(90deg,var(--pink-2),var(--pink-3));color:#fff;padding:8px 10px;border-radius:10px;font-weight:700}
+    .benefit{font-size:13px;color:#5b3a45;margin-top:8px}
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <div class="brand-wrap">
+      <span class="logo-dot" aria-hidden="true"></span>
+      <a class="navbar-brand" href="#">Crystal Products</a>
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu" aria-controls="navmenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse nav-center" id="navmenu">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="newarrival.html">New chakraCollection</a></li>
+        <li class="nav-item"><a class="nav-link" href="specialoffers.html">Specialoffers</a></li>
+        <li class="nav-item"><a class="nav-link" href="product.html">Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-narrow">
+  <h1>Compare Products</h1>
+  <div class="intro">Pick two crystals (one from Products, one from Chakra collection) and a product type. Results come from both pages' data and will show price, benefits and practical recommendation.</div>
+
+  <div class="controls mt-3">
+    <div style="min-width:240px">
+      <label class="form-label mb-1" for="firstCrystal">First crystal (Products)</label>
+      <select id="firstCrystal" class="form-select"></select>
+    </div>
+    <div style="min-width:240px">
+      <label class="form-label mb-1" for="secondCrystal">Second crystal (Chakra)</label>
+      <select id="secondCrystal" class="form-select"></select>
+    </div>
+    <div style="min-width:220px">
+      <label class="form-label mb-1" for="productType">Product type</label>
+      <select id="productType" class="form-select">
+        <option value="All">All types</option>
+        <option value="Bracelets">Bracelets</option>
+        <option value="Rings">Rings</option>
+        <option value="Necklaces">Necklaces</option>
+        <option value="Pendants">Pendants</option>
+        <option value="Earrings">Earrings</option>
+        <option value="Bangles">Bangles</option>
+      </select>
+    </div>
+    <div style="margin-left:auto;display:flex;gap:8px">
+      <button id="btnCompare" class="btn btn-lg btn-detail">Compare</button>
+      <button id="btnReset" class="btn btn-ghost">Reset</button>
+    </div>
+  </div>
+
+  <div id="compareResults" class="compare-results">
+    <div class="compare-grid">
+      <div class="compare-column" id="colA">
+        <h4 id="colAHeading">First Crystal</h4>
+        <div id="colACards" class="cards"></div>
+      </div>
+      <div class="compare-column" id="colB">
+        <h4 id="colBHeading">Second Crystal</h4>
+        <div id="colBCards" class="cards"></div>
+      </div>
+    </div>
+    <div id="summaryWrap"></div>
+  </div>
+</div>
+
+<script>
+const productStones = ['Diamond','Ruby','Emerald','Amethyst','Zircon','Pearl'];
+const chakraStones  = ['Black Tourmaline','Carnelian','Citrine','Rose Quartz','Aquamarine','Amethyst','Clear Quartz'];
+const productTypes = ['Bracelets','Rings','Necklaces','Pendants','Earrings','Bangles'];
+const SHARED_PRODUCTS = [];
+
+function slug(s){ return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,''); }
+
+// Products
+productStones.forEach(stone=>{
+  for(let i=1;i<=6;i++){
+    const type = productTypes[(i-1)%productTypes.length];
+    SHARED_PRODUCTS.push({
+      id: `${slug(stone)}-products-${i}`,
+      name: `${stone} ${type.slice(0,-1)} ${i}`,
+      stone, type,
+      price: (300 + i*45 + Math.random()*40).toFixed(2),
+      img: `assets/products/${stone}-${i}.png`,
+      desc: `${stone} ${type.slice(0,-1)} — premium handcrafted piece.`,
+      source:'products'
+    });
+  }
+});
+
+// Chakra
+chakraStones.forEach(stone=>{
+  for(let i=1;i<=6;i++){
+    const type = productTypes[(i-1)%productTypes.length];
+    SHARED_PRODUCTS.push({
+      id: `${slug(stone)}-chakra-${i}`,
+      name: `${stone} ${type.slice(0,-1)} ${i}`,
+      stone, type,
+      price: (180 + i*30 + Math.random()*30).toFixed(2),
+      img: `assets/chakra/${slug(stone)}_${i}.png`,
+      desc: `${stone} ${type.slice(0,-1)} — chakra-aligned, handpicked.`,
+      source:'chakra'
+    });
+  }
+});
+
+window.SHARED_PRODUCTS = SHARED_PRODUCTS;
+
+const BENEFITS = {
+  'Diamond':'Confidence, clarity, strength. Timeless luxury and durability—excellent for daily wear with care.',
+  'Ruby':'Vitality, passion, protection. Bright, durable stone suitable for rings and pendants.',
+  'Emerald':'Love, insight, balance. Elegant for necklaces and rings; treat carefully for knocks.',
+  'Amethyst':'Calm, intuition, sleep support. Versatile and wearable in many forms.',
+  'Zircon':'Grounding sparkle; affordable brilliance. Good for occasional to regular wear.',
+  'Pearl':'Purity, softness, emotional balance. Softer—avoid rough handling and chemicals.',
+  'Black Tourmaline':'Protection, grounding. Great in bracelets and pendants for everyday carry.',
+  'Carnelian':'Creativity, energy, confidence. Durable for daily wear in many jewelry types.',
+  'Citrine':'Abundance, joy, motivation. Tough and bright—great for frequent wear.',
+  'Rose Quartz':'Love, compassion, heart healing. Softer—best for necklaces/pendants rather than rings.',
+  'Aquamarine':'Communication, calm, clarity. Moderately durable; good for necklaces and earrings.',
+  'Clear Quartz':'Amplification, clarity, versatile healer. Durable and multipurpose for daily wear.'
+};
+
+const WEARABILITY_BY_TYPE = {
+  'Bracelets':'High','Rings':'High','Necklaces':'High','Pendants':'High','Earrings':'High','Bangles':'High'
+};
+
+const firstSelect = document.getElementById('firstCrystal');
+const secondSelect = document.getElementById('secondCrystal');
+const typeSelect = document.getElementById('productType');
+const btnCompare = document.getElementById('btnCompare');
+const btnReset = document.getElementById('btnReset');
+const colAHeading = document.getElementById('colAHeading');
+const colBHeading = document.getElementById('colBHeading');
+const colACards = document.getElementById('colACards');
+const colBCards = document.getElementById('colBCards');
+const summaryWrap = document.getElementById('summaryWrap');
+
+function populate(){
+  firstSelect.innerHTML = productStones.map(s=>`<option value="${s}">${s}</option>`).join('');
+  secondSelect.innerHTML = chakraStones.map(s=>`<option value="${s}">${s}</option>`).join('');
+  firstSelect.selectedIndex=0; secondSelect.selectedIndex=0;
+}
+
+function cardHtml(p){
+  const benefit = BENEFITS[p.stone] || '';
+  const wear = WEARABILITY_BY_TYPE[p.type] || 'Medium';
+  return `
+    <div class="card" data-id="${p.id}">
+      <img src="${p.img}" alt="${p.name}" onerror="this.onerror=null;this.src='https://via.placeholder.com/600x400?text=No+Image'">
+      <div class="card-body">
+        <div class="card-title">${p.name}</div>
+        <div class="card-meta">${p.type} · ${p.stone}</div>
+        <div class="benefit"><strong>Benefit:</strong> ${benefit}</div>
+        <div class="benefit"><strong>Wearability:</strong> ${wear}</div>
+      </div>
+      <div class="card-foot">
+        <div style="font-weight:800;color:#7a4356">$${p.price}</div>
+        <div><a class="btn-detail" href="product-detail.html?id=${encodeURIComponent(p.id)}">View</a></div>
+      </div>
+    </div>`;
+}
+
+function parsePrice(v){ return Number(String(v).replace(/[^0-9.-]+/g,'')) || 0; }
+
+function getProductsFor(stoneName, source, typeFilter){
+  return SHARED_PRODUCTS.filter(p=>
+    p.stone.toLowerCase() === stoneName.toLowerCase() &&
+    p.source === source &&
+    (typeFilter==='All' || p.type.toLowerCase()===typeFilter.toLowerCase())
+  );
+}
+
+function produceRecommendation(aStone,bStone,avgA,avgB){
+  let priceNote='';
+  if(avgA===0 && avgB===0) priceNote='No matching items found.';
+  else if(avgA===avgB) priceNote=`Both have similar average price ($${avgA.toFixed(2)}). Choose based on benefit.`;
+  else { const cheaper=(avgA<avgB)?aStone:bStone; const diff=Math.abs(avgA-avgB).toFixed(2); priceNote=`${cheaper} is cheaper on average by $${diff}.`; }
+
+  const aBenefit = BENEFITS[aStone] || '';
+  const bBenefit = BENEFITS[bStone] || '';
+  let benefitNote = '';
+  if(aBenefit && bBenefit) benefitNote = `Benefits: ${aStone} — ${aBenefit.split('. ')[0]}. ${bStone} — ${bBenefit.split('. ')[0]}.`;
+
+  let pick='';
+  if(avgA===0 && avgB===0) pick='No items to recommend.';
+  else{
+    const quality = {'Diamond':5,'Ruby':4.5,'Emerald':4.5,'Amethyst':3.8,'Zircon':3.2,'Pearl':3.6,'Black Tourmaline':3.6,'Carnelian':3.5,'Citrine':3.7,'Rose Quartz':3.4,'Aquamarine':3.8,'Clear Quartz':3.3};
+    const sa=(quality[aStone]||3.5)/Math.max(1,avgA);
+    const sb=(quality[bStone]||3.5)/Math.max(1,avgB);
+    pick = (sa>sb)? `${aStone} is the better value choice.`:`${bStone} is the better value choice.`;
+  }
+  return {priceNote,benefitNote,pick};
+}
+
+function renderResults(){
+  const aStone = firstSelect.value;
+  const bStone = secondSelect.value;
+  const selType = typeSelect.value;
+
+  colAHeading.textContent = `${aStone} — Products`;
+  colBHeading.textContent = `${bStone} — Chakra Items`;
+
+  const leftList = getProductsFor(aStone,'products',selType);
+  const rightList = getProductsFor(bStone,'chakra',selType);
+
+  colACards.innerHTML = leftList.length ? leftList.map(cardHtml).join('') : `<div class="empty">No matching ${selType==='All'?'products':selType.toLowerCase()} found for ${aStone}.</div>`;
+  colBCards.innerHTML = rightList.length ? rightList.map(cardHtml).join('') : `<div class="empty">No matching ${selType==='All'?'products':selType.toLowerCase()} found for ${bStone}.</div>`;
+
+  const avgA = leftList.length ? (leftList.reduce((s,p)=>s+parsePrice(p.price),0)/leftList.length):0;
+  const avgB = rightList.length ? (rightList.reduce((s,p)=>s+parsePrice(p.price),0)/rightList.length):0;
+
+  const rec = produceRecommendation(aStone,bStone,avgA,avgB);
+
+  summaryWrap.innerHTML = `
+    <div class="summary">
+      <div style="flex:1">
+        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+          <div class="pill">Avg price ${aStone}: ${avgA?('$'+avgA.toFixed(2)):'—'}</div>
+          <div class="pill">Avg price ${bStone}: ${avgB?('$'+avgB.toFixed(2)):'—'}</div>
+          <div style="padding:8px;border-radius:10px;background:#fff;border:1px solid rgba(198,78,120,0.06);font-weight:700">${rec.priceNote}</div>
+        </div>
+        <div style="margin-top:8px;color:#6b3f4a">${rec.benefitNote}</div>
+      </div>
+      <div style="min-width:220px;text-align:right">
+        <div style="font-weight:800;color:#7a4356">${rec.pick}</div>
+        <div style="font-size:13px;color:#86515f;margin-top:6px">Tip: choose based on the benefit you need (see card benefits). For daily durability choose harder stones and secure settings.</div>
+      </div>
+    </div>
+  `;
+  document.getElementById('compareResults').scrollIntoView({behavior:'smooth'});
+}
+
+function resetAll(){
+  populate();
+  typeSelect.value='All';
+  colACards.innerHTML='<div class="empty">Choose crystals and type, then click Compare.</div>';
+  colBCards.innerHTML='<div class="empty">Choose crystals and type, then click Compare.</div>';
+  colAHeading.textContent='First Crystal';
+  colBHeading.textContent='Second Crystal';
+  summaryWrap.innerHTML='';
+}
+
+populate();
+resetAll();
+btnCompare.addEventListener('click',()=>renderResults());
+btnReset.addEventListener('click',()=>resetAll());
+[firstSelect,secondSelect,typeSelect].forEach(el=>{el.addEventListener('keyup',e=>{if(e.key==='Enter') btnCompare.click();});});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
