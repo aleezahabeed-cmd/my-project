@@ -127,7 +127,7 @@ a {
 .product-carousel {
   background: linear-gradient(180deg, #fff8fb 0%, #fff0f5 100%);
   text-align: center;
-  position: relative;
+  position: relative; 
   overflow: hidden;
 }
 
