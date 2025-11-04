@@ -465,7 +465,7 @@
     <div class="collection-selector">
       <button class="collection-btn active" data-collection="all">All Collections</button>
       <button class="collection-btn" data-collection="chakra">Chakra Collection</button>
-      <button class="collection-btn" data-collection="professional">Professional Collection</button>
+      <button class="collection-btn" data-collection="professional">Most Sell  Collection</button>
     </div>
     
     <div class="compare-actions">
@@ -583,26 +583,109 @@
     {key:'third',name:'Third Eye',stone:'Amethyst',folder:'amethyst'},
     {key:'crown',name:'Crown',stone:'Clear Quartz',folder:'clear-quartz'}
   ];
+    // Data model: stones and product types
+    const stones = ['Diamond', 'Ruby', 'Emerald', 'Amethyst', 'Zircon', 'Pearl', 'Black Tourmaline', 'Carnelian', 'Citrine', 'Rose Quartz', 'Aquamarine', 'Clear Quartz'];
+    const productTypes = ['bracelets', 'rings', 'necklaces', 'pendants', 'earrings', 'bangles'];
 
-  const stones = ['Diamond', 'Ruby', 'Emerald', 'Amethyst', 'Zircon', 'Pearl'];
-  const productTypes = ['bracelets', 'rings', 'necklaces', 'pendants', 'earrings', 'bangles'];
-
-  // Using placeholder images to ensure they display
-  const placeholderImages = {
-    'diamond': '../assets/diamond/diamond1.png',
-    'diamond': '../assets/diamond/diamond2.png',
-    'citrine': 'https://placehold.co/300x200/f1c40f/white?text=Citrine',
-    'rose-quartz': 'https://placehold.co/300x200/fadbd8/333?text=Rose+Quartz',
-    'aquamarine': 'https://placehold.co/300x200/85c1e9/white?text=Aquamarine',
-    'amethyst': 'https://placehold.co/300x200/9b59b6/white?text=Amethyst',
-    'clear-quartz': 'https://placehold.co/300x200/ecf0f1/333?text=Clear+Quartz',
-    'diamond': 'https://placehold.co/300x200/bdc3c7/333?text=Diamond',
-    'ruby': 'https://placehold.co/300x200/e74c3c/white?text=Ruby',
-    'emerald': 'https://placehold.co/300x200/27ae60/white?text=Emerald',
-    'zircon': 'https://placehold.co/300x200/3498db/white?text=Zircon',
-    'pearl': 'https://placehold.co/300x200/ecf0f1/333?text=Pearl'
-  };
-
+    // Image paths for each stone (1-6 images for each)
+    const stoneImages = {
+      'Diamond': [
+        '../assets/diamond/diamond1.png',
+        '../assets/diamond/diamond2.png',
+        '../assets/diamond/diamond3.png',
+        '../assets/diamond/diamond4.png',
+        '../assets/diamond/diamond5.png',
+        '../assets/diamond/diamond6.png'
+      ],
+      'Ruby': [
+        '../assets/ruby/ruby1.png',
+        '../assets/ruby/ruby2.png',
+        '../assets/ruby/ruby3.png',
+        '../assets/ruby/ruby4.png',
+        '../assets/ruby/ruby5.png',
+        '../assets/ruby/ruby6.png'
+      ],
+      'Emerald': [
+        '../assets/emerald/emerald1.png',
+        '../assets/emerald/emerald2.png',
+        '../assets/emerald/emerald3.png',
+        '../assets/emerald/emerald4.png',
+        '../assets/emerald/emerald5.png',
+        '../assets/emerald/emerald6.png'
+      ],
+      'Amethyst': [
+        '../assets/amethyst/amethyst1.png',
+        '../assets/amethyst/amethyst2.png',
+        '../assets/amethyst/amethyst3.png',
+        '../assets/amethyst/amethyst4.png',
+        '../assets/amethyst/amethyst5.png',
+        '../assets/amethyst/amethyst6.png'
+      ],
+      'Zircon': [
+        '../assets/zircon/zircon1.png',
+        '../assets/zircon/zircon2.png',
+        '../assets/zircon/zircon3.png',
+        '../assets/zircon/zircon4.png',
+        '../assets/zircon/zircon5.png',
+        '../assets/zircon/zircon6.png'
+      ],
+      'Pearl': [
+        '../assets/pearl/pearl1.png',
+        '../assets/pearl/pearl2.png',
+        '../assets/pearl/pearl3.png',
+        '../assets/pearl/pearl4.png',
+        '../assets/pearl/pearl5.png',
+        '../assets/pearl/pearl6.png'
+      ],
+      'Black Tourmaline': [
+        '../assets/black-tourmaline/black-tourmaline1.png',
+        '../assets/black-tourmaline/black-tourmaline2.png',
+        '../assets/black-tourmaline/black-tourmaline3.png',
+        '../assets/black-tourmaline/black-tourmaline4.png',
+        '../assets/black-tourmaline/black-tourmaline5.png',
+        '../assets/black-tourmaline/black-tourmaline6.png'
+      ],
+      'Carnelian': [
+        '../assets/carnelian/carnelian1.png',
+        '../assets/carnelian/carnelian2.png',
+        '../assets/carnelian/carnelian3.png',
+        '../assets/carnelian/carnelian4.png',
+        '../assets/carnelian/carnelian5.png',
+        '../assets/carnelian/carnelian6.png'
+      ],
+      'Citrine': [
+        '../assets/citrine/citrine1.png',
+        '../assets/citrine/citrine2.png',
+        '../assets/citrine/citrine3.png',
+        '../assets/citrine/citrine4.png',
+        '../assets/citrine/citrine5.png',
+        '../assets/citrine/citrine6.png'
+      ],
+      'Rose Quartz': [
+        '../assets/rose-quartz/rose-quartz1.png',
+        '../assets/rose-quartz/rose-quartz2.png',
+        '../assets/rose-quartz/rose-quartz3.png',
+        '../assets/rose-quartz/rose-quartz4.png',
+        '../assets/rose-quartz/rose-quartz5.png',
+        '../assets/rose-quartz/rose-quartz6.png'
+      ],
+      'Aquamarine': [
+        '../assets/aquamarine/aquamarine1.png',
+        '../assets/aquamarine/aquamarine2.png',
+        '../assets/aquamarine/aquamarine3.png',
+        '../assets/aquamarine/aquamarine4.png',
+        '../assets/aquamarine/aquamarine5.png',
+        '../assets/aquamarine/aquamarine6.png'
+      ],
+      'Clear Quartz': [
+        '../assets/clear-quartz/clear-quartz1.png',
+        '../assets/clear-quartz/clear-quartz2.png',
+        '../assets/clear-quartz/clear-quartz3.png',
+        '../assets/clear-quartz/clear-quartz4.png',
+        '../assets/clear-quartz/clear-quartz5.png',
+        '../assets/clear-quartz/clear-quartz6.png'
+      ]
+    };
   // Build demo products for both collections
   function buildDemoItems() {
     const demo = {};

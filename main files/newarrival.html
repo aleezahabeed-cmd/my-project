@@ -5,7 +5,648 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Chakra Collection — Crystal Products</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      --pink-1: #ffd5e4;
+      --pink-2: #ff91ae;
+      --pink-3: #ffb4c7;
+      --rose-deep: #e24b7a;
+      --accent: #c65384;
+      --muted: #6b3f4a;
+      --card-shadow: rgba(211, 107, 138, 0.18);
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      margin: 0;
+      color: var(--muted);
+      background: linear-gradient(120deg, #fff9fb 0%, #fff0f6 100%)
+    }
+
+    .navbar {
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.78));
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(255, 182, 193, 0.35)
+    }
+
+/* ================= NAVBAR ================= */
+.navbar {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.75));
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 182, 193, 0.35);
+  box-shadow: 0 10px 30px rgba(211, 107, 138, 0.06);
+  padding: .6rem 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1300;
+}
+
+.brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-dot {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--pink-2), var(--accent));
+  display: inline-block;
+  box-shadow: 0 8px 26px rgba(198, 78, 120, 0.22), inset 0 -4px 10px rgba(255, 255, 255, 0.12);
+}
+
+.navbar-brand {
+  font-family: "Playfair Display", serif;
+  color: var(--accent) !important;
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+.nav-center {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  color: #4b2a3a !important;
+  padding: .6rem .9rem;
+  font-weight: 600;
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  bottom: 6px;
+  height: 3px;
+  width: 60%;
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--pink-2), var(--pink-3));
+  transition: transform .28s;
+}
+
+.nav-link:hover::after {
+  transform: translateX(-50%) scaleX(1);
+  color: var(--accent) !important;
+}
+
+.nav-buttons button {
+  border-radius: 999px;
+  padding: .5rem 1rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: transform .2s;
+}
+
+.btn-compare {
+  background: linear-gradient(90deg, #ffb4c7, #ff91ae);
+  color: #fff;
+}
+
+.btn-login {
+  background: linear-gradient(90deg, #4da6ff, #1a75ff);
+  color: #fff;
+}
+
+.nav-buttons button:hover {
+  transform: scale(1.05);
+}
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
+
+    .logo-dot {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--pink-2), var(--accent))
+    }
+
+    .navbar-brand {
+      font-family: "Playfair Display", serif;
+      color: var(--accent);
+      font-weight: 700
+    }
+
+    .container-narrow {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 18px
+    }
+
+    .page-heading {
+      text-align: center;
+      font-size: 2.4rem;
+      color: var(--rose-deep);
+      margin: 24px 0 6px
+    }
+
+    .sub {
+      color: #7a4356;
+      text-align: center;
+      margin-bottom: 18px
+    }
+
+    .category-tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 8px 0
+    }
+
+    .category-btn {
+      border-radius: 999px;
+      padding: .45rem .9rem;
+      border: 1px solid rgba(198, 78, 120, 0.12);
+      background: white;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .category-btn.active {
+      background: linear-gradient(90deg, var(--pink-2), var(--pink-3));
+      color: #fff
+    }
+
+    .search-row {
+      display: flex;
+      justify-content: center;
+      margin: 12px 0 18px
+    }
+
+    #searchInput {
+      width: 420px;
+      max-width: 92%;
+      padding: 10px 14px;
+      border-radius: 28px;
+      border: 1px solid rgba(198, 78, 120, 0.14);
+      box-shadow: 0 8px 26px rgba(198, 78, 120, 0.04)
+    }
+
+    .slider {
+      overflow: hidden;
+      padding: 12px 0
+    }
+
+    .slider-track {
+      display: flex;
+      gap: 14px;
+      align-items: center
+    }
+
+    .slide {
+      flex: 0 0 auto
+    }
+
+    .img-wrap {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      border: 6px solid rgba(255, 255, 255, 0.6);
+      background: #fff
+    }
+
+    .img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover
+    }
+
+    @keyframes scroll-left {
+      0% {
+        transform: translateX(0)
+      }
+
+      100% {
+        transform: translateX(-50%)
+      }
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 22px
+    }
+
+    @media(max-width:992px) {
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    @media(max-width:600px) {
+      .product-grid {
+        grid-template-columns: repeat(1, 1fr)
+      }
+    }
+
+    .crystal-card {
+      background: linear-gradient(145deg, #fff4f6, #ffdbe7);
+      border-radius: 12px;
+      padding: 12px;
+      border: 1px solid rgba(255, 182, 193, 0.45);
+      box-shadow: 0 12px 30px var(--card-shadow);
+      text-align: center;
+      transition: transform .28s, opacity .25s
+    }
+
+    .crystal-card:hover {
+      transform: translateY(-6px)
+    }
+
+    .crystal-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 10px
+    }
+
+    .crystal-card h5 {
+      margin: 12px 0 6px;
+      color: var(--accent);
+      font-weight: 700
+    }
+
+    .crystal-card p.meta {
+      color: #7a4356;
+      margin: 0 0 10px
+    }
+
+    .crystal-card.hide {
+      opacity: 0;
+      transform: scale(.98);
+      pointer-events: none;
+      display: none !important
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .btn-detail {
+      border-radius: 89px;
+      padding: .55rem 1.1rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #ff7aa4, #fcb795);
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s;
+      flex: 1;
+    }
+
+    .btn-detail:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-compare-card {
+      border-radius: 26px;
+      padding: .55rem 1.1rem;
+      font-weight: 700;
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      cursor: pointer;
+      transition: all 0.3s;
+      flex: 1;
+    }
+.crystal-card {
+  background: linear-gradient(145deg, #fff4f6, #ffdbe7);
+  border-radius: 12px;
+  padding: 8px;  /* Reduced from 12px */
+  border: 1px solid rgba(255, 182, 193, 0.45);
+  box-shadow: 0 12px 30px var(--card-shadow);
+  text-align: center;
+  transition: transform .28s, opacity .25s
+}
+
+.crystal-card img {
+  width: 100%;
+  height: 300px;  /* Reduced from 400px */
+  object-fit: cover;
+  border-radius: 10px
+}
+
+.crystal-card h5 {
+  margin: 8px 0 4px;  /* Reduced margins */
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1rem;  /* Reduced font size */
+}
+
+.crystal-card p.meta {
+  color: #7a4356;
+  margin: 0 0 8px;
+  font-size: 0.9rem;  /* Reduced font size */
+}
+
+.btn-detail, .btn-compare-card {
+  border-radius: 26px;
+  padding: .4rem .8rem;  /* Reduced padding */
+  font-weight: 700;
+  font-size: 0.9rem;  /* Reduced font size */
+  /* ... rest of button styles */
+}
+    .btn-compare-card:hover {
+      background: rgba(198, 83, 132, 0.1);
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 14, 20, 0.45);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000
+    }
+
+    .overlay.open {
+      display: flex
+    }
+
+    .detail-panel {
+      background: #fff;
+      border-radius: 14px;
+      max-width: 920px;
+      width: 96%;
+      display: flex;
+      gap: 18px;
+      padding: 18px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
+      backdrop-filter: blur(6px)
+    }
+
+    .detail-left {
+      flex: 1
+    }
+
+    .detail-left img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: 10px
+    }
+
+    .detail-right {
+      flex: 1;
+      padding: 6px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px
+    }
+
+    .detail-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--rose-deep)
+    }
+
+    .detail-desc {
+      color: #5a3744
+    }
+
+    .detail-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px
+    }
+
+    .btn-ghost {
+      background: white;
+      border: 1px solid rgba(198, 78, 120, 0.12);
+      padding: .6rem .95rem;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(198, 83, 132, 0.1);
+    }
+
+    body.modal-open main,
+    body.modal-open nav,
+    body.modal-open footer {
+      filter: blur(6px) brightness(.95);
+      pointer-events: none;
+      user-select: none
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--accent);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 1050;
+      display: none;
+      align-items: center;
+      gap: 0.75rem;
+      max-width: 350px;
+    }
+    
+    .toast.show {
+      display: flex;
+      animation: slideIn 0.3s ease;
+    }
+    
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    
+    .toast-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.25rem;
+      cursor: pointer;
+      margin-left: auto;
+    }
+
+    /* Stone Header Styles */
+    .stone-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    .stone-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--rose-deep);
+    }
+
+    .stone-sub {
+      color: #8b5568;
+    }
+
+    .chakra-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--pink-2), var(--accent));
+    }
+
+    /*FOOTER*/
+    .footer {
+      width: 100%;
+      background: linear-gradient(90deg, rgba(255, 214, 229, 0.95), rgba(255, 240, 245, 0.95));
+      color: #a65d76;
+      font-size: 0.95rem;
+      box-shadow: 0 -6px 24px rgba(211, 107, 138, 0.08);
+      border-top: 1px solid rgba(198, 78, 120, 0.1);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 40px 60px;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    /* Columns */
+    .footer-left,
+    .footer-middle,
+    .footer-right {
+      flex: 1;
+      min-width: 220px;
+    }
+
+    /* Middle (Quick Links + Access side-by-side) */
+    .footer-middle {
+      display: flex;
+      justify-content: center;
+      gap: 80px;
+    }
+
+    /* All Headings (including About) — centered */
+    .footer-heading {
+      font-family: "Playfair Display", serif;
+      color: #b02d63;
+      margin-bottom: 12px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-align: center;
+      width: 100%;
+    }
+
+    /* About paragraph — centered under heading */
+    .footer-left p {
+      max-width: 300px;
+      color: #9b5b73;
+      line-height: 1.6;
+      text-align: center;
+      margin: 0 auto;
+    }
+
+    /* Lists (center under headings) */
+    .footer-nav,
+    .footer-products {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-nav a,
+    .footer-products a {
+      color: #a65d76;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.25s ease;
+    }
+
+    .footer-nav a:hover,
+    .footer-products a:hover {
+      color: #c65384;
+    }
+
+    /* Social icons */
+    .socials {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      margin-top: 8px;
+    }
+
+    .socials a svg {
+      transition: transform 0.3s ease, fill 0.3s ease;
+    }
+
+    .socials a:hover svg {
+      transform: scale(1.15);
+    }
+
+    /* Footer bottom strip */
+    .footer-bottom {
+      text-align: center;
+      padding: 14px;
+      background: rgba(255, 240, 245, 0.6);
+      color: #9b5b73;
+      font-size: 0.85rem;
+    }
+
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 768px) {
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 24px;
+        padding: 30px 20px;
+      }
+
+      .footer-center {
+        text-align: center;
+      }
+      
+      .card-actions {
+        flex-direction: column;
+      }
+      
+      .stone-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -60,6 +701,12 @@
 
 </main>
 
+<!-- Toast Notification -->
+<div class="toast" id="toast">
+  <span id="toastMessage">Product added to compare!</span>
+  <button class="toast-close" onclick="hideToast()">&times;</button>
+</div>
+
 <div id="overlay" class="overlay" role="dialog" aria-hidden="true">
   <div class="detail-panel" role="document">
     <div class="detail-left"><img id="detailImage" src="" alt="Product image"></div>
@@ -71,12 +718,14 @@
       <div id="detailDesc" class="detail-desc"></div>
       <div class="detail-actions">
         <button id="btnAddCart" class="btn-detail">Add to Cart</button>
+        <button id="btnAddToCompareDetail" class="btn-ghost">Add to Compare</button>
         <button id="btnSaveInfo" class="btn-ghost">Save Info (Word)</button>
         <button id="btnBack" class="btn-ghost">Back</button>
       </div>
     </div>
   </div>
 </div>
+
 <!-- ================= CONTACT US — CENTERED & SLIM ================= -->
 <section class="contact-banner">
   <div class="container text-center">
@@ -84,7 +733,7 @@
    <p>
   Stay connected with Crystal Products embrace harmony, healing, and the magic of natural energy. <br>
   Let your inner light shine through every crystal you hold. <br>
-  We’re here to guide your journey toward balance and beauty.
+  We're here to guide your journey toward balance and beauty.
 </p>
 <br>
     <form class="contact-form">
@@ -93,6 +742,7 @@
     </form>
   </div>
 </section>
+
 <!-- =============== FOOTER =============== -->
 <footer class="footer">
   <div class="container-fluid footer-inner">
@@ -161,13 +811,13 @@
 
 <script>
 const chakras = [
-  {key:'root',name:'Root',stone:'Black Tourmaline',folder:'black-tourmaline'},
-  {key:'sacral',name:'Sacral',stone:'Carnelian',folder:'carnelian'},
-  {key:'solar',name:'Solar Plexus',stone:'Citrine',folder:'citrine'},
-  {key:'heart',name:'Heart',stone:'Rose Quartz',folder:'rose-quartz'},
-  {key:'throat',name:'Throat',stone:'Aquamarine',folder:'aquamarine'},
-  {key:'third',name:'Third Eye',stone:'Amethyst',folder:'amethyst'},
-  {key:'crown',name:'Crown',stone:'Clear Quartz',folder:'clear-quartz'}
+  {key:'root',name:'Root',stone:'Black Tourmaline',folder:'black-tourmaline',icon:'../assets/black-tourmaline/black-tourmaline1.png'},
+  {key:'sacral',name:'Sacral',stone:'Carnelian',folder:'carnelian',icon:'../assets/carnelian/carnelian1.png'},
+  {key:'solar',name:'Solar Plexus',stone:'Citrine',folder:'citrine',icon:'../assets/citrine/citrine1.png'},
+  {key:'heart',name:'Heart',stone:'Rose Quartz',folder:'rose-quartz',icon:'../assets/rose-quartz/rose-quartz1.png'},
+  {key:'throat',name:'Throat',stone:'Aquamarine',folder:'aquamarine',icon:'../assets/aquamarine/aquamarine1.png'},
+  {key:'third',name:'Third Eye',stone:'Amethyst',folder:'amethyst',icon:'../assets/amethyst/amethyst1.png'},
+  {key:'crown',name:'Crown',stone:'Clear Quartz',folder:'clear-quartz',icon:'../assets/clear-quartz/clear-quartz1.png'}
 ];
 
 function buildDemoItems(){
@@ -185,7 +835,8 @@ function buildDemoItems(){
         name:`${ch.stone} ${type.charAt(0).toUpperCase()+type.slice(1)} ${i}`,
         price:(120+i*28).toFixed(2),
         img:`../assets/${ch.folder}/${ch.folder}${i}.png`,
-        desc:`Beautiful handcrafted ${ch.stone} ${type} ideal for chakra balance.`
+        desc:`Beautiful handcrafted ${ch.stone} ${type} ideal for chakra balance.`,
+        collection: 'chakra'
       });
     }
   });
@@ -202,10 +853,13 @@ function createChakraSection(ch){
   sec.className='stone-section';
 
   const header=document.createElement('div');
+  header.className='stone-header';
   header.innerHTML=
-  `<div style="width:48px;height:48px;border-radius:8px;background:linear-gradient(135deg,var(--pink-2),var(--accent));display:flex;align-items:center;justify-content:center;color:white;font-weight:800">${ch.name.charAt(0)}</div>
-  <div><div class="stone-title">${ch.name} Chakra — ${ch.stone}</div>
-  <div class="stone-sub">Balanced with ${ch.stone}.</div></div>`;
+  `<img src="${ch.icon}" alt="${ch.name} Chakra" class="chakra-icon">
+  <div>
+    <div class="stone-title">${ch.name} Chakra — ${ch.stone}</div>
+    <div class="stone-sub">Balanced with ${ch.stone}.</div>
+  </div>`;
   sec.appendChild(header);
 
   const slider=document.createElement('div');
@@ -218,7 +872,7 @@ function createChakraSection(ch){
       const slide=document.createElement('div');
       slide.className='slide';
       slide.innerHTML=
-      `<div class="img-wrap"><img src="../assets/${ch.folder}/${ch.folder}${i}.png"></div>`;
+      `<div class="img-wrap"><img src="../assets/${ch.folder}/${ch.folder}${i}.png" alt="${ch.stone} ${i}"></div>`;
       track.appendChild(slide);
     }
   }
@@ -237,11 +891,14 @@ function createChakraSection(ch){
     card.dataset.type=p.type;
     card.dataset.stone=p.stone;
     card.innerHTML=
-    `<img src="${p.img}">
+    `<img src="${p.img}" alt="${p.name}">
      <h5>${p.name}</h5>
      <p class="meta">${capitalize(p.type)} · ${capitalize(p.chakra)} Chakra</p>
      <div><strong>$${p.price}</strong></div>
-     <button class="btn-detail" onclick='openDetail(${JSON.stringify(JSON.stringify(p))})'>See details</button>`;
+     <div class="card-actions">
+       <button class="btn-detail" onclick='openDetail(${JSON.stringify(JSON.stringify(p))})'>See details</button>
+       <button class="btn-compare-card" onclick='addToCompare(${JSON.stringify(JSON.stringify(p))})'>Add to Compare</button>
+     </div>`;
     grid.appendChild(card);
   });
   sec.appendChild(grid);
@@ -255,6 +912,49 @@ function renderAll(){
 }
 renderAll();
 
+// Toast notification functions
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  const toastMessage = document.getElementById('toastMessage');
+  toastMessage.textContent = message;
+  toast.classList.add('show');
+  
+  // Auto hide after 3 seconds
+  setTimeout(() => {
+    hideToast();
+  }, 3000);
+}
+
+function hideToast() {
+  const toast = document.getElementById('toast');
+  toast.classList.remove('show');
+}
+
+// Add to Compare functionality
+function addToCompare(productJson) {
+  const product = JSON.parse(productJson);
+  
+  // Get current compare products from localStorage
+  let compareProducts = JSON.parse(localStorage.getItem('compareProducts')) || [];
+  
+  // Check if product is already in compare
+  const isAlreadyAdded = compareProducts.some(p => p.id === product.id);
+  
+  if (isAlreadyAdded) {
+    showToast('This product is already in your compare list!');
+    return;
+  }
+  
+  // Add product to compare
+  compareProducts.push(product);
+  
+  // Save to localStorage
+  localStorage.setItem('compareProducts', JSON.stringify(compareProducts));
+  
+  // Show success message
+  showToast('Product added to compare!');
+}
+
 document.getElementById('searchInput').addEventListener('input',(e)=>{
   const q=(e.target.value||'').trim().toLowerCase();
   document.querySelectorAll('.crystal-card').forEach(card=>{
@@ -262,8 +962,7 @@ document.getElementById('searchInput').addEventListener('input',(e)=>{
     card.classList.toggle('hide',q && !combined.includes(q));
   });
   document.querySelectorAll('.stone-section').forEach(sec=>{
-    sec.style.display=sec.querySelectorAll('.crystal-card:not(.hide)').length?'':
-    'none';
+    sec.style.display=sec.querySelectorAll('.crystal-card:not(.hide)').length?'':'none';
   });
 });
 
@@ -307,6 +1006,15 @@ document.getElementById('btnAddCart').addEventListener('click',()=>{
   if(currentProduct)alert(currentProduct.name+" saved to cart.");
 });
 
+// Add to Compare from detail view
+const btnAddToCompareDetail = document.getElementById('btnAddToCompareDetail');
+if (btnAddToCompareDetail) {
+  btnAddToCompareDetail.addEventListener('click', () => {
+    if (!currentProduct) return;
+    addToCompare(JSON.stringify(currentProduct));
+  });
+}
+
 async function saveProductToWord(){
   if(!currentProduct)return;
   const html=
@@ -320,6 +1028,11 @@ async function saveProductToWord(){
 }
 document.getElementById('btnSaveInfo').addEventListener('click',saveProductToWord);
 document.getElementById('btnBack').addEventListener('click',()=>closeDetail());
+
+// Make functions available globally
+window.addToCompare = addToCompare;
+window.filterCategory = filterCategory;
+window.openDetail = openDetail;
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
