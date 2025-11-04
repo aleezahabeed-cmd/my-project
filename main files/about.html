@@ -11,6 +11,54 @@
 
 
 <link rel="stylesheet" href="style.css">
+<style>
+ .story {
+  padding: 60px 0;
+  background: linear-gradient(180deg, #fff8fb 0%, #fff0f5 100%);
+}
+
+.story .row {
+  display: flex;
+  align-items: stretch; /* both columns same height */
+}
+
+.story .col-md-6 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.story-img-box {
+  width: 100%;
+  height: 350px; /* equal height with text */
+  border-radius: 14px;
+  overflow: hidden; /* ensures image fits neatly inside */
+  box-shadow: 0 6px 18px rgba(255, 140, 170, 0.25);
+  background-color: #fff;
+}
+
+.story-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* 🟢 shows full image without zoom or crop */
+  border-radius: 14px;
+}
+
+.story .section-title {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  color: var(--rose-deep);
+  margin-bottom: 12px;
+}
+
+.story .content-text {
+  color: #6a404f;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+
+</style>
 </head>
 <body>
 
@@ -48,37 +96,37 @@
 </nav>
 
 
-  <!-- HERO CAROUSEL -->
-  <section id="heroCarousel" class="carousel slide hero" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="../assets/citrine/citrine4.png" alt="Crystals & Energy" />
-        <div class="carousel-caption">
-          <h1>Our Story</h1>
-          <p>Discover the harmony of beauty, energy, and intention.</p>
-        </div>
-      </div>
+
      
   </section>
-
-  <!-- OUR STORY -->
-  <section class="story" data-fade>
-    <div class="container">
-      <div class="row align-items-center g-4">
-        <div class="col-md-6">
-          <img src="../assets/team/download (1).jfif" alt="Our Story" class="img-fluid">
-        </div>
-        <div class="col-md-6">
-          <h2 class="section-title">Our Story</h2>
-          <p class="content-text">Crystal Products began with a passion for natural energy and beauty. What started as a small collection of healing stones has blossomed into a trusted brand that brings balance, wellness, and elegance into every home. We handpick each crystal to ensure authenticity, positive vibration, and aesthetic perfection.</p>
+  <br>
+<!-- OUR STORY -->
+<section class="story" data-fade>
+  <div class="container mt-5">
+    <div class="row align-items-center g-4">
+      <div class="col-md-6">
+        <div class="story-img-box">
+          <img src="../assets/team/download (1).jfif" alt="Our Story" class="img-fluid story-img">
         </div>
       </div>
+      <div class="col-md-6">
+        <h2 class="section-title">Our Story</h2>
+        <p class="content-text">
+          Crystal Products began with a passion for natural energy and beauty.
+          What started as a small collection of healing stones has blossomed into
+          a trusted brand that brings balance, wellness, and elegance into every home.
+          We handpick each crystal to ensure authenticity, positive vibration,
+          and aesthetic perfection.
+        </p>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
+<br><br><br><br><br>
 
   <!-- OUR VISION -->
   <section class="vision bg-light" data-fade>
-    <div class="container">
+    <div class="container mt-6>
       <div class="row align-items-center g-4 flex-row-reverse">
         <div class="col-md-6">
           <img src="../assets/chakra/about-vision.jpg" alt="Our Vision" class="img-fluid">
@@ -90,10 +138,10 @@
       </div>
     </div>
   </section>
-
+<br><br><br><br>
   <!-- OUR MISSION -->
   <section class="mission" data-fade>
-    <div class="container">
+    <div class="container mt-5">
       <div class="row align-items-center g-4">
         <div class="col-md-6">
           <img src="../assets/chakra/about-mission.jpg" alt="Our Mission" class="img-fluid">
@@ -104,7 +152,7 @@
         </div>
       </div>
     </div>
-
+<br><br><br><br>
   <!-- OUR TEAM -->
 <section class="team bg-light" data-fade>
   <div class="container text-center">

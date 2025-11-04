@@ -6,7 +6,651 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Crystal Products — Products</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <style>
+    /* CSS Variables */
+    :root {
+      --accent: #c65384;
+      --pink-1: #f8d7e3;
+      --pink-2: #e6a8c5;
+      --text: #333;
+      --light: #f9f9f9;
+      --rose-deep: #e24b7a;
+      --muted: #6b3f4a;
+      --glass: rgba(255, 255, 255, 0.22);
+      --card-shadow: rgba(211, 107, 138, 0.18);
+    }
+    
+    /* Global Styles */
+    body {
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(120deg, #fff9fb 0%, #fff0f6 100%);
+      line-height: 1.6;
+      margin: 0;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    /* Navigation */
+    .navbar {
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.75));
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255, 182, 193, 0.35);
+      box-shadow: 0 10px 30px rgba(211, 107, 138, 0.06);
+      padding: .6rem 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 1300;
+    }
+    
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .logo-dot {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--pink-2), var(--accent));
+      display: inline-block;
+      box-shadow: 0 8px 26px rgba(198, 78, 120, 0.22), inset 0 -4px 10px rgba(255, 255, 255, 0.12);
+    }
+    
+    .navbar-brand {
+      font-family: "Playfair Display", serif;
+      color: var(--accent) !important;
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+    
+    .nav-link {
+      color: #4b2a3a !important;
+      padding: .6rem .9rem;
+      font-weight: 600;
+      position: relative;
+    }
+    
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%) scaleX(0);
+      bottom: 6px;
+      height: 3px;
+      width: 60%;
+      border-radius: 6px;
+      background: linear-gradient(90deg, var(--pink-2), var(--pink-3));
+      transition: transform .28s;
+    }
+    
+    .nav-link:hover::after {
+      transform: translateX(-50%) scaleX(1);
+      color: var(--accent) !important;
+    }
+    
+    .nav-buttons button {
+      border-radius: 999px;
+      padding: .5rem 1rem;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: transform .2s;
+    }
+    
+    .btn-compare {
+      background: linear-gradient(90deg, #ffb4c7, #ff91ae);
+      color: #fff;
+    }
+    
+    .nav-buttons button:hover {
+      transform: scale(1.05);
+    }
+    
+    /* Page Header */
+    .page-heading {
+      text-align: center;
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--rose-deep);
+      margin: 28px 0 10px;
+    }
+    
+    .subheading {
+      text-align: center;
+      color: #7a4356;
+      margin-bottom: 20px;
+    }
+    
+    /* Products Layout */
+    .products-wrap {
+      max-width: 1200px;
+      margin: 18px auto;
+      padding: 18px;
+    }
+    
+    /* Category Tabs */
+    .category-tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 6px;
+    }
+    
+    .category-btn {
+      border-radius: 999px;
+      padding: .45rem .9rem;
+      border: 1px solid rgba(198, 78, 120, 0.12);
+      background: white;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .category-btn.active {
+      background: linear-gradient(90deg, var(--pink-2), var(--pink-3));
+      color: #fff;
+    }
+    
+    /* Search */
+    .search-row {
+      display: flex;
+      justify-content: center;
+      margin: 12px 0 26px;
+    }
+    
+    #searchInput {
+      width: 360px;
+      max-width: 92%;
+      padding: 12px 16px;
+      border-radius: 28px;
+      border: 1px solid rgba(198, 78, 120, 0.14);
+      box-shadow: 0 8px 26px rgba(198, 78, 120, 0.04);
+    }
+    
+    /* Stone Sections */
+    .stone-section {
+      margin: 36px 0;
+    }
+    
+    .stone-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+    
+    .stone-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--rose-deep);
+    }
+    
+    .stone-sub {
+      color: #8b5568;
+    }
+    
+    /* Slider */
+    .slider {
+      overflow: hidden;
+      position: relative;
+      padding: 12px 0;
+    }
+    
+    .slider-track {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      width: max-content;
+    }
+    
+    .slide {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .slide .img-wrap {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      overflow: hidden;
+      display: block;
+      box-shadow: 0 12px 30px rgba(211, 107, 138, 0.12);
+      border: 6px solid rgba(255, 255, 255, 0.6);
+      background: #fff;
+    }
+    
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    
+    /* Product Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 18px;
+    }
+    
+    .product-card {
+      background: linear-gradient(145deg, #fff4f6, #ffdbe7);
+      border-radius: 14px;
+      padding: 12px;
+      border: 1px solid rgba(255, 182, 193, 0.45);
+      box-shadow: 0 12px 30px var(--card-shadow);
+      text-align: center;
+      transition: transform .28s;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .product-card img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    
+    .product-card h5 {
+      margin: 10px 0 6px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    
+    .product-price {
+      font-weight: 800;
+      color: #7a4356;
+      margin-bottom: 8px;
+    }
+    
+    .product-actions {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+    }
+    
+    .btn-detail {
+      border-radius: 26px;
+      padding: .5rem .9rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #ff7aa4, #fcb795);
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .btn-detail:hover {
+      transform: translateY(-2px);
+    }
+    
+    .btn-compare-card {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: .5rem .9rem;
+      border-radius: 26px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .btn-compare-card:hover {
+      background: rgba(198, 83, 132, 0.1);
+    }
+    
+    /* Detail Overlay */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 1rem;
+    }
+    
+    .overlay.open {
+      display: flex;
+    }
+    
+    .detail-panel {
+      background: white;
+      border-radius: 14px;
+      max-width: 920px;
+      width: 96%;
+      display: flex;
+      gap: 18px;
+      padding: 18px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
+      backdrop-filter: blur(6px);
+      max-height: 90vh;
+      overflow: hidden;
+    }
+    
+    .detail-left {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f9f9f9;
+      border-radius: 10px;
+    }
+    
+    .detail-left img {
+      max-width: 100%;
+      max-height: 400px;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+    
+    .detail-right {
+      flex: 1;
+      padding: 6px 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    .detail-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--rose-deep);
+      margin-bottom: 0.5rem;
+    }
+    
+    .detail-desc {
+      color: #5a3744;
+      margin: 1.5rem 0;
+      line-height: 1.6;
+    }
+    
+    .detail-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    
+    .btn-ghost {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+    }
+    
+    .btn-ghost:hover {
+      background: rgba(198, 83, 132, 0.1);
+    }
+    
+    /* Contact Section */
+    .contact-banner {
+      background: linear-gradient(135deg, var(--pink-1), var(--pink-2));
+      padding: 3rem 1rem;
+      margin-top: 3rem;
+    }
+    
+    .contact-banner h2 {
+      color: white;
+      font-weight: 700;
+    }
+    
+    .contact-banner p {
+      color: rgba(255,255,255,0.9);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .contact-form {
+      display: flex;
+      max-width: 500px;
+      margin: 0 auto;
+      gap: 0.5rem;
+    }
+    
+    .form-control {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    
+    .btn-send {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .btn-send:hover {
+      background: #b34473;
+    }
+    
+    /* Footer */
+    .footer {
+      width: 100%;
+      background: linear-gradient(90deg, rgba(255, 214, 229, 0.95), rgba(255, 240, 245, 0.95));
+      color: #a65d76;
+      font-size: 0.95rem;
+      box-shadow: 0 -6px 24px rgba(211, 107, 138, 0.08);
+      border-top: 1px solid rgba(198, 78, 120, 0.1);
+      padding: 3rem 0 1.5rem;
+    }
+    
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 40px 60px;
+      flex-wrap: wrap;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .footer-left, .footer-middle, .footer-right {
+      flex: 1;
+      min-width: 220px;
+    }
+    
+    .footer-middle {
+      display: flex;
+      justify-content: center;
+      gap: 80px;
+    }
+    
+    .footer-heading {
+      font-family: "Playfair Display", serif;
+      color: #b02d63;
+      margin-bottom: 12px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-align: center;
+      width: 100%;
+    }
+    
+    .footer-left p {
+      max-width: 300px;
+      color: #9b5b73;
+      line-height: 1.6;
+      text-align: center;
+      margin: 0 auto;
+    }
+    
+    .footer-nav, .footer-products {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .footer-nav a, .footer-products a {
+      color: #a65d76;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.25s ease;
+    }
+    
+    .footer-nav a:hover, .footer-products a:hover {
+      color: #c65384;
+    }
+    
+    .socials {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      margin-top: 8px;
+    }
+    
+    .socials a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      transition: all 0.3s;
+    }
+    
+    .socials a:hover {
+      background: var(--accent);
+      transform: translateY(-3px);
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(198, 78, 120, 0.2);
+      color: #9b5b73;
+      font-size: 0.85rem;
+    }
+    
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--accent);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 1050;
+      display: none;
+      align-items: center;
+      gap: 0.75rem;
+      max-width: 350px;
+    }
+    
+    .toast.show {
+      display: flex;
+      animation: slideIn 0.3s ease;
+    }
+    
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    
+    .toast-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.25rem;
+      cursor: pointer;
+      margin-left: auto;
+    }
+    
+    /* Blur body when modal open */
+    body.modal-open main,
+    body.modal-open nav,
+    body.modal-open footer {
+      filter: blur(6px) brightness(.95);
+      pointer-events: none;
+      user-select: none;
+    }
+    
+    /* Responsive */
+    @media (max-width: 900px) {
+      .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .detail-panel {
+        flex-direction: column;
+        max-height: 95vh;
+        overflow-y: auto;
+      }
+      
+      .detail-left, .detail-right {
+        flex: none;
+      }
+      
+      .detail-left {
+        padding: 1.5rem;
+      }
+      
+      .detail-right {
+        padding: 1.5rem;
+      }
+      
+      .contact-form {
+        flex-direction: column;
+      }
+      
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 24px;
+        padding: 30px 20px;
+      }
+      
+      .footer-middle {
+        flex-direction: column;
+        gap: 30px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -14,32 +658,32 @@
   <nav class="navbar navbar-expand-lg">
     <div class="container">
        <div class="brand-wrap">
-  <img src="../assets/team/logo.png" alt="Crystal Logo" class="logo-dot">
-  <a class="navbar-brand" href="index.html">Crystal Products</a>
-</div>
+        <div class="logo-dot"></div>
+        <a class="navbar-brand" href="index.html">Crystal Products</a>
+      </div>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu"
         aria-controls="navmenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
+      <div class="collapse navbar-collapse" id="navmenu">
         <ul class="navbar-nav mx-auto">
-        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-        <li class="nav-item"><a class="nav-link" href="newarrival.html">New Arrival</a></li>
-        <li class="nav-item"><a class="nav-link" href="specialoffers.html">Specialoffers</a></li>
-        
-        <li class="nav-item"><a class="nav-link" href="product.html">Products</a></li>
-        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-      </ul>
+          <li class="nav-item"><a class="nav-link" href="newarrival.html">New Arrival</a></li>
+          <li class="nav-item"><a class="nav-link" href="specialoffers.html">Special Offers</a></li>
+          <li class="nav-item"><a class="nav-link active" href="product.html">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
 
         <div class="nav-buttons d-flex gap-2 ms-auto">
           <button class="btn-compare" onclick="window.location.href='compare.html'">Compare</button>
-
         </div>
       </div>
     </div>
   </nav>
+
   <main>
     <header class="products-wrap">
       <h1 class="page-heading">Gemstone & Jewelry — Professional Collection</h1>
@@ -64,6 +708,12 @@
     <section class="products-wrap" id="stonesContainer"></section>
   </main>
 
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <span id="toastMessage">Product added to compare!</span>
+    <button class="toast-close" onclick="hideToast()">&times;</button>
+  </div>
+
   <!-- Overlay detail panel -->
   <div id="overlay" class="overlay" role="dialog" aria-hidden="true">
     <div class="detail-panel" role="document">
@@ -78,28 +728,30 @@
 
         <div class="detail-actions">
           <button id="btnAddCart" class="btn-detail">Add to Cart</button>
+          <button id="btnAddToCompareDetail" class="btn-ghost">Add to Compare</button>
           <button id="btnSaveInfo" class="btn-ghost">Save Info (Word)</button>
-          <button id="btnBack" class="btn-ghost">Back to Home</button>
+          <button id="btnBack" class="btn-ghost">Back to Products</button>
         </div>
       </div>
     </div>
   </div>
-<!-- ================= CONTACT US — CENTERED & SLIM ================= -->
-<section class="contact-banner">
-  <div class="container text-center">
-    <h2>Contact Us</h2><br>
-   <p>
-  Stay connected with Crystal Products embrace harmony, healing, and the magic of natural energy. <br>
-  Let your inner light shine through every crystal you hold. <br>
-  We’re here to guide your journey toward balance and beauty.
-</p>
-<br>
-    <form class="contact-form">
-      <input type="email" class="form-control" placeholder="Enter your email" required>
-      <button class="btn btn-send" type="submit">Send</button>
-    </form>
-  </div>
-</section>
+
+  <!-- ================= CONTACT US — CENTERED & SLIM ================= -->
+  <section class="contact-banner">
+    <div class="container text-center">
+      <h2>Contact Us</h2><br>
+      <p>
+        Stay connected with Crystal Products embrace harmony, healing, and the magic of natural energy. <br>
+        Let your inner light shine through every crystal you hold. <br>
+        We're here to guide your journey toward balance and beauty.
+      </p>
+      <br>
+      <form class="contact-form">
+        <input type="email" class="form-control" placeholder="Enter your email" required>
+        <button class="btn btn-send" type="submit">Send</button>
+      </form>
+    </div>
+  </section>
 
   <!-- =============== FOOTER =============== -->
   <footer class="footer">
@@ -127,12 +779,12 @@
         <div class="footer-section">
           <h4 class="footer-heading">Quick Access to Our Products</h4>
           <ul class="footer-products">
-            <li><a href="#" data-bs-toggle="modal" data-bs-target="#productModal">Necklaces</a></li>
-            <li><a href="#" data-bs-toggle="modal" data-bs-target="#productModal">Rings</a></li>
-            <li><a href="#" data-bs-toggle="modal" data-bs-target="#productModal">Bracelets</a></li>
-            <li><a href="#" data-bs-toggle="modal" data-bs-target="#productModal">Pendants</a></li>
-            <li><a href="#" data-bs-toggle="modal" data-bs-target="#productModal">Earrings</a></li>
-            <li><a href="#" data-bs-toggle="modal" data-bs-target="#productModal">Bangles</a></li>
+            <li><a href="product.html?filter=necklaces">Necklaces</a></li>
+            <li><a href="product.html?filter=rings">Rings</a></li>
+            <li><a href="product.html?filter=bracelets">Bracelets</a></li>
+            <li><a href="product.html?filter=pendants">Pendants</a></li>
+            <li><a href="product.html?filter=earrings">Earrings</a></li>
+            <li><a href="product.html?filter=bangles">Bangles</a></li>
           </ul>
         </div>
       </div>
@@ -143,23 +795,23 @@
         <div class="socials">
           <a href="#" aria-label="Instagram" title="Instagram">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <rect x="3" y="3" width="18" height="18" rx="5" stroke="#c65384" stroke-width="1.6" />
-              <circle cx="12" cy="12" r="3.2" stroke="#c65384" stroke-width="1.6" />
-              <circle cx="17.6" cy="6.4" r="0.6" fill="#c65384" />
+              <rect x="3" y="3" width="18" height="18" rx="5" stroke="white" stroke-width="1.6"/>
+              <circle cx="12" cy="12" r="3.2" stroke="white" stroke-width="1.6"/>
+              <circle cx="17.6" cy="6.4" r="0.6" fill="white"/>
             </svg>
           </a>
           <a href="#" aria-label="Facebook" title="Facebook">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
               <path
                 d="M14 8.5h1.8V6.2c-.32-.05-.9-.14-1.92-.14-1.9 0-3.2 1.15-3.2 3.27V10.5H8.5v2.2H9.8V20h2.3v-7.3h2l.4-2.2h-2.4V9c0-.6.16-1 .9-1z"
-                stroke="#c65384" stroke-width="1.4" />
+                stroke="white" stroke-width="1.4" />
             </svg>
           </a>
           <a href="#" aria-label="WhatsApp" title="WhatsApp">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
               <path
                 d="M21 12C21 16.97 16.97 21 12 21 10.22 21 8.55 20.46 7.15 19.53L3 21l1.47-4.22C3.51 15.45 3 13.75 3 12 3 7.03 7.03 3 12 3s9 4.03 9 9z"
-                stroke="#c65384" stroke-width="1.4" />
+                stroke="white" stroke-width="1.4" />
             </svg>
           </a>
         </div>
@@ -171,11 +823,63 @@
       <small>© 2025 Crystal Products · Crafted with Light & Love · All Rights Reserved</small>
     </div>
   </footer>
-  <script>
 
+  <script>
     // Data model: stones and product types
     const stones = ['Diamond', 'Ruby', 'Emerald', 'Amethyst', 'Zircon', 'Pearl'];
     const productTypes = ['bracelets', 'rings', 'necklaces', 'pendants', 'earrings', 'bangles'];
+
+    // Image paths for each stone
+    const stoneImages = {
+      'Diamond': [
+        '../assets/diamond/diamond1.png',
+        '../assets/diamond/diamond2.png',
+        '../assets/diamond/diamond3.png',
+        '../assets/diamond/diamond4.png',
+        '../assets/diamond/diamond5.png',
+        '../assets/diamond/diamond6.png'
+      ],
+      'Ruby': [
+        '../assets/ruby/ruby1.png',
+        '../assets/ruby/ruby2.png',
+        '../assets/ruby/ruby3.png',
+        '../assets/ruby/ruby4.png',
+        '../assets/ruby/ruby5.png',
+        '../assets/ruby/ruby6.png'
+      ],
+      'Emerald': [
+        '../assets/emerald/emerald1.png',
+        '../assets/emerald/emerald2.png',
+        '../assets/emerald/emerald3.png',
+        '../assets/emerald/emerald4.png',
+        '../assets/emerald/emerald5.png',
+        '../assets/emerald/emerald6.png'
+      ],
+      'Amethyst': [
+        '../assets/amethyst/amethyst1.png',
+        '../assets/amethyst/amethyst2.png',
+        '../assets/amethyst/amethyst3.png',
+        '../assets/amethyst/amethyst4.png',
+        '../assets/amethyst/amethyst5.png',
+        '../assets/amethyst/amethyst6.png'
+      ],
+      'Zircon': [
+        '../assets/zircon/zircon1.png',
+        '../assets/zircon/zircon2.png',
+        '../assets/zircon/zircon3.png',
+        '../assets/zircon/zircon4.png',
+        '../assets/zircon/zircon5.png',
+        '../assets/zircon/zircon6.png'
+      ],
+      'Pearl': [
+        '../assets/pearl/pearl1.png',
+        '../assets/pearl/pearl2.png',
+        '../assets/pearl/pearl3.png',
+        '../assets/pearl/pearl4.png',
+        '../assets/pearl/pearl5.png',
+        '../assets/pearl/pearl6.png'
+      ]
+    };
 
     // Build demo products: for each stone, create 6 products with varying types
     const demoProducts = {};
@@ -185,10 +889,19 @@
         const type = productTypes[i % productTypes.length];
         const name = `${stone} ${capitalize(type.slice(0, -1))} ${i + 1}`;
         const price = (Math.random() * 500 + 150).toFixed(2);
-        // Local image path
-        const img = `../assets/${stone.toLowerCase()}/${stone.toLowerCase()}${i + 1}.png`;
+        // Use stone-specific images
+        const img = stoneImages[stone][i] || 'https://placehold.co/300x200/cccccc/666?text=Crystal+Product';
         const desc = `${stone} ${capitalize(type.slice(0, -1))} crafted from premium materials. Expertly finished with attention to detail, ideal as a statement piece or a meaningful gift.`;
-        demoProducts[stone].push({ id: `${stone}-${i}`, stone, type, name, price, img, desc });
+        demoProducts[stone].push({ 
+          id: `${stone}-${i}`, 
+          stone, 
+          type, 
+          name, 
+          price, 
+          img, 
+          desc,
+          collection: 'professional' // Add collection info for compare page
+        });
       }
     });
 
@@ -201,7 +914,8 @@
       section.className = 'stone-section';
       section.dataset.stone = stone;
 
-      const header = document.createElement('div'); header.className = 'stone-header';
+      const header = document.createElement('div'); 
+      header.className = 'stone-header';
       header.innerHTML = `<div style="width:48px;height:48px;border-radius:8px;background:linear-gradient(135deg,var(--pink-2),var(--accent));display:flex;align-items:center;justify-content:center;color:white;font-weight:800">${stone.charAt(0)}</div>`;
       const hwrap = document.createElement('div');
       hwrap.innerHTML = `<div class="stone-title">${stone}</div><div class="stone-sub">Exquisite ${stone} jewelry — curated selection of bracelets, rings, necklaces, pendants, earrings and bangles.</div>`;
@@ -209,17 +923,21 @@
       section.appendChild(header);
 
       // Slider (single row circular cards)
-      const slider = document.createElement('div'); slider.className = 'slider';
-      const track = document.createElement('div'); track.className = 'slider-track';
+      const slider = document.createElement('div'); 
+      slider.className = 'slider';
+      const track = document.createElement('div'); 
+      track.className = 'slider-track';
 
       demoProducts[stone].forEach(p => {
-        const s = document.createElement('div'); s.className = 'slide';
-        s.innerHTML = `<div class="img-wrap"><img src="${p.img}" alt="${p.name}"></div>`;
+        const s = document.createElement('div'); 
+        s.className = 'slide';
+        s.innerHTML = `<div class="img-wrap"><img src="${p.img}" alt="${p.name}" onerror="this.src='https://placehold.co/300x200/cccccc/666?text=${p.stone}+Product'"></div>`;
         track.appendChild(s);
       });
       demoProducts[stone].forEach(p => {
-        const s = document.createElement('div'); s.className = 'slide';
-        s.innerHTML = `<div class="img-wrap"><img src="${p.img}" alt="${p.name}"></div>`;
+        const s = document.createElement('div'); 
+        s.className = 'slide';
+        s.innerHTML = `<div class="img-wrap"><img src="${p.img}" alt="${p.name}" onerror="this.src='https://placehold.co/300x200/cccccc/666?text=${p.stone}+Product'"></div>`;
         track.appendChild(s);
       });
 
@@ -227,17 +945,22 @@
       section.appendChild(slider);
 
       // Cards grid
-      const grid = document.createElement('div'); grid.className = 'cards-grid';
+      const grid = document.createElement('div'); 
+      grid.className = 'cards-grid';
       demoProducts[stone].forEach(p => {
-        const card = document.createElement('article'); card.className = 'product-card'; card.dataset.type = p.type; card.dataset.stone = stone;
+        const card = document.createElement('article'); 
+        card.className = 'product-card'; 
+        card.dataset.type = p.type; 
+        card.dataset.stone = stone;
         card.innerHTML = `
-      <img src="${p.img}" alt="${p.name}">
-      <h5>${p.name}</h5>
-      <div class="product-price">$${p.price}</div>
-      <div class="product-actions">
-        <button class="btn-detail" onclick='openDetail(${JSON.stringify(JSON.stringify(p))})'>See details</button>
-      </div>
-    `;
+          <img src="${p.img}" alt="${p.name}" onerror="this.src='https://placehold.co/300x200/cccccc/666?text=${p.stone}+Product'">
+          <h5>${p.name}</h5>
+          <div class="product-price">$${p.price}</div>
+          <div class="product-actions">
+            <button class="btn-detail" onclick='openDetail(${JSON.stringify(JSON.stringify(p))})'>See details</button>
+            <button class="btn-compare-card" onclick='addToCompare(${JSON.stringify(JSON.stringify(p))})'>Add to Compare</button>
+          </div>
+        `;
         grid.appendChild(card);
       });
       section.appendChild(grid);
@@ -279,7 +1002,56 @@
       });
     }
 
-    function goHome() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    // Toast notification functions
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toastMessage');
+      toastMessage.textContent = message;
+      toast.classList.add('show');
+      
+      // Auto hide after 3 seconds
+      setTimeout(() => {
+        hideToast();
+      }, 3000);
+    }
+    
+    function hideToast() {
+      const toast = document.getElementById('toast');
+      toast.classList.remove('show');
+    }
+
+    // Add to Compare functionality
+    function addToCompare(productJson) {
+      const product = JSON.parse(productJson);
+      
+      // Get current compare products from localStorage
+      let compareProducts = JSON.parse(localStorage.getItem('compareProducts')) || [];
+      
+      // Check if product is already in compare
+      const isAlreadyAdded = compareProducts.some(p => p.id === product.id);
+      
+      if (isAlreadyAdded) {
+        showToast('This product is already in your compare list!');
+        return;
+      }
+      
+      // Add product to compare
+      compareProducts.push(product);
+      
+      // Save to localStorage
+      localStorage.setItem('compareProducts', JSON.stringify(compareProducts));
+      
+      // Show success message
+      showToast('Product added to compare!');
+      
+      // Optional: Update compare button to show it's added
+      updateCompareButtonState(product.id, true);
+    }
+    
+    function updateCompareButtonState(productId, isAdded) {
+      // This function would update the button state if needed
+      // For now, we'll just show the toast notification
+    }
 
     // Detail overlay
     const overlay = document.getElementById('overlay');
@@ -293,17 +1065,37 @@
       const p = JSON.parse(productJson);
       currentProduct = p;
       detailImage.src = p.img;
+      detailImage.alt = p.name;
       detailTitle.textContent = p.name;
       detailDesc.textContent = p.desc + '\n\nMaterials: Genuine gemstone, premium metal finish. Quality guaranteed.';
       detailPrice.textContent = `$${p.price}`;
-      overlay.classList.add('open'); document.body.classList.add('modal-open'); overlay.setAttribute('aria-hidden', 'false');
+      overlay.classList.add('open'); 
+      document.body.classList.add('modal-open'); 
+      overlay.setAttribute('aria-hidden', 'false');
     }
 
     overlay.addEventListener('click', (e) => { if (e.target === overlay) closeDetail(); });
-    function closeDetail() { overlay.classList.remove('open'); document.body.classList.remove('modal-open'); overlay.setAttribute('aria-hidden', 'true'); currentProduct = null; }
+    function closeDetail() { 
+      overlay.classList.remove('open'); 
+      document.body.classList.remove('modal-open'); 
+      overlay.setAttribute('aria-hidden', 'true'); 
+      currentProduct = null; 
+    }
 
     const btnAddCart = document.getElementById('btnAddCart');
-    if (btnAddCart) btnAddCart.addEventListener('click', () => { if (!currentProduct) return; alert(`${currentProduct.name} has been saved to your cart.`); });
+    if (btnAddCart) btnAddCart.addEventListener('click', () => { 
+      if (!currentProduct) return; 
+      alert(`${currentProduct.name} has been saved to your cart.`); 
+    });
+
+    // Add to Compare from detail view
+    const btnAddToCompareDetail = document.getElementById('btnAddToCompareDetail');
+    if (btnAddToCompareDetail) {
+      btnAddToCompareDetail.addEventListener('click', () => {
+        if (!currentProduct) return;
+        addToCompare(JSON.stringify(currentProduct));
+      });
+    }
 
     async function saveProductToWord() {
       if (!currentProduct) return;
@@ -312,25 +1104,44 @@
         const resp = await fetch(currentProduct.img);
         const blob = await resp.blob();
         const reader = new FileReader();
-        const base64 = await new Promise((res, rej) => { reader.onloadend = () => res(reader.result); reader.onerror = rej; reader.readAsDataURL(blob); });
+        const base64 = await new Promise((res, rej) => { 
+          reader.onloadend = () => res(reader.result); 
+          reader.onerror = rej; 
+          reader.readAsDataURL(blob); 
+        });
         imgData = base64;
-      } catch (err) { console.warn('Could not embed image, using remote URL'); }
+      } catch (err) { 
+        console.warn('Could not embed image, using remote URL'); 
+      }
 
       const html = `<!doctype html><html><head><meta charset="utf-8"><title>${currentProduct.name}</title></head><body><h1>${currentProduct.name}</h1><p><strong>Price:</strong> $${currentProduct.price}</p><p><strong>Description:</strong> ${currentProduct.desc}</p><div><img src="${imgData}" style="max-width:400px"></div></body></html>`;
       const blob = new Blob([html], { type: 'application/msword' });
       const url = URL.createObjectURL(blob);
-      const a = document.createElement('a'); a.href = url; a.download = `${currentProduct.name.replace(/\s+/g, '_')}.doc`;
-      document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+      const a = document.createElement('a'); 
+      a.href = url; 
+      a.download = `${currentProduct.name.replace(/\s+/g, '_')}.doc`;
+      document.body.appendChild(a); 
+      a.click(); 
+      a.remove(); 
+      URL.revokeObjectURL(url);
     }
 
-    document.getElementById('btnSaveInfo').addEventListener('click', async () => { await saveProductToWord(); alert('Product information downloaded as a Word file.'); });
+    document.getElementById('btnSaveInfo').addEventListener('click', async () => { 
+      await saveProductToWord(); 
+      alert('Product information downloaded as a Word file.'); 
+    });
 
     const btnBack = document.getElementById('btnBack');
-    if (btnBack) btnBack.addEventListener('click', () => { closeDetail(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    if (btnBack) btnBack.addEventListener('click', () => { 
+      closeDetail(); 
+      window.scrollTo({ top: 0, behavior: 'smooth' }); 
+    });
 
-    window.filterCategory = filterCategory; window.goHome = goHome; window.openDetail = openDetail;
+    // Make functions available globally
+    window.filterCategory = filterCategory;
+    window.openDetail = openDetail;
+    window.addToCompare = addToCompare;
   </script>
-
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

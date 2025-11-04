@@ -1,30 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="Description" content="Enter your description here"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<link rel="stylesheet" href="style.css">
-<title>Title</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Special Offers — Crystal Products</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 
-<body> 
-     <!-- ================= NAVBAR ================= -->
- <nav class="navbar navbar-expand-lg">
+<body>
+  <!-- ================= NAVBAR ================= -->
+<nav class="navbar navbar-expand-lg">
   <div class="container">
-     <div class="brand-wrap">
+   <div class="brand-wrap">
   <img src="../assets/team/logo.png" alt="Crystal Logo" class="logo-dot">
-  <a class="navbar-brand" href="index.html">Crystal Products</a>
+  <a class="navbar-brand" href="index.html">Crystal Botique</a>
 </div>
+
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu" aria-controls="navmenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navmenu">
-  <ul class="navbar-nav mx-auto">
+        <ul class="navbar-nav mx-auto">
         <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
         <li class="nav-item"><a class="nav-link" href="newarrival.html">New Arrival</a></li>
@@ -33,7 +34,6 @@
         <li class="nav-item"><a class="nav-link" href="product.html">Products</a></li>
         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
       </ul>
-
       <div class="nav-buttons d-flex gap-2 ms-auto">
         <button class="btn-compare" onclick="window.location.href='compare.html'">Compare</button>
       
@@ -41,88 +41,111 @@
     </div>
   </div>
 </nav>
-<!-- ================= CONTACT US — CENTERED & SLIM ================= -->
-<section class="contact-banner">
-  <div class="container text-center">
-    <h2>Contact Us</h2><br>
-   <p>
-  Stay connected with Crystal Products embrace harmony, healing, and the magic of natural energy. <br>
-  Let your inner light shine through every crystal you hold. <br>
-  We’re here to guide your journey toward balance and beauty.
-</p>
-<br>
-    <form class="contact-form">
-      <input type="email" class="form-control" placeholder="Enter your email" required>
-      <button class="btn btn-send" type="submit">Send</button>
-    </form>
+<br><br><br>
+
+
+  <!-- CATEGORY BUTTONS -->
+  <div class="category-tabs">
+    <button class="category-btn active" data-category="all">All</button>
+    <button class="category-btn" data-category="Ring">Rings</button>
+    <button class="category-btn" data-category="Necklace">Necklaces</button>
+    <button class="category-btn" data-category="Pendant">Pendants</button>
   </div>
-</section>
+  <main class="container-narrow">
+    <h1 class="page-heading">Special Offers — Curated Deals</h1>
+    <p class="sub">Every item includes a limited-time discount from our main and chakra collections.</p>
+    <section id="offersContainer"></section>
+  </main>
 
-<footer class="footer">
-  <div class="container-fluid footer-inner">
 
-    <!-- LEFT: About -->
-    <div class="footer-left">
-      <h4 class="footer-heading">About the Crystals</h4>
-      <p>Our crystals are ethically sourced and cleansed with positive energy — designed to uplift your spirit and bring harmony to your life.</p>
-    </div>
+  <script>const stones = ['Diamond', 'Ruby', 'Emerald', 'Amethyst', 'Zircon', 'Pearl'];
+const chakraDefs = ['Black Tourmaline', 'Carnelian', 'Citrine', 'Rose Quartz', 'Aquamarine', 'Amethyst', 'Clear Quartz'];
 
-    <!-- MIDDLE: Quick Links + Quick Access -->
-    <div class="footer-middle">
-      <div class="footer-section">
-        <h4 class="footer-heading">Quick Links</h4>
-        <ul class="footer-nav">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="products.html">Shop</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
+function randInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
-      <div class="footer-section">
-        <h4 class="footer-heading">Quick Access to Our Products</h4>
-        <ul class="footer-products">
-          <li><a href="#" data-bs-toggle="modal" data-bs-target="#productModal">Necklaces</a></li>
-          <li><a href="#" data-bs-toggle="modal" data-bs-target="#productModal">Rings</a></li>
-          <li><a href="#" data-bs-toggle="modal" data-bs-target="#productModal">Bracelets</a></li>
-          <li><a href="#" data-bs-toggle="modal" data-bs-target="#productModal">Pendants</a></li>
-          <li><a href="#" data-bs-toggle="modal" data-bs-target="#productModal">Earrings</a></li>
-          <li><a href="#" data-bs-toggle="modal" data-bs-target="#productModal">Bangles</a></li>
-        </ul>
-      </div>
-    </div>
+const catalog = [];
+[...stones, ...chakraDefs].forEach(stone => {
+  for (let j = 1; j <= 3; j++) {
+    const basePrice = +(Math.random() * 400 + 150).toFixed(2);
+    const discount = randInt(10, 40);
+    const newPrice = +(basePrice * (1 - discount / 100)).toFixed(2);
+    catalog.push({
+      name: `${stone}`,
+      basePrice,
+      price: newPrice,
+      discount,
+      img: `../assets/${stone.toLowerCase().replace(/\s+/g, '-')}/${stone.toLowerCase().replace(/\s+/g, '-')}${j}.png`,
+      category: ['Bracelet', 'Ring', 'Necklace', 'Pendant'][j % 4],
+      desc: `Beautiful handcrafted ${stone} jewelry designed to radiate positive energy and elegance.`
+    });
+  }
+});
 
-    <!-- RIGHT: Social Icons -->
-    <div class="footer-right">
-      <h4 class="footer-heading">Follow Us</h4>
-      <div class="socials">
-        <a href="#" aria-label="Instagram" title="Instagram">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-            <rect x="3" y="3" width="18" height="18" rx="5" stroke="#c65384" stroke-width="1.6"/>
-            <circle cx="12" cy="12" r="3.2" stroke="#c65384" stroke-width="1.6"/>
-            <circle cx="17.6" cy="6.4" r="0.6" fill="#c65384"/>
-          </svg>
-        </a>
-        <a href="#" aria-label="Facebook" title="Facebook">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-            <path d="M14 8.5h1.8V6.2c-.32-.05-.9-.14-1.92-.14-1.9 0-3.2 1.15-3.2 3.27V10.5H8.5v2.2H9.8V20h2.3v-7.3h2l.4-2.2h-2.4V9c0-.6.16-1 .9-1z" stroke="#c65384" stroke-width="1.4"/>
-          </svg>
-        </a>
-        <a href="#" aria-label="WhatsApp" title="WhatsApp">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-            <path d="M21 12C21 16.97 16.97 21 12 21 10.22 21 8.55 20.46 7.15 19.53L3 21l1.47-4.22C3.51 15.45 3 13.75 3 12 3 7.03 7.03 3 12 3s9 4.03 9 9z" stroke="#c65384" stroke-width="1.4"/>
-          </svg>
-        </a>
-      </div>
-    </div>
+const offersContainer = document.getElementById('offersContainer');
 
-  </div>
+function renderOffers(filter = 'all') {
+  offersContainer.innerHTML = '';
+  const filtered = filter === 'all' ? catalog : catalog.filter(p => p.category === filter);
+  const groups = {};
+  filtered.forEach(p => {
+    const group = p.name;
+    if (!groups[group]) groups[group] = [];
+    groups[group].push(p);
+  });
 
-  <div class="footer-bottom">
-    <small>© 2025 Crystal Products · Crafted with Light & Love · All Rights Reserved</small>
-  </div>
-</footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+  Object.keys(groups).forEach(group => {
+    const section = document.createElement('section');
+    section.className = 'stone-section';
+
+    // 🖼️ Heading now includes image instead of letter block
+    section.innerHTML = `
+      <div class="stone-header">
+        <img src="../assets/${group.toLowerCase().replace(/\s+/g, '-')}/${group.toLowerCase().replace(/\s+/g, '-') }1.png" 
+             alt="${group}" class="stone-icon">
+        <div>
+          <div class="stone-title">${group}</div>
+          <div class="stone-sub">Special offers on ${group} — limited time deals.</div>
+        </div>
+      </div>`;
+
+    const grid = document.createElement('div');
+    grid.className = 'product-grid';
+
+    groups[group].slice(0, 3).forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'crystal-card';
+      card.innerHTML = `
+        <div class="badge-off">${p.discount}% OFF</div>
+        <img src="${p.img}" alt="${p.name}">
+        <h5>${p.name}</h5>
+        <p class="short-desc">${p.desc}</p>
+        <div class="price-row">
+          <span class="old-price">$${p.basePrice.toFixed(2)}</span>
+          <span class="new-price">$${p.price.toFixed(2)}</span>
+        </div>
+        <div class="card-buttons">
+          <button class="btn-cart" onclick='alert("${p.name} added to cart!")'>Add to Cart</button>
+        </div>`;
+      grid.appendChild(card);
+    });
+
+    section.appendChild(grid);
+    offersContainer.appendChild(section);
+  });
+}
+
+renderOffers();
+
+document.querySelector('.category-tabs').addEventListener('click', e => {
+  if (!e.target.classList.contains('category-btn')) return;
+  document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+  e.target.classList.add('active');
+  renderOffers(e.target.dataset.category);
+});
+
+</script>
 </body>
+
 </html>
