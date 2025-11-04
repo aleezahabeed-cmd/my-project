@@ -476,6 +476,60 @@ document.addEventListener('DOMContentLoaded', () => {
     </form>
   </div>
 </section>
+<style>
+  /* Social icons */
+.socials {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.socials a svg {
+  transition: transform 0.3s ease, fill 0.3s ease;
+}
+
+.socials a:hover svg {
+  transform: scale(1.15);
+  fill: #c65384;
+}
+
+/* Modal (glass blur) */
+.blur-bg {
+  background: rgba(255, 240, 245, 0.85);
+  backdrop-filter: blur(14px);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(198, 83, 132, 0.25);
+  border: 1px solid rgba(198, 83, 132, 0.2);
+}
+
+/* Buttons in modal — dark pink */
+.btn-outline-pink {
+  border: 2px solid #c65384;
+  color: #fff;
+  background: #c65384;
+  border-radius: 8px;
+  transition: 0.3s;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(198, 83, 132, 0.2);
+}
+
+.btn-outline-pink:hover {
+  background: #a03a67;
+  border-color: #a03a67;
+  box-shadow: 0 4px 18px rgba(160, 58, 103, 0.3);
+}
+
+/* Footer bottom strip */
+.footer-bottom {
+  text-align: center;
+  padding: 14px;
+  background: rgba(255, 240, 245, 0.6);
+  color: #9b5b73;
+  font-size: 0.85rem;
+}
+
+</style>
  <!-- ================= FOOTER ================= -->
 <!-- =============== FOOTER =============== -->
 <footer class="footer">
