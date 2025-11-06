@@ -1171,46 +1171,6 @@
     ]
   };
   
-  // Placeholder images for demo
-  const placeholderImages = {
-    'black-tourmaline': 'https://placehold.co/300x200/000000/fff?text=Black+Tourmaline',
-    'carnelian': 'https://placehold.co/300x200/ff6b6b/fff?text=Carnelian',
-    'citrine': 'https://placehold.co/300x200/ffd93d/000?text=Citrine',
-    'rose-quartz': 'https://placehold.co/300x200/ffb6c1/000?text=Rose+Quartz',
-    'aquamarine': 'https://placehold.co/300x200/7ed6df/000?text=Aquamarine',
-    'amethyst': 'https://placehold.co/300x200/9b59b6/fff?text=Amethyst',
-    'clear-quartz': 'https://placehold.co/300x200/ecf0f1/000?text=Clear+Quartz',
-    'diamond': 'https://placehold.co/300x200/dfe6e9/000?text=Diamond',
-    'ruby': 'https://placehold.co/300x200/e74c3c/fff?text=Ruby',
-    'emerald': 'https://placehold.co/300x200/2ecc71/fff?text=Emerald',
-    'zircon': 'https://placehold.co/300x200/f1c40f/000?text=Zircon',
-    'pearl': 'https://placehold.co/300x200/f5f5f5/000?text=Pearl'
-  };
-
-  // Build demo products for both collections
-  function buildDemoItems() {
-    const demo = {};
-    chakras.forEach(ch => {
-      demo[ch.key] = [];
-      for(let i = 1; i <= 6; i++) {
-        const types = ['bracelet', 'ring', 'necklace', 'pendant', 'earrings', 'bangle'];
-        const type = types[(i-1) % 6];
-        demo[ch.key].push({
-          id: `${ch.key}-${i}`,
-          chakra: ch.key,
-          stone: ch.stone,
-          type: type,
-          name: `${ch.stone} ${type.charAt(0).toUpperCase() + type.slice(1)} ${i}`,
-          price: (120 + i * 28).toFixed(2),
-          img: placeholderImages[ch.folder] || 'https://placehold.co/300x200/cccccc/666?text=Crystal+Product',
-          desc: `Beautiful handcrafted ${ch.stone} ${type} ideal for chakra balance.`,
-          collection: 'chakra'
-        });
-      }
-    });
-    return demo;
-  }
-
   function buildProfessionalItems() {
     const demo = {};
     stones.forEach(stone => {
