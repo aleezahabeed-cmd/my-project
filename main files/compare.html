@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Crystal Products — Compare</title>
+  <title>Crystal Products - Compare</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     
     :root {
@@ -108,6 +109,305 @@
     .nav-buttons button:hover {
       transform: scale(1.05);
     }
+    
+    /* Pink Cart Button in Navbar */
+    .cart-btn {
+      position: relative;
+      background: linear-gradient(135deg, var(--pink-2), var(--accent));
+      border: none;
+      border-radius: 12px;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.3rem;
+      cursor: pointer;
+      margin-left: 10px;
+      box-shadow: 0 4px 12px rgba(198, 78, 120, 0.25);
+      transition: all 0.3s;
+    }
+    
+    .cart-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(198, 78, 120, 0.35);
+    }
+    
+    .cart-count {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: white;
+      color: var(--accent);
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      font-size: 0.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      border: 2px solid var(--accent);
+    }
+
+    /* Pink Cart Modal */
+    .cart-modal {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 380px;
+      height: 100vh;
+      background: linear-gradient(145deg, #fff4f6, #ffdbe7);
+      box-shadow: -5px 0 15px rgba(198, 78, 120, 0.15);
+      z-index: 2000;
+      transition: right 0.3s ease;
+      padding: 20px;
+      overflow-y: auto;
+      border-left: 1px solid rgba(255, 182, 193, 0.45);
+    }
+    
+    .cart-modal.open {
+      right: 0;
+    }
+    
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(255, 182, 193, 0.45);
+    }
+    
+    .cart-header h3 {
+      color: var(--rose-deep);
+      font-weight: 700;
+    }
+    
+    .cart-items {
+      margin-bottom: 20px;
+      max-height: 60vh;
+      overflow-y: auto;
+    }
+    
+    .cart-item {
+      display: flex;
+      gap: 10px;
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(255, 182, 193, 0.3);
+    }
+    
+    .cart-item img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid rgba(255, 255, 255, 0.7);
+    }
+    
+    .cart-item-details {
+      flex: 1;
+    }
+    
+    .cart-item-name {
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: var(--muted);
+    }
+    
+    .cart-item-price {
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    
+    /* Quantity Controls */
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 5px;
+    }
+    
+    .quantity-btn {
+      background: white;
+      border: 1px solid rgba(198, 78, 120, 0.3);
+      border-radius: 50%;
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--accent);
+      font-weight: bold;
+      transition: all 0.2s;
+    }
+    
+    .quantity-btn:hover {
+      background: var(--pink-1);
+      border-color: var(--accent);
+    }
+    
+    .quantity-value {
+      font-weight: 600;
+      min-width: 30px;
+      text-align: center;
+    }
+    
+    .remove-item {
+      background: none;
+      border: none;
+      color: var(--accent);
+      cursor: pointer;
+      align-self: flex-start;
+      font-size: 1.2rem;
+      transition: all 0.2s;
+    }
+    
+    .remove-item:hover {
+      color: var(--rose-deep);
+      transform: scale(1.1);
+    }
+    
+    .cart-total {
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin: 20px 0;
+      text-align: right;
+      color: var(--rose-deep);
+      padding-top: 15px;
+      border-top: 1px solid rgba(255, 182, 193, 0.45);
+    }
+    
+    .btn-checkout {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(90deg, var(--pink-2), var(--pink-3));
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 12px rgba(198, 78, 120, 0.25);
+    }
+    
+    .btn-checkout:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(198, 78, 120, 0.35);
+    }
+
+    /* Order Form Modal */
+    .order-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 3000;
+    }
+    
+    .order-modal.open {
+      display: flex;
+    }
+    
+    .order-form {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    
+    .order-form h3 {
+      margin-bottom: 20px;
+      color: var(--accent);
+      text-align: center;
+    }
+    
+    .form-group {
+      margin-bottom: 15px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+    
+    .form-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    
+    .btn-submit {
+      flex: 1;
+      padding: 12px;
+      background: linear-gradient(90deg, var(--pink-2), var(--pink-3));
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    
+    .btn-cancel {
+      flex: 1;
+      padding: 12px;
+      background: #f0f0f0;
+      color: #333;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* Order Confirmation */
+    .order-confirmation {
+      text-align: center;
+      padding: 30px;
+    }
+    
+    .order-confirmation h3 {
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+    
+    .confirmation-icon {
+      font-size: 3rem;
+      color: #4CAF50;
+      margin-bottom: 20px;
+    }
+
+    /* Empty Cart State */
+    .empty-cart {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--muted);
+    }
+    
+    .empty-cart-icon {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      color: var(--pink-2);
+    }
+    
     /* Page Header */
     .page-heading {
       font-size: 2.5rem;
@@ -278,6 +578,27 @@
     
     .btn-ghost:hover {
       background: rgba(198, 83, 132, 0.1);
+    }
+    
+    .btn-add-to-cart {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    .btn-add-to-cart:hover {
+      background: #218838;
+      transform: translateY(-2px);
     }
     
     .empty-compare {
@@ -510,6 +831,11 @@
   .footer-center {
     text-align: center;
   }
+  
+  .cart-modal {
+    width: 100%;
+    right: -100%;
+  }
 }
 
   </style>
@@ -533,16 +859,79 @@
         <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
         <li class="nav-item"><a class="nav-link" href="newarrival.html">New Arrival</a></li>
         <li class="nav-item"><a class="nav-link" href="specialoffers.html">Special Offers</a></li>
-        <li class="nav-item"><a class="nav-link" href="product.html">Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="product.html">Most Selling</a></li>
         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
       </ul>
 
       <div class="nav-buttons d-flex gap-2 ms-auto">
         <button class="btn-compare active" onclick="window.location.href='compare.html'">Compare</button>
+        <!-- Pink Cart Button -->
+        <button class="cart-btn" onclick="toggleCart()">
+          🛒
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
       </div>
     </div>
   </div>
 </nav>
+
+<!-- Pink Cart Modal -->
+<div class="cart-modal" id="cartModal">
+  <div class="cart-header">
+    <h3>Your Shopping Cart</h3>
+    <button class="btn-ghost" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <!-- Cart items will be dynamically inserted here -->
+  </div>
+  <div class="cart-total" id="cartTotal">Total: $0.00</div>
+  <button class="btn-checkout" onclick="openOrderForm()">Continue to Shipping</button>
+</div>
+
+<!-- Order Form Modal -->
+<div class="order-modal" id="orderModal">
+  <div class="order-form">
+    <h3>Shipping Information</h3>
+    <form id="orderForm">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" id="address" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" id="city" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="zip">ZIP Code</label>
+        <input type="text" id="zip" class="form-control" required>
+      </div>
+      <div class="form-actions">
+        <button type="button" class="btn-cancel" onclick="closeOrderForm()">Cancel</button>
+        <button type="submit" class="btn-submit">Place Order</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Order Confirmation Modal -->
+<div class="order-modal" id="orderConfirmation">
+  <div class="order-form">
+    <div class="order-confirmation">
+      <div class="confirmation-icon">✓</div>
+      <h3>Order Has Been Placed!</h3>
+      <p>Thank you for your purchase. You will receive a confirmation email shortly.</p>
+      <button class="btn-submit" onclick="closeOrderConfirmation()">Continue Shopping</button>
+    </div>
+  </div>
+</div>
 
 <main class="compare-container">
   <div class="compare-header">
@@ -588,7 +977,7 @@
    <p>
   Stay connected with Crystal Products embrace harmony, healing, and the magic of natural energy. <br>
   Let your inner light shine through every crystal you hold. <br>
-  We’re here to guide your journey toward balance and beauty.
+  We're here to guide your journey toward balance and beauty.
 </p>
 <br>
     <form class="contact-form">
@@ -613,9 +1002,12 @@
         <h4 class="footer-heading">Quick Links</h4>
         <ul class="footer-nav">
           <li><a href="index.html">Home</a></li>
-          <li><a href="products.html">Shop</a></li>
           <li><a href="about.html">About</a></li>
+          <li><a href="newarrival.html">New Arrival</a></li>
+          <li><a href="specialoffers.html">SpecialOffers</a></li>
+          <li><a href="products.html">Most Selling</a></li>
           <li><a href="contact.html">Contact</a></li>
+          <li><a href="compare.html">Compare</a></li>
         </ul>
       </div>
 
@@ -659,63 +1051,10 @@
   </div>
 
   <div class="footer-bottom">
-    <small>© 2025 Crystal Products · Crafted with Light & Love · All Rights Reserved</small>
+    <small>&copy; 2025 Crystal Products · Crafted with Light & Love · All Rights Reserved</small>
   </div>
 </footer>
-    <style>
-  /* Social icons */
-.socials {
-  display: flex;
-  gap: 14px;
-  justify-content: center;
-  margin-top: 8px;
-}
 
-.socials a svg {
-  transition: transform 0.3s ease, fill 0.3s ease;
-}
-
-.socials a:hover svg {
-  transform: scale(1.15);
-  fill: #c65384;
-}
-
-/* Modal (glass blur) */
-.blur-bg {
-  background: rgba(255, 240, 245, 0.85);
-  backdrop-filter: blur(14px);
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(198, 83, 132, 0.25);
-  border: 1px solid rgba(198, 83, 132, 0.2);
-}
-
-/* Buttons in modal — dark pink */
-.btn-outline-pink {
-  border: 2px solid #c65384;
-  color: #fff;
-  background: #c65384;
-  border-radius: 8px;
-  transition: 0.3s;
-  font-weight: 600;
-  box-shadow: 0 4px 12px rgba(198, 83, 132, 0.2);
-}
-
-.btn-outline-pink:hover {
-  background: #a03a67;
-  border-color: #a03a67;
-  box-shadow: 0 4px 18px rgba(160, 58, 103, 0.3);
-}
-
-/* Footer bottom strip */
-.footer-bottom {
-  text-align: center;
-  padding: 14px;
-  background: rgba(255, 240, 245, 0.6);
-  color: #9b5b73;
-  font-size: 0.85rem;
-}
-
-</style>
 <script>
   // Sample data for demonstration with placeholder images
   const chakras = [
@@ -727,109 +1066,127 @@
     {key:'third',name:'Third Eye',stone:'Amethyst',folder:'amethyst'},
     {key:'crown',name:'Crown',stone:'Clear Quartz',folder:'clear-quartz'}
   ];
-    // Data model: stones and product types
-    const stones = ['Diamond', 'Ruby', 'Emerald', 'Amethyst', 'Zircon', 'Pearl', 'Black Tourmaline', 'Carnelian', 'Citrine', 'Rose Quartz', 'Aquamarine', 'Clear Quartz'];
-    const productTypes = ['bracelets', 'rings', 'necklaces', 'pendants', 'earrings', 'bangles'];
+  
+  // Data model: stones and product types
+  const stones = ['Diamond', 'Ruby', 'Emerald', 'Amethyst', 'Zircon', 'Pearl', 'Black Tourmaline', 'Carnelian', 'Citrine', 'Rose Quartz', 'Aquamarine', 'Clear Quartz'];
+  const productTypes = ['bracelets', 'rings', 'necklaces', 'pendants', 'earrings', 'bangles'];
 
-    // Image paths for each stone (1-6 images for each)
-    const stoneImages = {
-      'Diamond': [
-        '../assets/diamond/diamond1.png',
-        '../assets/diamond/diamond2.png',
-        '../assets/diamond/diamond3.png',
-        '../assets/diamond/diamond4.png',
-        '../assets/diamond/diamond5.png',
-        '../assets/diamond/diamond6.png'
-      ],
-      'Ruby': [
-        '../assets/ruby/ruby1.png',
-        '../assets/ruby/ruby2.png',
-        '../assets/ruby/ruby3.png',
-        '../assets/ruby/ruby4.png',
-        '../assets/ruby/ruby5.png',
-        '../assets/ruby/ruby6.png'
-      ],
-      'Emerald': [
-        '../assets/emerald/emerald1.png',
-        '../assets/emerald/emerald2.png',
-        '../assets/emerald/emerald3.png',
-        '../assets/emerald/emerald4.png',
-        '../assets/emerald/emerald5.png',
-        '../assets/emerald/emerald6.png'
-      ],
-      'Amethyst': [
-        '../assets/amethyst/amethyst1.png',
-        '../assets/amethyst/amethyst2.png',
-        '../assets/amethyst/amethyst3.png',
-        '../assets/amethyst/amethyst4.png',
-        '../assets/amethyst/amethyst5.png',
-        '../assets/amethyst/amethyst6.png'
-      ],
-      'Zircon': [
-        '../assets/zircon/zircon1.png',
-        '../assets/zircon/zircon2.png',
-        '../assets/zircon/zircon3.png',
-        '../assets/zircon/zircon4.png',
-        '../assets/zircon/zircon5.png',
-        '../assets/zircon/zircon6.png'
-      ],
-      'Pearl': [
-        '../assets/pearl/pearl1.png',
-        '../assets/pearl/pearl2.png',
-        '../assets/pearl/pearl3.png',
-        '../assets/pearl/pearl4.png',
-        '../assets/pearl/pearl5.png',
-        '../assets/pearl/pearl6.png'
-      ],
-      'Black Tourmaline': [
-        '../assets/black-tourmaline/black-tourmaline1.png',
-        '../assets/black-tourmaline/black-tourmaline2.png',
-        '../assets/black-tourmaline/black-tourmaline3.png',
-        '../assets/black-tourmaline/black-tourmaline4.png',
-        '../assets/black-tourmaline/black-tourmaline5.png',
-        '../assets/black-tourmaline/black-tourmaline6.png'
-      ],
-      'Carnelian': [
-        '../assets/carnelian/carnelian1.png',
-        '../assets/carnelian/carnelian2.png',
-        '../assets/carnelian/carnelian3.png',
-        '../assets/carnelian/carnelian4.png',
-        '../assets/carnelian/carnelian5.png',
-        '../assets/carnelian/carnelian6.png'
-      ],
-      'Citrine': [
-        '../assets/citrine/citrine1.png',
-        '../assets/citrine/citrine2.png',
-        '../assets/citrine/citrine3.png',
-        '../assets/citrine/citrine4.png',
-        '../assets/citrine/citrine5.png',
-        '../assets/citrine/citrine6.png'
-      ],
-      'Rose Quartz': [
-        '../assets/rose-quartz/rose-quartz1.png',
-        '../assets/rose-quartz/rose-quartz2.png',
-        '../assets/rose-quartz/rose-quartz3.png',
-        '../assets/rose-quartz/rose-quartz4.png',
-        '../assets/rose-quartz/rose-quartz5.png',
-        '../assets/rose-quartz/rose-quartz6.png'
-      ],
-      'Aquamarine': [
-        '../assets/aquamarine/aquamarine1.png',
-        '../assets/aquamarine/aquamarine2.png',
-        '../assets/aquamarine/aquamarine3.png',
-        '../assets/aquamarine/aquamarine4.png',
-        '../assets/aquamarine/aquamarine5.png',
-        '../assets/aquamarine/aquamarine6.png'
-      ],
-      'Clear Quartz': [
-        '../assets/clear-quartz/clear-quartz1.png',
-        '../assets/clear-quartz/clear-quartz2.png',
-        '../assets/clear-quartz/clear-quartz3.png',
-        '../assets/clear-quartz/clear-quartz4.png',
-        '../assets/clear-quartz/clear-quartz5.png',
-        '../assets/clear-quartz/clear-quartz6.png'
-      ]
-    };
+  // Image paths for each stone (1-6 images for each)
+  const stoneImages = {
+    'Diamond': [
+      '../assets/diamond/diamond1.png',
+      '../assets/diamond/diamond2.png',
+      '../assets/diamond/diamond3.png',
+      '../assets/diamond/diamond4.png',
+      '../assets/diamond/diamond5.png',
+      '../assets/diamond/diamond6.png'
+    ],
+    'Ruby': [
+      '../assets/ruby/ruby1.png',
+      '../assets/ruby/ruby2.png',
+      '../assets/ruby/ruby3.png',
+      '../assets/ruby/ruby4.png',
+      '../assets/ruby/ruby5.png',
+      '../assets/ruby/ruby6.png'
+    ],
+    'Emerald': [
+      '../assets/emerald/emerald1.png',
+      '../assets/emerald/emerald2.png',
+      '../assets/emerald/emerald3.png',
+      '../assets/emerald/emerald4.png',
+      '../assets/emerald/emerald5.png',
+      '../assets/emerald/emerald6.png'
+    ],
+    'Amethyst': [
+      '../assets/amethyst/amethyst1.png',
+      '../assets/amethyst/amethyst2.png',
+      '../assets/amethyst/amethyst3.png',
+      '../assets/amethyst/amethyst4.png',
+      '../assets/amethyst/amethyst5.png',
+      '../assets/amethyst/amethyst6.png'
+    ],
+    'Zircon': [
+      '../assets/zircon/zircon1.png',
+      '../assets/zircon/zircon2.png',
+      '../assets/zircon/zircon3.png',
+      '../assets/zircon/zircon4.png',
+      '../assets/zircon/zircon5.png',
+      '../assets/zircon/zircon6.png'
+    ],
+    'Pearl': [
+      '../assets/pearl/pearl1.png',
+      '../assets/pearl/pearl2.png',
+      '../assets/pearl/pearl3.png',
+      '../assets/pearl/pearl4.png',
+      '../assets/pearl/pearl5.png',
+      '../assets/pearl/pearl6.png'
+    ],
+    'Black Tourmaline': [
+      '../assets/black-tourmaline/black-tourmaline1.png',
+      '../assets/black-tourmaline/black-tourmaline2.png',
+      '../assets/black-tourmaline/black-tourmaline3.png',
+      '../assets/black-tourmaline/black-tourmaline4.png',
+      '../assets/black-tourmaline/black-tourmaline5.png',
+      '../assets/black-tourmaline/black-tourmaline6.png'
+    ],
+    'Carnelian': [
+      '../assets/carnelian/carnelian1.png',
+      '../assets/carnelian/carnelian2.png',
+      '../assets/carnelian/carnelian3.png',
+      '../assets/carnelian/carnelian4.png',
+      '../assets/carnelian/carnelian5.png',
+      '../assets/carnelian/carnelian6.png'
+    ],
+    'Citrine': [
+      '../assets/citrine/citrine1.png',
+      '../assets/citrine/citrine2.png',
+      '../assets/citrine/citrine3.png',
+      '../assets/citrine/citrine4.png',
+      '../assets/citrine/citrine5.png',
+      '../assets/citrine/citrine6.png'
+    ],
+    'Rose Quartz': [
+      '../assets/rose-quartz/rose-quartz1.png',
+      '../assets/rose-quartz/rose-quartz2.png',
+      '../assets/rose-quartz/rose-quartz3.png',
+      '../assets/rose-quartz/rose-quartz4.png',
+      '../assets/rose-quartz/rose-quartz5.png',
+      '../assets/rose-quartz/rose-quartz6.png'
+    ],
+    'Aquamarine': [
+      '../assets/aquamarine/aquamarine1.png',
+      '../assets/aquamarine/aquamarine2.png',
+      '../assets/aquamarine/aquamarine3.png',
+      '../assets/aquamarine/aquamarine4.png',
+      '../assets/aquamarine/aquamarine5.png',
+      '../assets/aquamarine/aquamarine6.png'
+    ],
+    'Clear Quartz': [
+      '../assets/clear-quartz/clear-quartz1.png',
+      '../assets/clear-quartz/clear-quartz2.png',
+      '../assets/clear-quartz/clear-quartz3.png',
+      '../assets/clear-quartz/clear-quartz4.png',
+      '../assets/clear-quartz/clear-quartz5.png',
+      '../assets/clear-quartz/clear-quartz6.png'
+    ]
+  };
+  
+  // Placeholder images for demo
+  const placeholderImages = {
+    'black-tourmaline': 'https://placehold.co/300x200/000000/fff?text=Black+Tourmaline',
+    'carnelian': 'https://placehold.co/300x200/ff6b6b/fff?text=Carnelian',
+    'citrine': 'https://placehold.co/300x200/ffd93d/000?text=Citrine',
+    'rose-quartz': 'https://placehold.co/300x200/ffb6c1/000?text=Rose+Quartz',
+    'aquamarine': 'https://placehold.co/300x200/7ed6df/000?text=Aquamarine',
+    'amethyst': 'https://placehold.co/300x200/9b59b6/fff?text=Amethyst',
+    'clear-quartz': 'https://placehold.co/300x200/ecf0f1/000?text=Clear+Quartz',
+    'diamond': 'https://placehold.co/300x200/dfe6e9/000?text=Diamond',
+    'ruby': 'https://placehold.co/300x200/e74c3c/fff?text=Ruby',
+    'emerald': 'https://placehold.co/300x200/2ecc71/fff?text=Emerald',
+    'zircon': 'https://placehold.co/300x200/f1c40f/000?text=Zircon',
+    'pearl': 'https://placehold.co/300x200/f5f5f5/000?text=Pearl'
+  };
+
   // Build demo products for both collections
   function buildDemoItems() {
     const demo = {};
@@ -910,6 +1267,170 @@
     localStorage.setItem('compareProducts', JSON.stringify(products));
   }
 
+  // Cart functionality
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  function updateCartCount() {
+    const cartCount = document.getElementById('cartCount');
+    cartCount.textContent = cart.length;
+  }
+
+  function addToCart(productJson) {
+    const product = JSON.parse(productJson);
+    
+    // Check if product is already in cart
+    const existingItem = cart.find(item => item.id === product.id);
+    
+    if (existingItem) {
+      existingItem.quantity += 1;
+    } else {
+      product.quantity = 1;
+      cart.push(product);
+    }
+    
+    // Save to localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+    
+    // Update cart count
+    updateCartCount();
+    
+    // Show success message
+    showToast('Product added to cart!');
+  }
+
+  function removeFromCart(productId) {
+    cart = cart.filter(item => item.id !== productId);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+    renderCartItems();
+  }
+
+  function updateQuantity(productId, change) {
+    const item = cart.find(item => item.id === productId);
+    if (item) {
+      item.quantity += change;
+      if (item.quantity <= 0) {
+        removeFromCart(productId);
+      } else {
+        localStorage.setItem('cart', JSON.stringify(cart));
+        renderCartItems();
+      }
+    }
+  }
+
+  function renderCartItems() {
+    const cartItems = document.getElementById('cartItems');
+    const cartTotal = document.getElementById('cartTotal');
+    
+    if (cart.length === 0) {
+      cartItems.innerHTML = `
+        <div class="empty-cart">
+          <div class="empty-cart-icon">🛒</div>
+          <p>Your cart is empty</p>
+        </div>
+      `;
+      cartTotal.textContent = 'Total: $0.00';
+      return;
+    }
+    
+    let total = 0;
+    cartItems.innerHTML = '';
+    
+    cart.forEach(item => {
+      const itemTotal = parseFloat(item.price) * item.quantity;
+      total += itemTotal;
+      
+      const cartItem = document.createElement('div');
+      cartItem.className = 'cart-item';
+      cartItem.innerHTML = `
+        <img src="${item.img}" alt="${item.name}">
+        <div class="cart-item-details">
+          <div class="cart-item-name">${item.name}</div>
+          <div class="cart-item-price">$${item.price}</div>
+          <div class="quantity-controls">
+            <button class="quantity-btn" onclick="updateQuantity('${item.id}', -1)">-</button>
+            <span class="quantity-value">${item.quantity}</span>
+            <button class="quantity-btn" onclick="updateQuantity('${item.id}', 1)">+</button>
+          </div>
+        </div>
+        <button class="remove-item" onclick="removeFromCart('${item.id}')">✕</button>
+      `;
+      
+      cartItems.appendChild(cartItem);
+    });
+    
+    cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+  }
+
+  function toggleCart() {
+    const cartModal = document.getElementById('cartModal');
+    cartModal.classList.toggle('open');
+    
+    if (cartModal.classList.contains('open')) {
+      renderCartItems();
+    }
+  }
+
+  function openOrderForm() {
+    if (cart.length === 0) {
+      showToast('Your cart is empty!');
+      return;
+    }
+    
+    document.getElementById('orderModal').classList.add('open');
+    document.getElementById('cartModal').classList.remove('open');
+  }
+
+  function closeOrderForm() {
+    document.getElementById('orderModal').classList.remove('open');
+  }
+
+  function closeOrderConfirmation() {
+    document.getElementById('orderConfirmation').classList.remove('open');
+    // Clear cart after successful order
+    cart = [];
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+  }
+
+  // Toast notification functions
+  function showToast(message) {
+    // Create a temporary animation element
+    const animation = document.createElement('div');
+    animation.innerHTML = `<i class="fas fa-check"></i> ${message}`;
+    animation.style.position = 'fixed';
+    animation.style.top = '20px';
+    animation.style.right = '20px';
+    animation.style.background = 'var(--accent)';
+    animation.style.color = 'white';
+    animation.style.padding = '10px 15px';
+    animation.style.borderRadius = '5px';
+    animation.style.zIndex = '9999';
+    animation.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+    animation.style.transition = 'all 0.3s ease';
+    
+    document.body.appendChild(animation);
+    
+    // Remove after 2 seconds
+    setTimeout(() => {
+      animation.style.opacity = '0';
+      setTimeout(() => {
+        document.body.removeChild(animation);
+      }, 300);
+    }, 2000);
+  }
+
+  // Order form submission
+  document.getElementById('orderForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // In a real application, you would send the order data to a server here
+    // For this demo, we'll just show the confirmation
+    
+    document.getElementById('orderModal').classList.remove('open');
+    document.getElementById('orderConfirmation').classList.add('open');
+  });
+
   // Render compare products
   function renderCompareProducts(collectionFilter = 'all') {
     const products = getCompareProducts();
@@ -966,6 +1487,9 @@
           </div>
           
           <div class="compare-card-actions">
+            <button class="btn-add-to-cart" onclick="addToCart('${JSON.stringify(product).replace(/'/g, "\\'")}')">
+              <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
             <button class="btn-detail" onclick="openDetail('${product.id}')">View Details</button>
             <button class="btn-ghost" onclick="removeFromCompare('${product.id}')">Remove</button>
           </div>
@@ -998,6 +1522,9 @@
 
   // Initialize page
   document.addEventListener('DOMContentLoaded', function() {
+    // Initialize cart
+    updateCartCount();
+    
     // Render initial compare products
     renderCompareProducts();
     

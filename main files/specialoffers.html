@@ -4,55 +4,897 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Special Offers — Crystal Products</title>
+  <title>Special Offers - Crystal Products</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      --pink-1: #ffd5e4;
+      --pink-2: #ff91ae;
+      --pink-3: #ffb4c7;
+      --rose-deep: #e24b7a;
+      --accent: #c65384;
+      --muted: #6b3f4a;
+      --card-shadow: rgba(211, 107, 138, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      margin: 0;
+      color: var(--muted);
+      background: linear-gradient(120deg, #fff9fb 0%, #fff0f6 100%);
+    }
+
+    /* Navigation */
+    .navbar {
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.75));
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255, 182, 193, 0.35);
+      box-shadow: 0 10px 30px rgba(211, 107, 138, 0.06);
+      padding: .6rem 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 1300;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-dot {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--pink-2), var(--accent));
+      display: inline-block;
+      box-shadow: 0 8px 26px rgba(198, 78, 120, 0.22), inset 0 -4px 10px rgba(255, 255, 255, 0.12);
+    }
+
+    .navbar-brand {
+      font-family: "Playfair Display", serif;
+      color: var(--accent) !important;
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+
+    .nav-link {
+      color: #4b2a3a !important;
+      padding: .6rem .9rem;
+      font-weight: 600;
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%) scaleX(0);
+      bottom: 6px;
+      height: 3px;
+      width: 60%;
+      border-radius: 6px;
+      background: linear-gradient(90deg, var(--pink-2), var(--pink-3));
+      transition: transform .28s;
+    }
+
+    .nav-link:hover::after {
+      transform: translateX(-50%) scaleX(1);
+      color: var(--accent) !important;
+    }
+
+    .nav-buttons button {
+      border-radius: 999px;
+      padding: .5rem 1rem;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: transform .2s;
+    }
+
+    .btn-compare {
+      background: linear-gradient(90deg, #ffb4c7, #ff91ae);
+      color: #fff;
+    }
+
+    .nav-buttons button:hover {
+      transform: scale(1.05);
+    }
+
+    /* Pink Cart Button in Navbar */
+    .cart-btn {
+      position: relative;
+      background: linear-gradient(135deg, var(--pink-2), var(--accent));
+      border: none;
+      border-radius: 12px;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.3rem;
+      cursor: pointer;
+      margin-left: 10px;
+      box-shadow: 0 4px 12px rgba(198, 78, 120, 0.25);
+      transition: all 0.3s;
+    }
+    
+    .cart-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(198, 78, 120, 0.35);
+    }
+    
+    .cart-count {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: white;
+      color: var(--accent);
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      font-size: 0.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      border: 2px solid var(--accent);
+    }
+
+    /* Pink Cart Modal */
+    .cart-modal {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 380px;
+      height: 100vh;
+      background: linear-gradient(145deg, #fff4f6, #ffdbe7);
+      box-shadow: -5px 0 15px rgba(198, 78, 120, 0.15);
+      z-index: 2000;
+      transition: right 0.3s ease;
+      padding: 20px;
+      overflow-y: auto;
+      border-left: 1px solid rgba(255, 182, 193, 0.45);
+    }
+    
+    .cart-modal.open {
+      right: 0;
+    }
+    
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(255, 182, 193, 0.45);
+    }
+    
+    .cart-header h3 {
+      color: var(--rose-deep);
+      font-weight: 700;
+    }
+    
+    .cart-items {
+      margin-bottom: 20px;
+      max-height: 60vh;
+      overflow-y: auto;
+    }
+    
+    .cart-item {
+      display: flex;
+      gap: 10px;
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(255, 182, 193, 0.3);
+    }
+    
+    .cart-item img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid rgba(255, 255, 255, 0.7);
+    }
+    
+    .cart-item-details {
+      flex: 1;
+    }
+    
+    .cart-item-name {
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: var(--muted);
+    }
+    
+    .cart-item-price {
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    
+    /* Quantity Controls */
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 5px;
+    }
+    
+    .quantity-btn {
+      background: white;
+      border: 1px solid rgba(198, 78, 120, 0.3);
+      border-radius: 50%;
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--accent);
+      font-weight: bold;
+      transition: all 0.2s;
+    }
+    
+    .quantity-btn:hover {
+      background: var(--pink-1);
+      border-color: var(--accent);
+    }
+    
+    .quantity-value {
+      font-weight: 600;
+      min-width: 30px;
+      text-align: center;
+    }
+    
+    .remove-item {
+      background: none;
+      border: none;
+      color: var(--accent);
+      cursor: pointer;
+      align-self: flex-start;
+      font-size: 1.2rem;
+      transition: all 0.2s;
+    }
+    
+    .remove-item:hover {
+      color: var(--rose-deep);
+      transform: scale(1.1);
+    }
+    
+    .cart-total {
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin: 20px 0;
+      text-align: right;
+      color: var(--rose-deep);
+      padding-top: 15px;
+      border-top: 1px solid rgba(255, 182, 193, 0.45);
+    }
+    
+    .btn-checkout {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(90deg, var(--pink-2), var(--pink-3));
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 12px rgba(198, 78, 120, 0.25);
+    }
+    
+    .btn-checkout:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(198, 78, 120, 0.35);
+    }
+
+    /* Order Form Modal */
+    .order-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 3000;
+    }
+    
+    .order-modal.open {
+      display: flex;
+    }
+    
+    .order-form {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    
+    .order-form h3 {
+      margin-bottom: 20px;
+      color: var(--accent);
+      text-align: center;
+    }
+    
+    .form-group {
+      margin-bottom: 15px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+    
+    .form-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    
+    .btn-submit {
+      flex: 1;
+      padding: 12px;
+      background: linear-gradient(90deg, var(--pink-2), var(--pink-3));
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    
+    .btn-cancel {
+      flex: 1;
+      padding: 12px;
+      background: #f0f0f0;
+      color: #333;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* Order Confirmation */
+    .order-confirmation {
+      text-align: center;
+      padding: 30px;
+    }
+    
+    .order-confirmation h3 {
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+    
+    .confirmation-icon {
+      font-size: 3rem;
+      color: #4CAF50;
+      margin-bottom: 20px;
+    }
+
+    /* Empty Cart State */
+    .empty-cart {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--muted);
+    }
+    
+    .empty-cart-icon {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      color: var(--pink-2);
+    }
+
+    /* Page Styles */
+    .container-narrow {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 18px;
+    }
+
+    .page-heading {
+      text-align: center;
+      font-size: 2.4rem;
+      color: var(--rose-deep);
+      margin: 24px 0 6px;
+    }
+
+    .sub {
+      color: #7a4356;
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .category-tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 8px 0;
+    }
+
+    .category-btn {
+      border-radius: 999px;
+      padding: .45rem .9rem;
+      border: 1px solid rgba(198, 78, 120, 0.12);
+      background: white;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .category-btn.active {
+      background: linear-gradient(90deg, var(--pink-2), var(--pink-3));
+      color: #fff;
+    }
+
+    /* Stone Section */
+    .stone-section {
+      margin: 36px 0;
+    }
+
+    .stone-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    .stone-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .stone-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--rose-deep);
+    }
+
+    .stone-sub {
+      color: #8b5568;
+    }
+
+    /* Product Grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 22px;
+    }
+
+    @media(max-width:992px) {
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media(max-width:600px) {
+      .product-grid {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+
+    /* Crystal Card */
+    .crystal-card {
+      background: linear-gradient(145deg, #fff4f6, #ffdbe7);
+      border-radius: 12px;
+      padding: 12px;
+      border: 1px solid rgba(255, 182, 193, 0.45);
+      box-shadow: 0 12px 30px var(--card-shadow);
+      text-align: center;
+      transition: transform .28s, opacity .25s;
+      position: relative;
+    }
+
+    .crystal-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .crystal-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .crystal-card h5 {
+      margin: 12px 0 6px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .short-desc {
+      color: #7a4356;
+      margin: 0 0 10px;
+      font-size: 0.9rem;
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin: 10px 0;
+    }
+
+    .old-price {
+      text-decoration: line-through;
+      color: #999;
+      font-size: 0.9rem;
+    }
+
+    .new-price {
+      color: var(--rose-deep);
+      font-weight: 800;
+      font-size: 1.2rem;
+    }
+
+    .badge-off {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: linear-gradient(90deg, var(--pink-2), var(--pink-3));
+      color: white;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .card-buttons {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .btn-cart {
+      border-radius: 26px;
+      padding: .55rem 1.1rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--pink-2), var(--pink-3));
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s;
+      flex: 1;
+    }
+
+    .btn-cart:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--accent);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 1050;
+      display: none;
+      align-items: center;
+      gap: 0.75rem;
+      max-width: 350px;
+    }
+    
+    .toast.show {
+      display: flex;
+      animation: slideIn 0.3s ease;
+    }
+    
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    
+    .toast-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.25rem;
+      cursor: pointer;
+      margin-left: auto;
+    }
+
+    /* Contact Section */
+    .contact-banner {
+      background: linear-gradient(135deg, var(--pink-1), var(--pink-2));
+      padding: 3rem 1rem;
+      margin-top: 3rem;
+    }
+    
+    .contact-banner h2 {
+      color: white;
+      font-weight: 700;
+    }
+    
+    .contact-banner p {
+      color: rgba(255,255,255,0.9);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .contact-form {
+      display: flex;
+      max-width: 500px;
+      margin: 0 auto;
+      gap: 0.5rem;
+    }
+    
+    .form-control {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    
+    .btn-send {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .btn-send:hover {
+      background: #b34473;
+    }
+
+    /* Footer */
+    .footer {
+      width: 100%;
+      background: linear-gradient(90deg, rgba(255, 214, 229, 0.95), rgba(255, 240, 245, 0.95));
+      color: #a65d76;
+      font-size: 0.95rem;
+      box-shadow: 0 -6px 24px rgba(211, 107, 138, 0.08);
+      border-top: 1px solid rgba(198, 78, 120, 0.1);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 40px 60px;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .footer-left,
+    .footer-middle,
+    .footer-right {
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .footer-middle {
+      display: flex;
+      justify-content: center;
+      gap: 80px;
+    }
+
+    .footer-heading {
+      font-family: "Playfair Display", serif;
+      color: #b02d63;
+      margin-bottom: 12px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-align: center;
+      width: 100%;
+    }
+
+    .footer-left p {
+      max-width: 300px;
+      color: #9b5b73;
+      line-height: 1.6;
+      text-align: center;
+      margin: 0 auto;
+    }
+
+    .footer-nav,
+    .footer-products {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-nav a,
+    .footer-products a {
+      color: #a65d76;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.25s ease;
+    }
+
+    .footer-nav a:hover,
+    .footer-products a:hover {
+      color: #c65384;
+    }
+
+    .socials {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      margin-top: 8px;
+    }
+
+    .socials a svg {
+      transition: transform 0.3s ease, fill 0.3s ease;
+    }
+
+    .socials a:hover svg {
+      transform: scale(1.15);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding: 14px;
+      background: rgba(255, 240, 245, 0.6);
+      color: #9b5b73;
+      font-size: 0.85rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 24px;
+        padding: 30px 20px;
+      }
+
+      .footer-center {
+        text-align: center;
+      }
+      
+      .cart-modal {
+        width: 100%;
+        right: -100%;
+      }
+    }
+  </style>
 </head>
 
 <body>
   <!-- ================= NAVBAR ================= -->
-<nav class="navbar navbar-expand-lg">
-  <div class="container">
-   <div class="brand-wrap">
-  <img src="../assets/team/logo.png" alt="Crystal Logo" class="logo-dot">
-  <a class="navbar-brand" href="index.html">Crystal Botique</a>
-</div>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <div class="brand-wrap">
+        <img src="../assets/team/logo.png" alt="Crystal Logo" class="logo-dot">
+        <a class="navbar-brand" href="index.html">Crystal Botique</a>
+      </div>
 
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu" aria-controls="navmenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu" aria-controls="navmenu" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navmenu">
+      <div class="collapse navbar-collapse" id="navmenu">
         <ul class="navbar-nav mx-auto">
-        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-        <li class="nav-item"><a class="nav-link" href="newarrival.html">New Arrival</a></li>
-        <li class="nav-item"><a class="nav-link" href="specialoffers.html">Specialoffers</a></li>
-        
-        <li class="nav-item"><a class="nav-link" href="product.html">Products</a></li>
-        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-      </ul>
-      <div class="nav-buttons d-flex gap-2 ms-auto">
-        <button class="btn-compare" onclick="window.location.href='compare.html'">Compare</button>
-      
+          <li class="nav-item"><a class="nav-link" href="newarrival.html">New Arrival</a></li>
+          <li class="nav-item"><a class="nav-link" href="specialoffers.html">Specialoffers</a></li>
+          <li class="nav-item"><a class="nav-link" href="product.html">Most Selling</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-buttons d-flex gap-2 ms-auto">
+          <button class="btn-compare" onclick="window.location.href='compare.html'">Compare</button>
+          <!-- Pink Cart Button -->
+          <button class="cart-btn" onclick="toggleCart()">
+            🛒
+            <span class="cart-count" id="cartCount">0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <br><br><br>
+
+  <!-- Pink Cart Modal -->
+  <div class="cart-modal" id="cartModal">
+    <div class="cart-header">
+      <h3>Your Shopping Cart</h3>
+      <button class="btn-ghost" onclick="toggleCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <!-- Cart items will be dynamically inserted here -->
+    </div>
+    <div class="cart-total" id="cartTotal">Total: $0.00</div>
+    <button class="btn-checkout" onclick="openOrderForm()">Continue to Shipping</button>
+  </div>
+
+  <!-- Order Form Modal -->
+  <div class="order-modal" id="orderModal">
+    <div class="order-form">
+      <h3>Shipping Information</h3>
+      <form id="orderForm">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input type="text" id="address" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" id="city" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="zip">ZIP Code</label>
+          <input type="text" id="zip" class="form-control" required>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn-cancel" onclick="closeOrderForm()">Cancel</button>
+          <button type="submit" class="btn-submit">Place Order</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Order Confirmation Modal -->
+  <div class="order-modal" id="orderConfirmation">
+    <div class="order-form">
+      <div class="order-confirmation">
+        <div class="confirmation-icon">✓</div>
+        <h3>Order Has Been Placed!</h3>
+        <p>Thank you for your purchase. You will receive a confirmation email shortly.</p>
+        <button class="btn-submit" onclick="closeOrderConfirmation()">Continue Shopping</button>
       </div>
     </div>
   </div>
-</nav>
-<br><br><br>
 
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <span id="toastMessage">Product added to cart!</span>
+    <button class="toast-close" onclick="hideToast()">&times;</button>
+  </div>
 
   <!-- CATEGORY BUTTONS -->
   <div class="category-tabs">
-    <button class="category-btn active" data-category="all">All</button>
+    <button class="category-btn active" data-category="all">All Products</button>
     <button class="category-btn" data-category="Ring">Rings</button>
     <button class="category-btn" data-category="Necklace">Necklaces</button>
     <button class="category-btn" data-category="Pendant">Pendants</button>
   </div>
   <main class="container-narrow">
-    <h1 class="page-heading">Special Offers — Curated Deals</h1>
+    <h1 class="page-heading">Special Offers  Curated Deals</h1>
     <p class="sub">Every item includes a limited-time discount from our main and chakra collections.</p>
     <section id="offersContainer"></section>
   </main>
@@ -63,7 +905,7 @@
    <p>
   Stay connected with Crystal Products embrace harmony, healing, and the magic of natural energy. <br>
   Let your inner light shine through every crystal you hold. <br>
-  We’re here to guide your journey toward balance and beauty.
+  We're here to guide your journey toward balance and beauty.
 </p>
 <br>
     <form class="contact-form">
@@ -88,11 +930,14 @@
         <div class="footer-section">
           <h4 class="footer-heading">Quick Links</h4>
           <ul class="footer-nav">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="products.html">Shop</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
+              <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="newarrival.html">New Arrival</a></li>
+          <li><a href="specialoffers.html">SpecialOffers</a></li>
+          <li><a href="products.html">Most Selling</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="compare.html">Compare</a></li>
+        </ul>
         </div>
 
         <div class="footer-section">
@@ -139,100 +984,264 @@
     </div>
 
     <div class="footer-bottom">
-      <small>© 2025 Crystal Products · Crafted with Light & Love · All Rights Reserved</small>
+      <small>&copy; 2025 Crystal Products · Crafted with Light & Love · All Rights Reserved</small>
     </div>
   </footer>
 
+  <script>
+    // Cart functionality
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
+    function updateCartCount() {
+      const cartCount = document.getElementById('cartCount');
+      cartCount.textContent = cart.length;
+    }
 
-  <script>const stones = ['Diamond', 'Ruby', 'Emerald', 'Amethyst', 'Zircon', 'Pearl'];
-const chakraDefs = ['Black Tourmaline', 'Carnelian', 'Citrine', 'Rose Quartz', 'Aquamarine', 'Amethyst', 'Clear Quartz'];
+    function addToCart(productJson) {
+      const product = JSON.parse(productJson);
+      
+      // Check if product is already in cart
+      const existingItem = cart.find(item => item.id === product.id);
+      
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        product.quantity = 1;
+        cart.push(product);
+      }
+      
+      // Save to localStorage
+      localStorage.setItem('cart', JSON.stringify(cart));
+      
+      // Update cart count
+      updateCartCount();
+      
+      // Show success message
+      showToast('Product added to cart!');
+    }
 
-function randInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+    function removeFromCart(productId) {
+      cart = cart.filter(item => item.id !== productId);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartCount();
+      renderCartItems();
+    }
 
-const catalog = [];
-[...stones, ...chakraDefs].forEach(stone => {
-  for (let j = 1; j <= 3; j++) {
-    const basePrice = +(Math.random() * 400 + 150).toFixed(2);
-    const discount = randInt(10, 40);
-    const newPrice = +(basePrice * (1 - discount / 100)).toFixed(2);
-    catalog.push({
-      name: `${stone}`,
-      basePrice,
-      price: newPrice,
-      discount,
-      img: `../assets/${stone.toLowerCase().replace(/\s+/g, '-')}/${stone.toLowerCase().replace(/\s+/g, '-')}${j}.png`,
-      category: ['Bracelet', 'Ring', 'Necklace', 'Pendant'][j % 4],
-      desc: `Beautiful handcrafted ${stone} jewelry designed to radiate positive energy and elegance.`
+    function updateQuantity(productId, change) {
+      const item = cart.find(item => item.id === productId);
+      if (item) {
+        item.quantity += change;
+        if (item.quantity <= 0) {
+          removeFromCart(productId);
+        } else {
+          localStorage.setItem('cart', JSON.stringify(cart));
+          renderCartItems();
+        }
+      }
+    }
+
+    function renderCartItems() {
+      const cartItems = document.getElementById('cartItems');
+      const cartTotal = document.getElementById('cartTotal');
+      
+      if (cart.length === 0) {
+        cartItems.innerHTML = `
+          <div class="empty-cart">
+            <div class="empty-cart-icon">🛒</div>
+            <p>Your cart is empty</p>
+          </div>
+        `;
+        cartTotal.textContent = 'Total: $0.00';
+        return;
+      }
+      
+      let total = 0;
+      cartItems.innerHTML = '';
+      
+      cart.forEach(item => {
+        const itemTotal = parseFloat(item.price) * item.quantity;
+        total += itemTotal;
+        
+        const cartItem = document.createElement('div');
+        cartItem.className = 'cart-item';
+        cartItem.innerHTML = `
+          <img src="${item.img}" alt="${item.name}">
+          <div class="cart-item-details">
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-price">$${item.price}</div>
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="updateQuantity('${item.id}', -1)">-</button>
+              <span class="quantity-value">${item.quantity}</span>
+              <button class="quantity-btn" onclick="updateQuantity('${item.id}', 1)">+</button>
+            </div>
+          </div>
+          <button class="remove-item" onclick="removeFromCart('${item.id}')">✕</button>
+        `;
+        
+        cartItems.appendChild(cartItem);
+      });
+      
+      cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+    }
+
+    function toggleCart() {
+      const cartModal = document.getElementById('cartModal');
+      cartModal.classList.toggle('open');
+      
+      if (cartModal.classList.contains('open')) {
+        renderCartItems();
+      }
+    }
+
+    function openOrderForm() {
+      if (cart.length === 0) {
+        showToast('Your cart is empty!');
+        return;
+      }
+      
+      document.getElementById('orderModal').classList.add('open');
+      document.getElementById('cartModal').classList.remove('open');
+    }
+
+    function closeOrderForm() {
+      document.getElementById('orderModal').classList.remove('open');
+    }
+
+    function closeOrderConfirmation() {
+      document.getElementById('orderConfirmation').classList.remove('open');
+      // Clear cart after successful order
+      cart = [];
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartCount();
+    }
+
+    // Order form submission
+    document.getElementById('orderForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      
+      
+      document.getElementById('orderModal').classList.remove('open');
+      document.getElementById('orderConfirmation').classList.add('open');
     });
-  }
-});
 
-const offersContainer = document.getElementById('offersContainer');
+    // Toast notification functions
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toastMessage');
+      toastMessage.textContent = message;
+      toast.classList.add('show');
+      
+      // Auto hide after 3 seconds
+      setTimeout(() => {
+        hideToast();
+      }, 3000);
+    }
+    
+    function hideToast() {
+      const toast = document.getElementById('toast');
+      toast.classList.remove('show');
+    }
 
-function renderOffers(filter = 'all') {
-  offersContainer.innerHTML = '';
-  const filtered = filter === 'all' ? catalog : catalog.filter(p => p.category === filter);
-  const groups = {};
-  filtered.forEach(p => {
-    const group = p.name;
-    if (!groups[group]) groups[group] = [];
-    groups[group].push(p);
-  });
+    // Product data
+    const stones = ['Diamond', 'Ruby', 'Emerald', 'Amethyst', 'Zircon', 'Pearl'];
+    const chakraDefs = ['Black Tourmaline', 'Carnelian', 'Citrine', 'Rose Quartz', 'Aquamarine', 'Amethyst', 'Clear Quartz'];
 
-  Object.keys(groups).forEach(group => {
-    const section = document.createElement('section');
-    section.className = 'stone-section';
+    function randInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
 
-    // 🖼️ Heading now includes image instead of letter block
-    section.innerHTML = `
-      <div class="stone-header">
-        <img src="../assets/${group.toLowerCase().replace(/\s+/g, '-')}/${group.toLowerCase().replace(/\s+/g, '-') }1.png" 
-             alt="${group}" class="stone-icon">
-        <div>
-          <div class="stone-title">${group}</div>
-          <div class="stone-sub">Special offers on ${group} — limited time deals.</div>
-        </div>
-      </div>`;
-
-    const grid = document.createElement('div');
-    grid.className = 'product-grid';
-
-    groups[group].slice(0, 3).forEach(p => {
-      const card = document.createElement('div');
-      card.className = 'crystal-card';
-      card.innerHTML = `
-        <div class="badge-off">${p.discount}% OFF</div>
-        <img src="${p.img}" alt="${p.name}">
-        <h5>${p.name}</h5>
-        <p class="short-desc">${p.desc}</p>
-        <div class="price-row">
-          <span class="old-price">$${p.basePrice.toFixed(2)}</span>
-          <span class="new-price">$${p.price.toFixed(2)}</span>
-        </div>
-        <div class="card-buttons">
-          <button class="btn-cart" onclick='alert("${p.name} added to cart!")'>Add to Cart</button>
-        </div>`;
-      grid.appendChild(card);
+    const catalog = [];
+    [...stones, ...chakraDefs].forEach(stone => {
+      for (let j = 1; j <= 3; j++) {
+        const basePrice = +(Math.random() * 400 + 150).toFixed(2);
+        const discount = randInt(10, 40);
+        const newPrice = +(basePrice * (1 - discount / 100)).toFixed(2);
+        catalog.push({
+          id: `${stone}-${j}`,
+          name: `${stone} ${['Bracelet', 'Ring', 'Necklace', 'Pendant'][j % 4]}`,
+          basePrice,
+          price: newPrice,
+          discount,
+          img: `../assets/${stone.toLowerCase().replace(/\s+/g, '-')}/${stone.toLowerCase().replace(/\s+/g, '-')}${j}.png`,
+          category: ['Bracelet', 'Ring', 'Necklace', 'Pendant'][j % 4],
+          desc: `Beautiful handcrafted ${stone} jewelry designed to radiate positive energy and elegance.`
+        });
+      }
     });
 
-    section.appendChild(grid);
-    offersContainer.appendChild(section);
-  });
-}
+    const offersContainer = document.getElementById('offersContainer');
 
-renderOffers();
+    function renderOffers(filter = 'all') {
+      offersContainer.innerHTML = '';
+      const filtered = filter === 'all' ? catalog : catalog.filter(p => p.category === filter);
+      const groups = {};
+      filtered.forEach(p => {
+        const group = p.name.split(' ')[0]; // Get the stone name
+        if (!groups[group]) groups[group] = [];
+        groups[group].push(p);
+      });
 
-document.querySelector('.category-tabs').addEventListener('click', e => {
-  if (!e.target.classList.contains('category-btn')) return;
-  document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
-  e.target.classList.add('active');
-  renderOffers(e.target.dataset.category);
-});
+      Object.keys(groups).forEach(group => {
+        const section = document.createElement('section');
+        section.className = 'stone-section';
 
-</script>
+        section.innerHTML = `
+          <div class="stone-header">
+            <img src="../assets/${group.toLowerCase().replace(/\s+/g, '-')}/${group.toLowerCase().replace(/\s+/g, '-')}1.png" 
+                 alt="${group}" class="stone-icon">
+            <div>
+              <div class="stone-title">${group}</div>
+              <div class="stone-sub">Special offers on ${group}  limited time deals.</div>
+            </div>
+          </div>`;
+
+        const grid = document.createElement('div');
+        grid.className = 'product-grid';
+
+        groups[group].slice(0, 3).forEach(p => {
+          const card = document.createElement('div');
+          card.className = 'crystal-card';
+          card.innerHTML = `
+            <div class="badge-off">${p.discount}% OFF</div>
+            <img src="${p.img}" alt="${p.name}">
+            <h5>${p.name}</h5>
+            <p class="short-desc">${p.desc}</p>
+            <div class="price-row">
+              <span class="old-price">$${p.basePrice.toFixed(2)}</span>
+              <span class="new-price">$${p.price.toFixed(2)}</span>
+            </div>
+            <div class="card-buttons">
+              <button class="btn-cart" onclick='addToCart(\`${JSON.stringify(p)}\`)'>Add to Cart</button>
+            </div>`;
+          grid.appendChild(card);
+        });
+
+        section.appendChild(grid);
+        offersContainer.appendChild(section);
+      });
+    }
+
+    renderOffers();
+
+    document.querySelector('.category-tabs').addEventListener('click', e => {
+      if (!e.target.classList.contains('category-btn')) return;
+      document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+      e.target.classList.add('active');
+      renderOffers(e.target.dataset.category);
+    });
+
+    // Initialize cart count on page load
+    updateCartCount();
+
+    // Make functions available globally
+    window.toggleCart = toggleCart;
+    window.removeFromCart = removeFromCart;
+    window.updateQuantity = updateQuantity;
+    window.openOrderForm = openOrderForm;
+    window.closeOrderForm = closeOrderForm;
+    window.closeOrderConfirmation = closeOrderConfirmation;
+    window.hideToast = hideToast;
+  </script>
 </body>
-
 </html>
